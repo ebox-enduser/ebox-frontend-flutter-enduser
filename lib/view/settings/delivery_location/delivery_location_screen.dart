@@ -1,5 +1,5 @@
 import 'package:ebox/controller/auth_controller.dart';
-import 'package:ebox/view/settings/delivery_location/location_card.dart';
+import 'package:ebox/view/settings/delivery_location/widgets/location_card.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,15 +19,6 @@ class DeliveryLocationScreen extends StatelessWidget {
       body: DetailScreen(
           screen: Column(
             children: [
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
-              LocationCard(),
               LocationCard(),
             ],
           ),

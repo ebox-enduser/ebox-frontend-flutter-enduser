@@ -5,7 +5,7 @@ import 'package:ebox/view/order/ordering/done_ordering.dart';
 import 'package:ebox/view/order/ordering/finding_ingredients.dart';
 import 'package:ebox/view/order/ordering/packaging_meal.dart';
 import 'package:ebox/view/plan/plan_screen.dart';
-import 'package:ebox/view/home/widgets/notification/notification.dart';
+import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';

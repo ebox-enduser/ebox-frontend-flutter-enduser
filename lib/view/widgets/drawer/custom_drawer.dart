@@ -3,7 +3,7 @@ import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:ebox/view/settings/about_ebox_screen.dart';
 import 'package:ebox/view/settings/change_language_screen.dart';
 import 'package:ebox/view/settings/profile/profile_screen.dart';
-import 'package:ebox/view/home/widgets/notification/notification.dart';
+import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

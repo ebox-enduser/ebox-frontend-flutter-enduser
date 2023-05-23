@@ -7,7 +7,7 @@ import 'package:ebox/view/home/widgets/vendor/vendor_detail.dart';
 import 'package:ebox/view/home/widgets/vendor/vendor_list.dart';
 import 'package:ebox/view/widgets/drawer/custom_drawer.dart';
 
-import 'package:ebox/view/home/widgets/notification/notification.dart';
+import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
 import 'package:ebox/view/widgets/vendor_loading/vendor_loading_card.dart';
 import 'package:ebox/view/widgets/vendor_loading/vendor_loading_list.dart';
 import 'package:flutter/material.dart';
@@ -44,9 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               // carousel
               Obx(() {
-                if (homeController.bannerList.isNotEmpty) {
+                if (dashboardController.bannerList.isNotEmpty) {
                   return CarouselSliderView(
-                      bannerList: homeController.bannerList);
+                      bannerList: dashboardController.bannerList);
                 } else {
                   return const CarouselLoading();
                 }
@@ -63,8 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Obx(() {
-                if (homeController.vendorList.isNotEmpty) {
-                  return VendorList(vendors: homeController.vendorList);
+                if (dashboardController.vendorList.isNotEmpty) {
+                  return VendorList(vendors: dashboardController.vendorList);
                 } else {
                   return const VendorLoadingList();
                 }

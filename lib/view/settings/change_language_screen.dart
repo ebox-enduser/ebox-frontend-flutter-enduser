@@ -31,7 +31,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
           padding: REdgeInsets.all(15),
           child: Column(
             children: [
-              LogoText(),
+              const LogoText(),
               Text(
                 'Select Language'.tr,
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.sp),
@@ -69,7 +69,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                           SizedBox(
                             height: 15.h,
                           ),
-                          Text(
+                          const Text(
                             'English - USA',
                           ),
                           SizedBox(
@@ -114,7 +114,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          Text(
+                          const Text(
                             'ខ្មែរ',
                           ),
                           Radio(

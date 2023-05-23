@@ -29,9 +29,9 @@ class PlanScreen extends StatelessWidget {
                 height: 15.h,
               ),
               Obx(() {
-                if (homeController.planList.isNotEmpty) {
+                if (dashboardController.planList.isNotEmpty) {
                   return PlanList(
-                    plans: homeController.planList,
+                    plans: dashboardController.planList,
                   );
                 } else {
                   return PlanLoadingList();
