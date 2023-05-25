@@ -1,4 +1,5 @@
 import 'package:ebox/controller/auth_controller.dart';
+import 'package:ebox/view/settings/delivery_location/widgets/add_new_location_screen.dart';
 import 'package:ebox/view/settings/delivery_location/widgets/location_card.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,11 @@ class DeliveryLocationScreen extends StatelessWidget {
       body: DetailScreen(
           screen: Column(
             children: [
-              LocationCard(),
+              LocationCard(
+                address: 'address',
+                name: 'Home',
+                description: 'description',
+              ),
             ],
           ),
           title: 'Delivery Location'.tr),
@@ -27,7 +32,7 @@ class DeliveryLocationScreen extends StatelessWidget {
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
-            // Get.to(() => ConfirmPaymentScreen());
+            Get.to(() => AddNewLocationScreen());
           },
           style: TextButton.styleFrom(
             elevation: 5,

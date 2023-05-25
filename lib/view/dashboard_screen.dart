@@ -66,6 +66,7 @@ class _MainScreenState extends State<DashboardScreen> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        centerTitle: true,
         iconTheme: const IconThemeData(color: AppColors.secondaryColor),
         elevation: 0,
         backgroundColor: AppColors.backgroundColor,

@@ -48,7 +48,7 @@ class VendorDetail extends StatelessWidget {
                           onTap: () => Get.back(),
                           child: CircleAvatar(
                             radius: 20.r,
-                            backgroundColor: Colors.black,
+                            backgroundColor: AppColors.secondaryColor,
                             foregroundColor: Colors.white,
                             child: Icon(
                               Icons.arrow_back_ios_new,

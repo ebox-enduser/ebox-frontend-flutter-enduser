@@ -62,8 +62,11 @@ dependencies:
   confirm_dialog: ^1.0.1
   awesome_notifications: ^0.6.19
   timeago: ^3.4.0
-  location: ^4.4.0
   flutter_map: ^4.0.0
+  geolocator: ^9.0.2
+  geocode: ^1.0.3
+  geocoding: ^2.1.0
+  latlng: ^1.0.0
 
 dev_dependencies:
   flutter_test:

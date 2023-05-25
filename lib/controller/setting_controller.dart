@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,8 @@ import '../model/user.dart';
 class SettingController extends GetxController {
   Rxn<User> user = Rxn<User>();
   File? profile;
+  Rxn<Position>? currentPosition = Rxn<Position>();
+  Rxn<String> currentAddress = Rxn<String>();
 
   @override
   void onInit() async {

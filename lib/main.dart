@@ -20,18 +20,6 @@ PushNotificationController pushNotificationService =
     PushNotificationController();
 
 void main() async {
-  AwesomeNotifications().initialize(
-    'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/carrot.png?alt=media&token=be976e31-1967-42c8-941c-b5001149c9d2',
-    [
-      NotificationChannel(
-        channelKey: 'basic_channel',
-        channelName: 'Basic notifications',
-        channelDescription: 'Notification for basic test',
-      ),
-    ],
-    debug: true,
-  );
-  configLoading();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   ///FlutterNativeSplash
@@ -45,10 +33,23 @@ void main() async {
 
   ///FirebaseMessaging
   pushNotificationService.initialize();
+  AwesomeNotifications().initialize(
+    'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/carrot.png?alt=media&token=be976e31-1967-42c8-941c-b5001149c9d2',
+    [
+      NotificationChannel(
+        channelKey: 'basic_channel',
+        channelName: 'Basic notifications',
+        channelDescription: 'Notification for basic test',
+      ),
+    ],
+    debug: true,
+  );
 
   SharedPreferences pref = await SharedPreferences.getInstance();
   token = pref.getString('token');
   debugPrint('Token: $token');
+
+  configLoading();
 
   runApp(const MyApp());
 }

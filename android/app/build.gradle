@@ -49,12 +49,15 @@ android {
         applicationId "com.example.ebox"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 19
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
 
+    }
+    packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 
     buildTypes {
@@ -74,5 +77,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'androidx.multidex:multidex: 2.0.1'
+    implementation "androidx.multidex:multidex:2.0.1"
 }

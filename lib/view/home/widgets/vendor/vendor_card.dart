@@ -59,7 +59,7 @@ class VendorCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: 150.w,
+                              width: 140.w,
                               child: Text(
                                 vendor.name,
                                 overflow: TextOverflow.ellipsis,
@@ -73,7 +73,7 @@ class VendorCard extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 90.h,
+                                  width: 100.h,
                                   child: Column(
                                     children: [
                                       Row(
@@ -133,7 +133,7 @@ class VendorCard extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 75.h,
+                                  width: 80.h,
                                   child: Column(
                                     children: [
                                       Row(

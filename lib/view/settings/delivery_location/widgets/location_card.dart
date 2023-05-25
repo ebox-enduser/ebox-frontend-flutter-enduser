@@ -1,17 +1,32 @@
 import 'package:ebox/core/theme/app_colors.dart';
-import 'package:ebox/view/settings/delivery_location/widgets/location_detail.dart';
+import 'package:ebox/view/settings/delivery_location/widgets/add_new_location_screen.dart';
+import 'package:ebox/view/settings/delivery_location/widgets/edit_location_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'map_screen.dart';
+
 class LocationCard extends StatelessWidget {
-  const LocationCard({super.key});
+  final String name;
+  final String address;
+  final String description;
+
+  const LocationCard(
+      {super.key,
+      required this.name,
+      required this.address,
+      required this.description});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => LocationDetailScreen());
+        Get.to(() => EditLocationScreen(
+              address: address,
+              description: description,
+              name: name,
+            ));
       },
       child: Padding(
         padding: REdgeInsets.only(top: 15, right: 15, left: 15),
@@ -36,15 +51,8 @@ class LocationCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      Icons.home,
-                      color: AppColors.thirdlyColor,
-                    ),
-                    SizedBox(
-                      width: 5.w,
-                    ),
                     Text(
-                      "Home".tr,
+                      name.tr,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                           fontWeight: FontWeight.w500, fontSize: 16.sp),
@@ -63,8 +71,16 @@ class LocationCard extends StatelessWidget {
                 ),
                 SizedBox(height: 15.h),
                 Text(
-                  'Example',
+                  description,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
                   style: TextStyle(color: AppColors.textColor),
+                ),
+                SizedBox(height: 15.h),
+                Text(
+                  address,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: AppColors.secondaryColor),
                 ),
               ],
             ),
