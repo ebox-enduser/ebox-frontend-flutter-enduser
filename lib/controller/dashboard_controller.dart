@@ -1,3 +1,5 @@
+import 'package:ebox/api/meal_ordered_service.dart';
+import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/plan.dart';
 import 'package:get/get.dart';
 
@@ -7,6 +9,8 @@ import '../api/plan_service.dart';
 import '../api/vendor_service.dart';
 import '../model/ad_banner.dart';
 
+import '../model/meal_ordered.dart';
+import '../model/meal_ordered_vendor.dart';
 import '../model/notifications.dart';
 import '../model/vendor.dart';
 
@@ -16,11 +20,17 @@ class DashboardController extends GetxController {
   RxList<Plan> planList = List<Plan>.empty(growable: true).obs;
   RxList<Notifications> notificationList =
       List<Notifications>.empty(growable: true).obs;
+  RxList<MealOrdered> mealOrderedList =
+      List<MealOrdered>.empty(growable: true).obs;
+  RxList<MealOrderedVendor> mealOrderedVendorList =
+      List<MealOrderedVendor>.empty(growable: true).obs;
 
   RxBool isBannerLoading = false.obs;
   RxBool isVendorLoading = false.obs;
   RxBool isPlanLoading = false.obs;
   RxBool isNotificationLoading = false.obs;
+  RxBool isMealOrderedLoading = false.obs;
+  RxBool isMealOrderedVendorLoading = false.obs;
 
   @override
   void onInit() async {
@@ -28,7 +38,37 @@ class DashboardController extends GetxController {
     getVendors();
     getPlans();
     getNotification();
+    getMealOrdered(email: 'sokheng@gmail.com');
     super.onInit();
+  }
+
+  void getVendorId({required int vendorId}) async {
+    try {
+      isMealOrderedVendorLoading(true);
+      //call api
+      var result = await VendorService().getById(id: vendorId);
+      if (result != null) {
+        //assign api result
+        mealOrderedVendorList
+            .assignAll(mealOrderedVendorListFromJson(result.body));
+      }
+    } finally {
+      isMealOrderedVendorLoading(false);
+    }
+  }
+
+  void getMealOrdered({required String email}) async {
+    try {
+      isMealOrderedLoading(true);
+      //call api
+      var result = await MealOrderedService().getByUser(email: email);
+      if (result != null) {
+        //assign api result
+        mealOrderedList.assignAll(mealOrderedListFromJson(result.body));
+      }
+    } finally {
+      isMealOrderedLoading(false);
+    }
   }
 
   void getNotification() async {

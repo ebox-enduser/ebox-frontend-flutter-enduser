@@ -9,9 +9,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../model/cart_meal.dart';
-import 'meal_detail.dart';
+import '../../../model/plan.dart';
+import 'plan_meal_detail.dart';
 
-class MealCard extends StatelessWidget {
+class PlanMealCard extends StatelessWidget {
   final String mealName;
   final String foodType;
   final int price;
@@ -19,24 +20,22 @@ class MealCard extends StatelessWidget {
   final String mealImage;
   final String ingredients;
   final String youtubeURL;
-  final Vendor vendor;
-  const MealCard(
-      {Key? key,
-      required this.mealName,
-      required this.foodType,
-      required this.price,
-      required this.fat,
-      required this.mealImage,
-      required this.ingredients,
-      required this.youtubeURL,
-      required this.vendor})
-      : super(key: key);
+  const PlanMealCard({
+    Key? key,
+    required this.mealName,
+    required this.foodType,
+    required this.price,
+    required this.fat,
+    required this.mealImage,
+    required this.ingredients,
+    required this.youtubeURL,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => MealDetail(
+        Get.to(() => PlanMealDetail(
               fat: fat,
               foodType: foodType,
               mealImage: mealImage,
@@ -84,7 +83,7 @@ class MealCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                            fontSize: 11.sp, fontWeight: FontWeight.bold),
+                            fontSize: 12.sp, fontWeight: FontWeight.bold),
                       ),
                       Spacer(),
                       Padding(
@@ -97,17 +96,19 @@ class MealCard extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14.sp),
+                                  fontSize: 16.sp),
                             ),
                             IconButton(
                                 onPressed: () {
                                   cartController.addMealByVendor(
-                                      meal: CartMeal(
-                                          mealName: mealName,
-                                          mealImage: mealImage,
-                                          price: price),
-                                      vendors: vendor,
-                                      context: context);
+                                    meal: CartMeal(
+                                      mealImage: mealImage,
+                                      mealName: mealName,
+                                      price: price,
+                                    ),
+                                    context: context,
+                                    vendors: dashboardController.vendorList[0],
+                                  );
                                 },
                                 icon: Icon(
                                   Icons.add_circle,

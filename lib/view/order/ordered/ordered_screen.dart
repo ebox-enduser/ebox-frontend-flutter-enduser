@@ -2,10 +2,14 @@ import 'dart:ffi';
 
 import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/view/order/ordered/ordered_card.dart';
+import 'package:ebox/view/order/ordered/ordered_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+
+import '../../../controller/controllers.dart';
+import '../../home/widgets/vendor/vendor_list.dart';
 
 class OrderedScreen extends StatelessWidget {
   OrderedScreen({super.key});
@@ -23,10 +27,17 @@ class OrderedScreen extends StatelessWidget {
                 child: Text(
                   "Ordered History".tr,
                   style:
-                      TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
               ),
-              OrderedCard(),
+              Obx(() {
+                if (dashboardController.mealOrderedList.isNotEmpty) {
+                  return OrderedList(
+                      mealOrdered: dashboardController.mealOrderedList);
+                } else {
+                  return Text('Empty');
+                }
+              }),
             ],
           ),
         ),

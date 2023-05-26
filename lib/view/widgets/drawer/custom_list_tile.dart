@@ -41,6 +41,7 @@ class CustomListTile extends StatelessWidget {
                     Icon(
                       icon,
                       color: Colors.black54,
+                      size: 20.r,
                     ),
                     if (infoCount > 0)
                       Positioned(

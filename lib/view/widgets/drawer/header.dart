@@ -45,9 +45,10 @@ class CustomDrawerHeader extends StatelessWidget {
               flex: 1,
               child: IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.search,
                   color: Colors.black,
+                  size: 30.r,
                 ),
               ),
             ),

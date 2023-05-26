@@ -36,14 +36,14 @@ class InformationCard extends StatelessWidget {
             children: [
               Text(title,
                   style:
-                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                      TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold)),
               Padding(
                 padding: REdgeInsets.all(10.0),
                 child: Text(
                   Data,
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 14.sp,
+                      fontSize: 12.sp,
                       color: AppColors.secondaryColor),
                 ),
               )

@@ -34,7 +34,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
               const LogoText(),
               Text(
                 'Select Language'.tr,
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16.sp),
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
               ),
               SizedBox(
                 height: 30.h,
@@ -69,8 +69,9 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                           SizedBox(
                             height: 15.h,
                           ),
-                          const Text(
+                          Text(
                             'English - USA',
+                            style: TextStyle(fontSize: 12.sp),
                           ),
                           SizedBox(
                             height: 5.h,
@@ -114,8 +115,9 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                           SizedBox(
                             height: 5.h,
                           ),
-                          const Text(
+                          Text(
                             'ខ្មែរ',
+                            style: TextStyle(fontSize: 12.sp),
                           ),
                           Radio(
                               value: Locale('km', 'KH'),

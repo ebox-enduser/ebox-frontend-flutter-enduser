@@ -14,12 +14,12 @@ import '../../../core/theme/app_colors.dart';
 import 'change_password_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
-
-  bool showPassword = false;
+  const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final DateTime _userBirthday =
+        authController.user.value?.birthDay ?? DateTime.now();
     return Scaffold(
       extendBody: true,
       body: DetailScreen(
@@ -37,22 +37,43 @@ class ProfileScreen extends StatelessWidget {
             title: 'Full Name'.tr,
             Data: authController.user.value?.fullName ?? 'Not Yet',
           ),
-          InformationCard(
-            title: 'Phone Number'.tr,
-            Data: authController.user.value?.phoneNumber ?? 'Not Yet',
+          Obx(
+            () {
+              if (authController.user.value?.phoneNumber == null) {
+                return InformationCard(
+                  title: 'Phone Number'.tr,
+                  Data: 'You are not set your phone number yet!',
+                );
+              } else {
+                return InformationCard(
+                  title: 'Phone Number'.tr,
+                  Data: authController.user.value!.phoneNumber,
+                );
+              }
+            },
           ),
           InformationCard(
             title: 'Email'.tr,
             Data: authController.user.value?.email ?? 'Not Yet',
           ),
-          InformationCard(
-            title: 'Birthday'.tr,
-            Data:
-                ' ${authController.user.value?.birthDay?.day.toString()} / ${DateFormat('MMMM').format(DateTime(0, authController.user.value?.birthDay?.month ?? 0))} / ${authController.user.value?.birthDay?.year.toString()}  ',
+          Obx(
+            () {
+              if (authController.user.value?.birthDay == null) {
+                return InformationCard(
+                  title: 'Birthday'.tr,
+                  Data: 'You are not set your birthday yet!',
+                );
+              } else {
+                return InformationCard(
+                  title: 'Birthday'.tr,
+                  Data: DateFormat('dd / MMMM / yyyy').format(_userBirthday),
+                );
+              }
+            },
           ),
           InformationCard(
             title: 'Gender'.tr,
-            Data: authController.user.value?.gender ?? 'Not Yet',
+            Data: authController.user.value!.gender,
           ),
           Padding(
             padding: REdgeInsets.all(15.0),
@@ -60,7 +81,6 @@ class ProfileScreen extends StatelessWidget {
               onPressed: () {
                 Get.to(() => ChangePasswordScreen());
               },
-              child: Text('Change Password'.tr),
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
                 elevation: 5,
@@ -69,6 +89,10 @@ class ProfileScreen extends StatelessWidget {
                     REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(25.r)),
+              ),
+              child: Text(
+                'Change Password'.tr,
+                style: TextStyle(fontSize: 14.sp),
               ),
             ),
           )
@@ -94,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 16.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),

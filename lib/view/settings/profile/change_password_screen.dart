@@ -209,7 +209,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 16.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),

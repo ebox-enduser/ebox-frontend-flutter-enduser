@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../settings/delivery_location/delivery_location_screen.dart';
+import '../../settings/delivery_location/location_screen.dart';
 import 'bottom_user_info.dart';
 import 'custom_list_tile.dart';
 import 'header.dart';
@@ -57,7 +57,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 icon: Icons.pin_drop,
                 title: 'Delivery Location'.tr,
                 infoCount: 0,
-                widget: DeliveryLocationScreen(),
+                widget: const LocationScreen(),
               ),
               const Divider(color: Colors.grey),
               const Spacer(),

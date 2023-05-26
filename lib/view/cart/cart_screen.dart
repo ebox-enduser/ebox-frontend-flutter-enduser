@@ -75,7 +75,7 @@ class CartScreen extends StatelessWidget {
                                     width: 10.w,
                                   ),
                                   Text(
-                                    cartController.vendor.value?.name ??
+                                    cartController.vendor.value?.vendorName ??
                                         'Not Yet'.tr,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -149,16 +149,28 @@ class CartScreen extends StatelessWidget {
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14.sp),
                                 ),
-                                Text(
-                                  '\$${[
-                                    cartController.vendor.value?.delivery,
-                                    cartController.total
-                                  ].reduce((value, element) => value + element).toString()}',
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                                Obx(() {
+                                  if (cartController.vendor.value == null) {
+                                    return Text(
+                                      '\$ ${cartController.total}',
+                                      style: TextStyle(
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    );
+                                  } else {
+                                    return Text(
+                                      '\$${[
+                                        cartController.vendor.value?.delivery,
+                                        cartController.total
+                                      ].reduce((value, element) => value + element).toString()}',
+                                      style: TextStyle(
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    );
+                                  }
+                                }),
                               ],
                             ),
                           ],
@@ -190,7 +202,7 @@ class CartScreen extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 16.sp),
+                      fontSize: 14.sp),
                 ),
               ),
             );
@@ -215,7 +227,7 @@ class CartScreen extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 16.sp),
+                      fontSize: 14.sp),
                 ),
               ),
             );

@@ -22,12 +22,13 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> data) => User(
         id: data['id'].toString(),
-        fullName: data['fullName'] ?? 'Not Yet',
-        email: data['email'] ?? 'Not Yet',
-        phoneNumber: data['phoneNumber'].toString(),
+        fullName: data['fullName'] ?? 'You are not set your full name yet!',
+        email: data['email'] ?? 'You are not set your email yet!',
+        phoneNumber: data['phoneNumber'].toString() ??
+            'You are not set your phone number yet!',
         imageURL: data['imageURL'] ??
             'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png',
-        gender: data['gender'] ?? 'Not Yet',
+        gender: data['gender'] ?? 'You are not set your gender yet!',
         birthDay:
             data['birthday'] == null ? null : DateTime.parse(data['birthday']),
       );

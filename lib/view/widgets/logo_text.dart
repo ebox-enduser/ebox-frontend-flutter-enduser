@@ -17,7 +17,7 @@ class LogoText extends StatelessWidget {
         ),
         Text(
           'eBox',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.sp),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),
         ),
         SizedBox(
           height: 60.h,

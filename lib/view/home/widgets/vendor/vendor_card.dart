@@ -61,11 +61,11 @@ class VendorCard extends StatelessWidget {
                             SizedBox(
                               width: 140.w,
                               child: Text(
-                                vendor.name,
+                                vendor.vendorName,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: TextStyle(
-                                    fontSize: 16.sp,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -73,14 +73,15 @@ class VendorCard extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 100.h,
+                                  width: 80.h,
                                   child: Column(
                                     children: [
                                       Row(
                                         children: [
-                                          const Icon(
+                                          Icon(
                                             Icons.timelapse,
                                             color: AppColors.secondaryColor,
+                                            size: 20.r,
                                           ),
                                           SizedBox(
                                             width: 5.w,
@@ -89,13 +90,13 @@ class VendorCard extends StatelessWidget {
                                             '${vendor.duration} ',
                                             style: TextStyle(
                                                 color: AppColors.textColor,
-                                                fontSize: 12.sp),
+                                                fontSize: 10.sp),
                                           ),
                                           Text(
                                             'mins'.tr,
                                             style: TextStyle(
                                                 color: AppColors.textColor,
-                                                fontSize: 12.sp),
+                                                fontSize: 10.sp),
                                           ),
                                         ],
                                       ),
@@ -104,9 +105,10 @@ class VendorCard extends StatelessWidget {
                                       ),
                                       Row(
                                         children: [
-                                          const Icon(
+                                          Icon(
                                             Icons.pin_drop,
                                             color: AppColors.thirdlyColor,
+                                            size: 20.r,
                                           ),
                                           SizedBox(
                                             width: 5.w,
@@ -115,17 +117,14 @@ class VendorCard extends StatelessWidget {
                                             '${vendor.distance} ',
                                             style: TextStyle(
                                                 color: AppColors.textColor,
-                                                fontSize: 12.sp),
+                                                fontSize: 10.sp),
                                           ),
-                                          SizedBox(
-                                            width: 45.w,
-                                            child: Text(
-                                              'km'.tr,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  color: AppColors.textColor,
-                                                  fontSize: 12.sp),
-                                            ),
+                                          Text(
+                                            'km'.tr,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: AppColors.textColor,
+                                                fontSize: 10.sp),
                                           ),
                                         ],
                                       ),
@@ -149,9 +148,10 @@ class VendorCard extends StatelessWidget {
                                           SizedBox(
                                             width: 5.w,
                                           ),
-                                          const Icon(
+                                          Icon(
                                             Icons.delivery_dining,
                                             color: AppColors.primaryColor,
+                                            size: 20.r,
                                           ),
                                         ],
                                       ),
@@ -176,9 +176,10 @@ class VendorCard extends StatelessWidget {
                                           SizedBox(
                                             width: 5.w,
                                           ),
-                                          const Icon(
+                                          Icon(
                                             Icons.receipt,
                                             color: AppColors.iconColor,
+                                            size: 20.r,
                                           ),
                                         ],
                                       ),

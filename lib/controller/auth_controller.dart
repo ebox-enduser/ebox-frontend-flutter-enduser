@@ -146,14 +146,15 @@ class AuthController extends GetxController {
           EasyLoading.showSuccess("Update Profile Successfully!".tr);
           Get.offAll(() => const DashboardScreen());
         } else {
-          EasyLoading.showError('Something wrong. Try again!'.tr);
+          print(userResult.body);
+          EasyLoading.showError('Something wrong1. Try again!'.tr);
         }
       } else {
         EasyLoading.showError('Password is wrong'.tr);
       }
     } catch (e) {
       debugPrint(e.toString());
-      EasyLoading.showError('Something wrong. Try again!'.tr);
+      EasyLoading.showError('Something wrong2. Try again!'.tr);
     } finally {
       EasyLoading.dismiss();
     }

@@ -21,7 +21,7 @@ class VendorDetail extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned(
-              child: Container(
+              child: SizedBox(
             width: Get.width,
             height: Get.height,
           )),
@@ -52,6 +52,7 @@ class VendorDetail extends StatelessWidget {
                             foregroundColor: Colors.white,
                             child: Icon(
                               Icons.arrow_back_ios_new,
+                              size: 20.r,
                             ),
                           ),
                         ),
@@ -60,7 +61,7 @@ class VendorDetail extends StatelessWidget {
                             icon: Icon(
                               Icons.info,
                               color: AppColors.thirdlyColor,
-                              size: 30.r,
+                              size: 20.r,
                             ))
                       ],
                     ),
@@ -87,11 +88,11 @@ class VendorDetail extends StatelessWidget {
                     Padding(
                       padding: REdgeInsets.only(left: 120, bottom: 30),
                       child: Text(
-                        vendor.name,
+                        vendor.vendorName,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20.sp),
+                            fontWeight: FontWeight.bold, fontSize: 16.sp),
                       ),
                     ),
                     Padding(
@@ -101,9 +102,10 @@ class VendorDetail extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.timelapse,
                                 color: AppColors.secondaryColor,
+                                size: 20.r,
                               ),
                               SizedBox(
                                 width: 5.w,
@@ -112,21 +114,22 @@ class VendorDetail extends StatelessWidget {
                                 '${vendor.duration} ',
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                               Text(
                                 'mins'.tr,
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                             ],
                           ),
                           Row(
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.pin_drop,
                                 color: AppColors.thirdlyColor,
+                                size: 20.r,
                               ),
                               SizedBox(
                                 width: 5.w,
@@ -135,22 +138,23 @@ class VendorDetail extends StatelessWidget {
                                 '${vendor.distance} ',
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                               Text(
                                 'km'.tr,
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.delivery_dining,
                                 color: AppColors.primaryColor,
+                                size: 20.r,
                               ),
                               SizedBox(
                                 width: 5.w,
@@ -159,16 +163,17 @@ class VendorDetail extends StatelessWidget {
                                 '\$${vendor.delivery}',
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.receipt,
                                 color: AppColors.iconColor,
+                                size: 20.r,
                               ),
                               SizedBox(
                                 width: 5.w,
@@ -177,7 +182,7 @@ class VendorDetail extends StatelessWidget {
                                 '${vendor.ordered}',
                                 style: TextStyle(
                                     color: AppColors.textColor,
-                                    fontSize: 12.sp),
+                                    fontSize: 10.sp),
                               ),
                             ],
                           )

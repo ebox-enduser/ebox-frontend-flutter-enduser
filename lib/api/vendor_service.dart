@@ -11,4 +11,10 @@ class VendorService {
         '$remoteUrl?populate=meals.image, locations,image,vendorImageBackground'));
     return response;
   }
+
+  Future<dynamic> getById({required int id}) async {
+    var response = await client.get(Uri.parse(
+        '$remoteUrl?populate=meals.image, locations,image,vendorImageBackground&filters[id][\$eq]=$id'));
+    return response;
+  }
 }

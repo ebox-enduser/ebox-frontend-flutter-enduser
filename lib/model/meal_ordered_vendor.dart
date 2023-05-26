@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-List<Vendor> vendorListFromJson(String val) => List<Vendor>.from(
-    json.decode(val)['data'].map((val) => Vendor.fromJson(val)));
+List<MealOrderedVendor> mealOrderedVendorListFromJson(String val) =>
+    List<MealOrderedVendor>.from(
+        json.decode(val)['data'].map((val) => MealOrderedVendor.fromJson(val)));
 
-class Vendor {
+class MealOrderedVendor {
   final int id;
   final String vendorName;
   final String vendorImage;
@@ -23,7 +24,7 @@ class Vendor {
   final List<String> ingredients;
   final List<String> locations;
 
-  Vendor({
+  MealOrderedVendor({
     required this.id,
     required this.vendorImage,
     required this.vendorImageBackground,
@@ -44,7 +45,8 @@ class Vendor {
     required this.ordered,
   });
 
-  factory Vendor.fromJson(Map<dynamic, dynamic> data) => Vendor(
+  factory MealOrderedVendor.fromJson(Map<dynamic, dynamic> data) =>
+      MealOrderedVendor(
         id: data['id'] ?? 'Not Yet',
         mealName: List<String>.from(data['attributes']['meals']['data']
             .map((data) => data['attributes']['title'] ?? 'Not Yet')),

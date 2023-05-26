@@ -23,7 +23,7 @@ class PlanScreen extends StatelessWidget {
             children: [
               Text(
                 "Meal Plan".tr,
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15.h,

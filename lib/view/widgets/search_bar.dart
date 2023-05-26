@@ -29,7 +29,7 @@ class SearchBar extends StatelessWidget {
             fillColor: AppColors.secondaryBackgroundColor,
             hintText: 'Somlar kako, cha kdav,...'.tr,
             hintStyle: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 12.sp,
                 color: AppColors.textColor,
                 fontWeight: FontWeight.w300),
             contentPadding: REdgeInsets.only(top: 30),

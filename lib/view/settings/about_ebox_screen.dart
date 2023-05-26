@@ -1,4 +1,5 @@
 import 'package:ebox/controller/auth_controller.dart';
+import 'package:ebox/core/theme/app_colors.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +20,10 @@ class AboutEbox extends StatelessWidget {
           child: Column(
             children: [
               LogoText(),
-              Text("\t ${information}"),
+              Text(
+                "\t ${information}",
+                style: TextStyle(fontSize: 12.sp, color: AppColors.textColor),
+              ),
             ],
           ),
         ),

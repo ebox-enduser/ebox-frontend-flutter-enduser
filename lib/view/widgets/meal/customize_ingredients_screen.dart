@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../core/theme/app_colors.dart';
-import '../cart/confirm_payment_screen.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../cart/confirm_payment_screen.dart';
 
 class CustomizeIngredientsScreen extends StatelessWidget {
   final String mealImage;
@@ -49,7 +49,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
                   Text(
                     title,
                     style:
-                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -68,7 +68,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
                       borderSide: const BorderSide(color: AppColors.textColor),
                       borderRadius: BorderRadius.circular(15.r)),
                   hintStyle: TextStyle(
-                      fontSize: 14.sp,
+                      fontSize: 12.sp,
                       color: AppColors.textColor,
                       fontWeight: FontWeight.w300),
                 ),
@@ -94,7 +94,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 16.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),

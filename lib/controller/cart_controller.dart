@@ -55,7 +55,7 @@ class CartController extends GetxController {
             style: TextStyle(color: AppColors.secondaryColor),
           ),
         )) {
-          Get.snackbar(vendor.value!.name,
+          Get.snackbar(vendor.value!.vendorName,
               'All Meal has been removed in shopping cart'.tr,
               colorText: Colors.white,
               margin: REdgeInsets.all(15),

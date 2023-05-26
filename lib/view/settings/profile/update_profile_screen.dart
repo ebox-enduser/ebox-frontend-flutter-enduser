@@ -24,7 +24,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  String _genderController = 'Not Yet'.tr;
+  String _genderController = 'other'.tr;
 
   DateTime? _selectedDate;
 
@@ -167,12 +167,13 @@ class _UpdateInformationState extends State<UpdateInformation> {
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Update your full name'.tr,
+                      hintText: authController.user.value?.fullName,
                       label: Text('Full Name'.tr),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      hintStyle: TextStyle(fontSize: 16.sp),
+                      hintStyle: TextStyle(fontSize: 14.sp),
+                      labelStyle: TextStyle(fontSize: 14.sp),
                     ),
                   ),
                 ),
@@ -183,12 +184,13 @@ class _UpdateInformationState extends State<UpdateInformation> {
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
-                      hintText: 'Update your phone number'.tr,
+                      hintText: authController.user.value?.phoneNumber,
                       label: Text('Phone Number'.tr),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      hintStyle: TextStyle(fontSize: 16.sp),
+                      hintStyle: TextStyle(fontSize: 14.sp),
+                      labelStyle: TextStyle(fontSize: 14.sp),
                     ),
                   ),
                 ),
@@ -202,7 +204,6 @@ class _UpdateInformationState extends State<UpdateInformation> {
                           controller: _birthdayController,
                           keyboardType: TextInputType.datetime,
                           textInputAction: TextInputAction.done,
-                          autocorrect: false,
                           obscureText: false,
                           readOnly: true,
                           onTap: () async {
@@ -218,6 +219,8 @@ class _UpdateInformationState extends State<UpdateInformation> {
                                     .format(_userBirthday)
                                 : DateFormat('dd / MMMM / yyyy')
                                     .format(_selectedDate!),
+                            hintStyle: TextStyle(fontSize: 14.sp),
+                            labelStyle: TextStyle(fontSize: 14.sp),
                           ),
                         ),
                       ),
@@ -286,20 +289,23 @@ class _UpdateInformationState extends State<UpdateInformation> {
                     Icon(
                       Icons.warning,
                       color: AppColors.thirdlyColor,
+                      size: 20.r,
                     ),
                     Text(
                       'WARNING'.tr,
                       maxLines: 2,
                       style: TextStyle(
                           color: AppColors.thirdlyColor,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14.sp),
                     ),
                   ],
                 ),
                 Text(
                   'Enter your password to confirm update your profile'.tr,
                   maxLines: 2,
-                  style: TextStyle(color: AppColors.thirdlyColor),
+                  style:
+                      TextStyle(color: AppColors.thirdlyColor, fontSize: 12.sp),
                 ),
                 Padding(
                   padding: REdgeInsets.only(top: 15),
@@ -325,26 +331,28 @@ class _UpdateInformationState extends State<UpdateInformation> {
                       });
                     },
                     decoration: InputDecoration(
-                        hintText: 'Enter your password'.tr,
-                        label: Text('Password'.tr),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0.r),
+                      hintText: 'Enter your password'.tr,
+                      label: Text('Password'.tr),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0.r),
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _passwordVisible = !_passwordVisible;
+                          });
+                        },
+                        icon: Icon(
+                          // Based on passwordVisible state choose the icon
+                          _passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: Theme.of(context).primaryColorDark,
                         ),
-                        hintStyle: TextStyle(fontSize: 16.sp),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                          icon: Icon(
-                            // Based on passwordVisible state choose the icon
-                            _passwordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Theme.of(context).primaryColorDark,
-                          ),
-                        )),
+                      ),
+                      hintStyle: TextStyle(fontSize: 14.sp),
+                      labelStyle: TextStyle(fontSize: 14.sp),
+                    ),
                   ),
                 ),
               ],
@@ -363,22 +371,20 @@ class _UpdateInformationState extends State<UpdateInformation> {
 
               ///if user not update their info then save current data
               String fullName = _fullNameController.text.isEmpty
-                  ? authController.user.value!.fullName
-                  : _fullNameController.text;
+                  ? authController.user.value!.fullName.toString()
+                  : _fullNameController.text.toString();
 
-              String gender = _genderController == null
-                  ? authController.user.value!.gender
-                  : _genderController;
+              String gender = _genderController.toString();
               String phoneNumber = _phoneNumberController.text.isEmpty
                   ? authController.user.value!.phoneNumber.toString()
-                  : _phoneNumberController.text;
+                  : _phoneNumberController.text.toString();
               String image = imageURL!.isEmpty
                   ? authController.user.value?.imageURL ??
                       'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png'
-                  : imageURL;
+                  : imageURL.toString();
               String birthday = _birthdayController.text.isEmpty
                   ? authController.user.value!.birthDay.toString()
-                  : _birthdayController.text;
+                  : _birthdayController.text.toString();
               authController.updateUser(
                 password: _passwordController.text,
                 phoneNumber: phoneNumber,
@@ -403,7 +409,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 16.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),

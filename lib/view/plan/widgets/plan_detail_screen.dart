@@ -1,4 +1,4 @@
-import 'package:ebox/view/plan/meal/meal_list_plan.dart';
+import 'package:ebox/view/plan/meal/plan_meal_list.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

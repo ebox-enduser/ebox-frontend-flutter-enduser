@@ -15,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import '../../controller/controllers.dart';
+import '../../core/theme/app_colors.dart';
 import '../order/ordering/delivery_received.dart';
 import '../widgets/search_bar.dart';
 
@@ -34,12 +35,28 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Obx(() => Padding(
+                    padding: REdgeInsets.all(15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(authController.user.value?.fullName ?? 'Not Yet',
+                            style: TextStyle(
+                                fontSize: 16.sp, fontWeight: FontWeight.bold)),
+                        Text(
+                            settingController.userLocation.value?.address ??
+                                'Address',
+                            style: TextStyle(
+                                color: AppColors.textColor, fontSize: 10.sp)),
+                      ],
+                    ),
+                  )),
               Padding(
                 padding: REdgeInsets.only(left: 15),
                 child: Text(
                   "Trending".tr,
                   style:
-                      TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               // carousel
@@ -59,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "Vendor".tr,
                   style:
-                      TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
               ),
               Obx(() {

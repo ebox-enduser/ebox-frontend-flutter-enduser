@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 import '../../cart/cart_screen.dart';
 import 'package:badges/badges.dart' as badges;
 
-class MealDetail extends StatelessWidget {
-  const MealDetail(
+class PlanMealDetail extends StatelessWidget {
+  PlanMealDetail(
       {super.key,
       required this.mealName,
       required this.foodType,
@@ -64,7 +64,6 @@ class MealDetail extends StatelessWidget {
                         foregroundColor: Colors.white,
                         child: Icon(
                           Icons.arrow_back_ios_new,
-                          size: 20.r,
                         ),
                       ),
                     ),
@@ -100,7 +99,7 @@ class MealDetail extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp),
+                                    fontSize: 20.sp),
                               ),
                               SizedBox(
                                 height: 5.h,
@@ -113,7 +112,7 @@ class MealDetail extends StatelessWidget {
                                     style: TextStyle(
                                         color: AppColors.textColor,
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp),
+                                        fontSize: 12.sp),
                                   ),
                                   Text(
                                     ': ${foodType}',
@@ -121,7 +120,7 @@ class MealDetail extends StatelessWidget {
                                     style: TextStyle(
                                         color: AppColors.textColor,
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp),
+                                        fontSize: 12.sp),
                                   ),
                                 ],
                               ),
@@ -133,7 +132,7 @@ class MealDetail extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20.sp),
+                                fontSize: 24.sp),
                           ),
                         ],
                       ),
@@ -149,7 +148,7 @@ class MealDetail extends StatelessWidget {
                               Text(
                                 'Ingredients'.tr,
                                 style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 14.r,
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
@@ -178,7 +177,7 @@ class MealDetail extends StatelessWidget {
                                             child: Text(
                                               ingredients,
                                               style: TextStyle(
-                                                  fontSize: 11.sp,
+                                                  fontSize: 12.sp,
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   color: AppColors.textColor),
@@ -195,7 +194,7 @@ class MealDetail extends StatelessWidget {
                               Text(
                                 'How to Cook'.tr,
                                 style: TextStyle(
-                                    fontSize: 12.sp,
+                                    fontSize: 14.sp,
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
@@ -309,7 +308,6 @@ class MealDetail extends StatelessWidget {
                                         child: Icon(
                                       Icons.shopping_cart,
                                       color: Colors.white,
-                                      size: 20.r,
                                     )));
                               } else {
                                 return badges.Badge(
@@ -330,7 +328,6 @@ class MealDetail extends StatelessWidget {
                                           child: Icon(
                                         Icons.shopping_cart,
                                         color: Colors.white,
-                                        size: 20.r,
                                       ))),
                                 );
                               }

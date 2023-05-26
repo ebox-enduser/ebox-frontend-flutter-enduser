@@ -1,3 +1,4 @@
+import 'package:ebox/model/meal_ordered.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -5,7 +6,10 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 
 class OrderedCard extends StatelessWidget {
-  const OrderedCard({super.key});
+  final MealOrdered mealOrdered;
+  final int index;
+  const OrderedCard(
+      {super.key, required this.mealOrdered, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +52,43 @@ class OrderedCard extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: 230.w,
-                            child: Text(
-                              "Vendor A",
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontSize: 16.sp, fontWeight: FontWeight.bold),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Vendor A",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Spacer(),
+                                Text(
+                                  "1 day ago",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 11.sp,
+                                      color: AppColors.textColor),
+                                ),
+                              ],
                             ),
                           ),
                           SizedBox(
                             height: 5.h,
                           ),
                           Text(
-                            "#001 \n05:00 PM, 02 March 2022",
+                            "#1",
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                                fontSize: 12.sp, color: AppColors.textColor),
+                                fontSize: 11.sp, color: AppColors.textColor),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Text(
+                            mealOrdered.name[index],
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize: 11.sp, color: AppColors.textColor),
                           ),
                           Spacer(),
                           SizedBox(
@@ -72,30 +98,30 @@ class OrderedCard extends StatelessWidget {
                                 Text(
                                   "Total".tr,
                                   style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.red),
                                 ),
                                 Text(
                                   ": \$${2}",
                                   style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.red),
                                 ),
                                 Spacer(),
                                 TextButton(
                                   onPressed: () {},
-                                  child: Text(
-                                    'Order Again'.tr,
-                                    style: TextStyle(fontSize: 12.sp),
-                                  ),
                                   style: TextButton.styleFrom(
                                     backgroundColor: AppColors.primaryColor,
                                     foregroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10.r)),
+                                  ),
+                                  child: Text(
+                                    'Order Again'.tr,
+                                    style: TextStyle(fontSize: 12.sp),
                                   ),
                                 ),
                               ],

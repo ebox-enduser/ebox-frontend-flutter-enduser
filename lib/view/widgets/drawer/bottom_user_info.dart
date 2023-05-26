@@ -61,7 +61,7 @@ class BottomUserInfo extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 18.sp,
+                                fontSize: 14.sp,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.clip,
@@ -73,7 +73,7 @@ class BottomUserInfo extends StatelessWidget {
                             authController.user.value?.phoneNumber ??
                                 'Not Yet'.tr,
                             style: TextStyle(
-                                color: Colors.white70, fontSize: 12.sp),
+                                color: Colors.white70, fontSize: 11.sp),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -90,9 +90,10 @@ class BottomUserInfo extends StatelessWidget {
                         onPressed: () {
                           authController.signOut();
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.logout,
                           color: Colors.white,
+                          size: 20.r,
                         ),
                       ),
                     ),
@@ -129,7 +130,7 @@ class BottomUserInfo extends StatelessWidget {
                     icon: Icon(
                       Icons.logout,
                       color: Colors.white,
-                      size: 18.r,
+                      size: 20.r,
                     ),
                   ),
                 ),

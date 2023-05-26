@@ -1,3 +1,4 @@
+import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,13 +7,15 @@ import 'package:get/get.dart';
 import '../../../../core/theme/app_colors.dart';
 import 'map_screen.dart';
 
-class AddNewLocationScreen extends StatelessWidget {
-  const AddNewLocationScreen({super.key});
+class LocationScreen extends StatelessWidget {
+  const LocationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _titleController = TextEditingController();
+    final TextEditingController _nameController = TextEditingController();
     final TextEditingController _addressController = TextEditingController();
+    final TextEditingController _descriptionController =
+        TextEditingController();
 
     return Scaffold(
       extendBody: true,
@@ -24,30 +27,35 @@ class AddNewLocationScreen extends StatelessWidget {
                 Padding(
                   padding: REdgeInsets.only(bottom: 15),
                   child: TextFormField(
-                    controller: _titleController,
+                    controller: _nameController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
-                      label: Text('Name'.tr),
+                      label: Text(
+                          settingController.userLocation.value?.name ?? 'name'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      hintStyle: TextStyle(fontSize: 16.sp),
+                      hintStyle: TextStyle(fontSize: 14.sp),
+                      labelStyle: TextStyle(fontSize: 14.sp),
                     ),
                   ),
                 ),
                 Padding(
                   padding: REdgeInsets.only(bottom: 15),
                   child: TextFormField(
-                    controller: _addressController,
+                    controller: _descriptionController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
-                      label: Text('Address'.tr),
+                      label: Text(
+                          settingController.userLocation.value?.description ??
+                              'Address'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
-                      hintStyle: TextStyle(fontSize: 16.sp),
+                      hintStyle: TextStyle(fontSize: 14.sp),
+                      labelStyle: TextStyle(fontSize: 14.sp),
                     ),
                   ),
                 ),
@@ -55,34 +63,46 @@ class AddNewLocationScreen extends StatelessWidget {
                     onPressed: () {
                       Get.to(() => MapScreen());
                     },
-                    child: const Text(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.secondaryColor),
+                    child: Text(
                       'Choose Your Location on Map',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     )),
-                Padding(
-                  padding: REdgeInsets.only(bottom: 15),
-                  child: TextFormField(
-                    controller: _addressController,
-                    readOnly: true,
-                    textInputAction: TextInputAction.next,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0.r),
+                Obx(
+                  () => Padding(
+                    padding: REdgeInsets.only(bottom: 15),
+                    child: TextFormField(
+                      controller: _addressController,
+                      enabled: false,
+                      textInputAction: TextInputAction.next,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        label: Text(
+                            settingController.userLocation.value?.address ??
+                                'Address'),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0.r),
+                        ),
+                        hintStyle: TextStyle(fontSize: 14.sp),
+                        labelStyle: TextStyle(fontSize: 14.sp),
                       ),
-                      hintStyle: TextStyle(fontSize: 16.sp),
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          title: 'Add New Location'.tr),
+          title: 'Delivery Location'),
       bottomNavigationBar: Padding(
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
-            Get.back();
+            settingController.createUserLocation(
+                address: settingController.currentAddress.toString(),
+                description: _descriptionController.text,
+                name: _nameController.text,
+                position: settingController.currentPosition.toString());
           },
           style: TextButton.styleFrom(
             elevation: 5,
@@ -97,7 +117,7 @@ class AddNewLocationScreen extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
-                fontSize: 16.sp),
+                fontSize: 14.sp),
           ),
         ),
       ),
