@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../../controller/controllers.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../home/widgets/vendor/vendor_list.dart';
 
 class OrderedScreen extends StatelessWidget {
@@ -31,11 +32,37 @@ class OrderedScreen extends StatelessWidget {
                 ),
               ),
               Obx(() {
-                if (dashboardController.mealOrderedList.isNotEmpty) {
+                dashboardController.getMealOrdered(
+                    email: authController.user.value!.email);
+                if (dashboardController.mealOrderedList.isNotEmpty &&
+                    dashboardController.mealOrderedList != null) {
                   return OrderedList(
                       mealOrdered: dashboardController.mealOrderedList);
                 } else {
-                  return Text('Empty');
+                  return Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        Image.asset(
+                          'assets/images/no_order.png',
+                          width: 300.w,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          'You have no order yet!'.tr,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp,
+                              color: AppColors.textColor),
+                        )
+                      ],
+                    ),
+                  );
                 }
               }),
             ],

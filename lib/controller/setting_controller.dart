@@ -55,6 +55,7 @@ class SettingController extends GetxController {
         userLocation.value = userLocationFromJson(userResult.body);
         EasyLoading.showSuccess("Add Location Successfully!".tr);
         Get.back();
+        update();
       } else {
         EasyLoading.showError('Something wrong. Try again!'.tr);
       }
@@ -83,6 +84,7 @@ class SettingController extends GetxController {
       );
       if (userResult.statusCode == 200) {
         userLocation.value = userLocationFromJson(userResult.body);
+        update();
       } else {
         EasyLoading.showError('Something wrong. Try again!'.tr);
       }
@@ -99,6 +101,7 @@ class SettingController extends GetxController {
         .then((Position position) {
       currentPosition!.value = position;
       getAddressFromLatLng();
+      update();
     }).catchError((e) {
       print(e);
     });
@@ -185,6 +188,7 @@ class SettingController extends GetxController {
     }
     profile = File(pickImage.path);
     update();
+    pickImage == null;
     EasyLoading.dismiss();
   }
 }

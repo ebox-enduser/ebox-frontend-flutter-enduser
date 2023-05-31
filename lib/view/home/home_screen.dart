@@ -36,29 +36,46 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Obx(() => Padding(
-                    padding: REdgeInsets.all(15.0),
+                    padding: REdgeInsets.only(left: 15, right: 15),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              color: AppColors.iconColor,
+                              size: 20.r,
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Text(
+                                settingController.userLocation.value?.address ??
+                                    'Please set your location address first'.tr,
+                                style: TextStyle(
+                                    color: AppColors.textColor,
+                                    fontSize: 10.sp)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text('Hello'.tr,
+                            style: TextStyle(
+                                color: AppColors.iconColor,
+                                fontSize: 20.sp,
+                                fontWeight: FontWeight.bold)),
                         Text(authController.user.value?.fullName ?? 'Not Yet',
                             style: TextStyle(
-                                fontSize: 16.sp, fontWeight: FontWeight.bold)),
-                        Text(
-                            settingController.userLocation.value?.address ??
-                                'Address',
-                            style: TextStyle(
-                                color: AppColors.textColor, fontSize: 10.sp)),
+                                fontSize: 20.sp, fontWeight: FontWeight.bold)),
                       ],
                     ),
                   )),
-              Padding(
-                padding: REdgeInsets.only(left: 15),
-                child: Text(
-                  "Trending".tr,
-                  style:
-                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
-                ),
-              ),
+              // search
+              const SearchBar(),
+
               // carousel
               Obx(() {
                 if (dashboardController.bannerList.isNotEmpty) {
@@ -69,12 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               }),
 
-              // search
-              const SearchBar(),
               Padding(
-                padding: REdgeInsets.only(left: 15),
+                padding: REdgeInsets.only(left: 15, top: 15),
                 child: Text(
-                  "Vendor".tr,
+                  "Choose your vendor".tr,
                   style:
                       TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),

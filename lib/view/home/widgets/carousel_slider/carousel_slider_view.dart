@@ -50,14 +50,14 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
             children: widget.bannerList.map((e) {
               int index = widget.bannerList.indexOf(e);
               return Container(
-                width: 6,
-                height: 6,
-                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
+                width: 6.w,
+                height: 6.h,
+                margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 2.h),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentIndex == index
                         ? AppColors.primaryColor
-                        : const Color.fromRGBO(0, 0, 0, 0.4)),
+                        : Colors.black.withOpacity(0.4)),
               );
             }).toList(),
           )

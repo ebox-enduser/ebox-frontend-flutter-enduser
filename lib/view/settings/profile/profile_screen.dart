@@ -18,8 +18,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime _userBirthday =
-        authController.user.value?.birthDay ?? DateTime.now();
     return Scaffold(
       extendBody: true,
       body: DetailScreen(
@@ -56,20 +54,9 @@ class ProfileScreen extends StatelessWidget {
             title: 'Email'.tr,
             Data: authController.user.value?.email ?? 'Not Yet',
           ),
-          Obx(
-            () {
-              if (authController.user.value?.birthDay == null) {
-                return InformationCard(
-                  title: 'Birthday'.tr,
-                  Data: 'You are not set your birthday yet!',
-                );
-              } else {
-                return InformationCard(
-                  title: 'Birthday'.tr,
-                  Data: DateFormat('dd / MMMM / yyyy').format(_userBirthday),
-                );
-              }
-            },
+          InformationCard(
+            title: 'Birthday'.tr,
+            Data: authController.user.value?.birthDay ?? 'Not Yet',
           ),
           InformationCard(
             title: 'Gender'.tr,

@@ -22,12 +22,12 @@ class SearchBar extends StatelessWidget {
             prefixIconColor: AppColors.primaryColor,
             prefixIcon: Icon(
               Icons.search,
-              color: AppColors.primaryColor,
+              color: AppColors.iconColor,
               size: 20.r,
             ),
             filled: true,
             fillColor: AppColors.secondaryBackgroundColor,
-            hintText: 'Somlar kako, cha kdav,...'.tr,
+            hintText: 'Search your vendor'.tr,
             hintStyle: TextStyle(
                 fontSize: 12.sp,
                 color: AppColors.textColor,

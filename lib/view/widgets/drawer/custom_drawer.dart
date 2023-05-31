@@ -1,4 +1,5 @@
 import 'package:ebox/core/theme/app_colors.dart';
+import 'package:ebox/view/settings/contact_us_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:ebox/view/settings/about_ebox_screen.dart';
 import 'package:ebox/view/settings/change_language_screen.dart';
@@ -54,10 +55,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
               CustomListTile(
                 isCollapsed: _isCollapsed,
-                icon: Icons.pin_drop,
+                icon: Icons.location_on,
                 title: 'Delivery Location'.tr,
                 infoCount: 0,
                 widget: const LocationScreen(),
+              ),
+              CustomListTile(
+                isCollapsed: _isCollapsed,
+                icon: Icons.notifications,
+                title: 'Notification'.tr,
+                infoCount: 0,
+                widget: NotificationScreen(),
               ),
               const Divider(color: Colors.grey),
               const Spacer(),
@@ -67,6 +75,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 title: 'Change Language'.tr,
                 infoCount: 0,
                 widget: ChangeLanguageScreen(),
+              ),
+              CustomListTile(
+                isCollapsed: _isCollapsed,
+                icon: Icons.phone,
+                title: 'Contact Us'.tr,
+                infoCount: 0,
+                widget: ContactUsScreen(),
               ),
               CustomListTile(
                 isCollapsed: _isCollapsed,

@@ -28,8 +28,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
 
   DateTime? _selectedDate;
 
-  final DateTime _userBirthday =
-      authController.user.value?.birthDay ?? DateTime.now();
+  final DateTime _userBirthday = DateTime.now();
 
   Color backgroundColor = Colors.grey.shade500;
   Color foregroundColor = Colors.grey;
@@ -49,13 +48,13 @@ class _UpdateInformationState extends State<UpdateInformation> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
-              primary: Colors.blueAccent, // <-- SEE HERE
+              primary: AppColors.primaryColor, // <-- SEE HERE
               //onPrimary: Colors.redAccent, // <-- SEE HERE
-              onSurface: Colors.blueAccent, // <-- SEE HERE
+              onSurface: AppColors.primaryColor, // <-- SEE HERE
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: Colors.blue, // button text color
+                foregroundColor: AppColors.primaryColor, // button text color
               ),
             ),
           ),
@@ -83,92 +82,142 @@ class _UpdateInformationState extends State<UpdateInformation> {
           screen: Padding(
             padding: REdgeInsets.only(left: 15, right: 15, bottom: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    settingController.pickImage();
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      //avatar
-                      Positioned(
-                        child: GetBuilder(
-                            init: SettingController(),
-                            builder: (state) {
-                              if (settingController.profile == null) {
-                                return Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    //avatar
-                                    Positioned(
-                                      child: CircleAvatar(
-                                        radius: 60.r,
-                                        foregroundImage: NetworkImage(authController
-                                                .user.value?.imageURL ??
-                                            'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png'),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      settingController.pickImage();
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        //avatar
+                        Positioned(
+                          child: GetBuilder(
+                              init: SettingController(),
+                              builder: (state) {
+                                if (settingController.profile == null) {
+                                  return Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      //avatar
+                                      Positioned(
+                                        child: CircleAvatar(
+                                          radius: 60.r,
+                                          foregroundImage: NetworkImage(
+                                              authController
+                                                      .user.value?.imageURL ??
+                                                  'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png'),
+                                        ),
                                       ),
-                                    ),
 
-                                    //icon and text
-                                    Positioned(
-                                      child: Container(
-                                        width: 120.w,
-                                        height: 120.h,
-                                        decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.4),
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Icon(
-                                              Icons.camera_alt,
-                                              color: Colors.white,
-                                              size: 30.r,
-                                            ),
-                                            SizedBox(
-                                              height: 20.h,
-                                            ),
-                                            Text(
-                                              'Edit'.tr,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 12.sp),
-                                            )
-                                          ],
+                                      //icon and text
+                                      Positioned(
+                                        child: Container(
+                                          width: 120.w,
+                                          height: 120.h,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Colors.black.withOpacity(0.4),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.camera_alt,
+                                                color: Colors.white,
+                                                size: 30.r,
+                                              ),
+                                              SizedBox(
+                                                height: 20.h,
+                                              ),
+                                              Text(
+                                                'Edit'.tr,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12.sp),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                );
-                              } else {
-                                return CircleAvatar(
-                                    backgroundColor: Colors.white70,
-                                    radius: 60.r,
-                                    backgroundImage:
-                                        FileImage(settingController.profile!));
-                              }
-                            }),
-                      ),
-                    ],
+                                    ],
+                                  );
+                                } else {
+                                  return Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      //avatar
+                                      Positioned(
+                                        child: CircleAvatar(
+                                            radius: 60.r,
+                                            foregroundImage: FileImage(
+                                                settingController.profile!)),
+                                      ),
+
+                                      //icon and text
+                                      Positioned(
+                                        child: Container(
+                                          width: 120.w,
+                                          height: 120.h,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Colors.black.withOpacity(0.4),
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Icon(
+                                                Icons.camera_alt,
+                                                color: Colors.white,
+                                                size: 30.r,
+                                              ),
+                                              SizedBox(
+                                                height: 20.h,
+                                              ),
+                                              Text(
+                                                'Edit'.tr,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 12.sp),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
                   padding: REdgeInsets.all(15),
                   child: Divider(),
                 ),
+                Text(
+                  'Full Name'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                ),
                 Padding(
-                  padding: REdgeInsets.only(bottom: 15),
+                  padding: REdgeInsets.only(bottom: 15, top: 10),
                   child: TextFormField(
                     controller: _fullNameController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: authController.user.value?.fullName,
-                      label: Text('Full Name'.tr),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -177,15 +226,19 @@ class _UpdateInformationState extends State<UpdateInformation> {
                     ),
                   ),
                 ),
+                Text(
+                  'Phone Number'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                ),
                 Padding(
-                  padding: REdgeInsets.only(bottom: 15),
+                  padding: REdgeInsets.only(bottom: 15, top: 10),
                   child: TextFormField(
                     controller: _phoneNumberController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: authController.user.value?.phoneNumber,
-                      label: Text('Phone Number'.tr),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -194,12 +247,30 @@ class _UpdateInformationState extends State<UpdateInformation> {
                     ),
                   ),
                 ),
+                Text(
+                  'Birthday'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                ),
                 Padding(
-                  padding: REdgeInsets.only(bottom: 15),
+                  padding: REdgeInsets.only(bottom: 15, top: 10),
                   child: Row(
                     children: [
+                      GestureDetector(
+                        onTap: () => _selectDate(context),
+                        child: Center(
+                          child: CircleAvatar(
+                              radius: 30.r,
+                              backgroundColor: AppColors.primaryColor,
+                              foregroundColor: Colors.white,
+                              child: Icon(Icons.edit)),
+                        ),
+                      ),
                       SizedBox(
-                        width: 240.w,
+                        width: 15.w,
+                      ),
+                      SizedBox(
+                        width: 270.w,
                         child: TextFormField(
                           controller: _birthdayController,
                           keyboardType: TextInputType.datetime,
@@ -224,26 +295,13 @@ class _UpdateInformationState extends State<UpdateInformation> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: 5.w,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          _selectDate(context);
-                        },
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: AppColors.secondaryColor,
-                        ),
-                        child: SizedBox(
-                          width: 80.w,
-                          child: Text(
-                            'Select Date'.tr,
-                          ),
-                        ),
-                      ),
                     ],
                   ),
+                ),
+                Text(
+                  'Gender'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
                 ),
                 RadioListTile(
                   title: Text(
@@ -364,7 +422,14 @@ class _UpdateInformationState extends State<UpdateInformation> {
         child: TextButton(
           onPressed: () async {
             if (_passwordController.text.isEmpty) {
-              return null;
+              Get.snackbar('Something wrong!'.tr,
+                  'You need to enter your password to change your profile',
+                  colorText: Colors.white,
+                  margin: REdgeInsets.all(15),
+                  backgroundColor: Colors.redAccent,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: const Duration(seconds: 2));
+              return;
             } else {
               SharedPreferences pref = await SharedPreferences.getInstance();
               String? imageURL = pref.getString('imageURL');
@@ -378,19 +443,20 @@ class _UpdateInformationState extends State<UpdateInformation> {
               String phoneNumber = _phoneNumberController.text.isEmpty
                   ? authController.user.value!.phoneNumber.toString()
                   : _phoneNumberController.text.toString();
-              String image = imageURL!.isEmpty
+              String image = imageURL == null
                   ? authController.user.value?.imageURL ??
                       'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png'
                   : imageURL.toString();
               String birthday = _birthdayController.text.isEmpty
-                  ? authController.user.value!.birthDay.toString()
-                  : _birthdayController.text.toString();
+                  ? _selectedDate.toString()
+                  : authController.user.value!.birthDay.toString();
+
               authController.updateUser(
                 password: _passwordController.text,
                 phoneNumber: phoneNumber,
                 imageURL: image,
                 birthday: birthday,
-                oldEmail: authController.user.value!.email,
+                email: authController.user.value!.email,
                 fullName: fullName,
                 gender: gender,
               );

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../core/theme/app_colors.dart';
+
 class DetailScreen extends StatelessWidget {
   final Widget screen;
   final String title;
@@ -21,20 +23,37 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: REdgeInsets.only(top: 45, left: 15),
+              padding: REdgeInsets.only(top: 45, left: 15, right: 15),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
-                    child: const Icon(Icons.arrow_back_ios),
-                  ),
-                  SizedBox(
-                    width: 15.w,
+                    child: CircleAvatar(
+                      radius: 20.r,
+                      backgroundColor: Colors.black.withOpacity(0.4),
+                      foregroundColor: Colors.white,
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20.r,
+                      ),
+                    ),
                   ),
                   Text(title,
                       style: TextStyle(
                           fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                  const SizedBox(),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      radius: 20.r,
+                      backgroundColor: AppColors.thirdlyColor,
+                      foregroundColor: Colors.white,
+                      child: Icon(
+                        Icons.info,
+                        size: 20.r,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

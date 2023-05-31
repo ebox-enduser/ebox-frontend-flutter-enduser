@@ -17,7 +17,6 @@ class VendorList extends StatelessWidget {
       // decoration: BoxDecoration(color: Colors.amber),
       child: ListView.builder(
           shrinkWrap: true,
-          padding: REdgeInsets.only(top: 15),
           physics: NeverScrollableScrollPhysics(),
           itemCount: vendors.length,
           itemBuilder: (context, index) => VendorCard(

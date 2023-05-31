@@ -6,6 +6,7 @@ import 'package:ebox/view/order/ordering/finding_ingredients.dart';
 import 'package:ebox/view/order/ordering/packaging_meal.dart';
 import 'package:ebox/view/plan/plan_screen.dart';
 import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
+import 'package:ebox/view/settings/profile/profile_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -13,7 +14,7 @@ import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
 import 'package:ebox/view/home/home_screen.dart';
-import 'package:ebox/view/cart/confirm_payment_screen.dart';
+import 'package:ebox/view/cart/checkout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -66,33 +67,45 @@ class _MainScreenState extends State<DashboardScreen> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: AppColors.secondaryColor),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Image.asset(
+                'assets/images/drawer.png',
+                scale: 15.r,
+              ),
+            );
+          },
+        ),
         elevation: 0,
         backgroundColor: AppColors.backgroundColor,
-        title: Image(
-          width: 50.w,
-          image: const AssetImage('assets/images/carrot.png'),
-        ),
         actions: [
-          IconButton(
-              onPressed: (() {
-                Get.to(() => NotificationScreen());
-              }),
-              icon: Icon(
-                Icons.notifications,
-                color: AppColors.thirdlyColor,
-                size: 30.r,
-              ))
+          Padding(
+            padding: REdgeInsets.only(right: 15),
+            child: GestureDetector(
+              onTap: () {
+                Get.to(() => ProfileScreen());
+              },
+              child: CircleAvatar(
+                  radius: 20.r,
+                  backgroundImage: NetworkImage(authController
+                          .user.value?.imageURL ??
+                      'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/blank-profile-picture-973460_960_720.webp?alt=media&token=a5a714ac-2722-4380-a939-f347fb7acb87&_gl=1*1g2b3vl*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NTUyMzk0MC4xLjEuMTY4NTUyNDEzNS4wLjAuMA..')),
+            ),
+          )
         ],
       ),
       drawer: const CustomDrawer(),
       body: listScreen.elementAt(_selectedIndex),
       bottomNavigationBar: SnakeNavigationBar.color(
         height: 60.h,
-        backgroundColor: AppColors.primaryColor,
+        elevation: 5,
+        backgroundColor: AppColors.secondaryColor,
         unselectedItemColor: AppColors.black.withOpacity(0.4),
-        snakeViewColor: AppColors.secondaryColor,
+        snakeViewColor: AppColors.primaryColor,
         selectedItemColor: Colors.white,
         snakeShape: SnakeShape.circle,
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
@@ -102,14 +115,43 @@ class _MainScreenState extends State<DashboardScreen> {
         showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: ""),
+        items: [
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
+              activeIcon: Image.asset(
+                'assets/images/plan.png',
+                scale: 20.r,
+                color: Colors.white,
+              ),
+              icon: Image.asset(
+                'assets/images/plan.png',
+                scale: 25.r,
+                color: AppColors.black.withOpacity(0.4),
               ),
               label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.receipt), label: ""),
+          BottomNavigationBarItem(
+              activeIcon: Image.asset(
+                'assets/images/home.png',
+                scale: 20.r,
+                color: Colors.white,
+              ),
+              icon: Image.asset(
+                'assets/images/home.png',
+                scale: 25.r,
+                color: AppColors.black.withOpacity(0.4),
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              activeIcon: Image.asset(
+                'assets/images/receipt.png',
+                scale: 15.r,
+                color: Colors.white,
+              ),
+              icon: Image.asset(
+                'assets/images/receipt.png',
+                scale: 20.r,
+                color: AppColors.black.withOpacity(0.4),
+              ),
+              label: ''),
         ],
       ),
       floatingActionButton: Obx(() {
@@ -119,10 +161,9 @@ class _MainScreenState extends State<DashboardScreen> {
               Get.to(() => CartScreen());
             },
             foregroundColor: Colors.white,
-            backgroundColor: AppColors.secondaryColor,
-            child: const Icon(
-              Icons.shopping_cart,
-            ),
+            backgroundColor: AppColors.primaryColor,
+            child: Image.asset('assets/images/cart.png',
+                scale: 20.r, color: Colors.white),
           );
         } else {
           return badges.Badge(
@@ -136,10 +177,9 @@ class _MainScreenState extends State<DashboardScreen> {
                 Get.to(() => CartScreen());
               },
               foregroundColor: Colors.white,
-              backgroundColor: AppColors.secondaryColor,
-              child: const Icon(
-                Icons.shopping_cart,
-              ),
+              backgroundColor: AppColors.primaryColor,
+              child: Image.asset('assets/images/cart.png',
+                  scale: 20.r, color: Colors.white),
             ),
           );
         }

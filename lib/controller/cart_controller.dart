@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:confirm_dialog/confirm_dialog.dart';
 import 'package:ebox/model/vendor.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,7 @@ import '../core/theme/app_colors.dart';
 import '../model/cart_meal.dart';
 
 class CartController extends GetxController {
-  var _meals = {}.obs;
+  final _meals = {}.obs;
   Rxn<Vendor> vendor = Rxn<Vendor>();
 
   Future<void> addMealByVendor(
@@ -20,75 +21,42 @@ class CartController extends GetxController {
       vendor.value = vendors;
     } else {
       if (vendors != vendor.value) {
-        // ignore: use_build_context_synchronously
-        if (await confirm(
-          context,
-          title: Text(
-            'WARNING'.tr,
-            style: TextStyle(color: AppColors.thirdlyColor),
-          ),
-          content: SizedBox(
-            height: 90.h,
-            child: Column(
-              children: [
-                Text(
-                  'Would you sure like to pick meal in another vendor?'.tr,
-                  style:
-                      TextStyle(fontWeight: FontWeight.w500, fontSize: 16.sp),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                Text(
-                  'It will change the vendor in shopping cart'.tr,
-                  style: TextStyle(color: AppColors.thirdlyColor),
-                )
-              ],
-            ),
-          ),
-          textOK: const Text(
-            'Yes',
-            style: TextStyle(color: Colors.red),
-          ),
-          textCancel: const Text(
-            'No',
-            style: TextStyle(color: AppColors.secondaryColor),
-          ),
-        )) {
-          Get.snackbar(vendor.value!.vendorName,
-              'All Meal has been removed in shopping cart'.tr,
-              colorText: Colors.white,
-              margin: REdgeInsets.all(15),
-              backgroundColor: Colors.redAccent,
-              snackPosition: SnackPosition.BOTTOM,
-              duration: const Duration(seconds: 2));
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          animType: AnimType.bottomSlide,
+          title: 'WARNING'.tr,
+          desc: 'Would you sure like to pick meal in another vendor?'.tr,
+          btnCancelOnPress: () {},
+          btnOkOnPress: () {
+            Get.snackbar(vendor.value!.vendorName,
+                'All Meal has been removed in shopping cart'.tr,
+                colorText: Colors.white,
+                margin: REdgeInsets.all(15),
+                backgroundColor: Colors.redAccent,
+                snackPosition: SnackPosition.BOTTOM,
+                duration: const Duration(seconds: 2));
 
-          /// clear all meals and change to new vendor
-          meals.clear();
-          vendor.value = vendors;
-
-          return print('pressedOK');
+            /// clear all meals and change to new vendor
+            meals.clear();
+            vendor.value = vendors;
+          },
+        ).show();
+      } else {
+        if (_meals.containsKey(meal)) {
+          _meals[meal] += 1;
+        } else {
+          _meals[meal] = 1;
         }
-        return print('pressedCancel');
+        Get.snackbar('Meal Added'.tr,
+            'You have add the ${meal.mealName} to the shopping cart',
+            colorText: Colors.white,
+            margin: REdgeInsets.all(15),
+            backgroundColor: AppColors.secondaryColor,
+            snackPosition: SnackPosition.BOTTOM,
+            duration: const Duration(seconds: 2));
       }
     }
-
-    // print('vendors: ${vendors.name}');
-    // print('vendor.value: ${vendor.value?.name}');
-    // print('Meal: ${meals.length}');
-
-    if (_meals.containsKey(meal)) {
-      _meals[meal] += 1;
-    } else {
-      _meals[meal] = 1;
-    }
-    Get.snackbar('Meal Added'.tr,
-        'You have add the ${meal.mealName} to the shopping cart',
-        colorText: Colors.white,
-        margin: REdgeInsets.all(15),
-        backgroundColor: AppColors.secondaryColor,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 2));
   }
 
   void addMeal({required CartMeal meal}) {

@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -88,7 +89,17 @@ class BottomUserInfo extends StatelessWidget {
                       padding: REdgeInsets.only(right: 10),
                       child: IconButton(
                         onPressed: () {
-                          authController.signOut();
+                          AwesomeDialog(
+                            context: context,
+                            dialogType: DialogType.warning,
+                            animType: AnimType.bottomSlide,
+                            title: 'WARNING'.tr,
+                            desc: 'Would you sure like to sign out?'.tr,
+                            btnCancelOnPress: () {},
+                            btnOkOnPress: () {
+                              authController.signOut();
+                            },
+                          ).show();
                         },
                         icon: Icon(
                           Icons.logout,
@@ -125,7 +136,17 @@ class BottomUserInfo extends StatelessWidget {
                 Expanded(
                   child: IconButton(
                     onPressed: () {
-                      authController.signOut();
+                      AwesomeDialog(
+                        context: context,
+                        dialogType: DialogType.warning,
+                        animType: AnimType.bottomSlide,
+                        title: 'WARNING'.tr,
+                        desc: 'Would you sure like to sign out?'.tr,
+                        btnCancelOnPress: () {},
+                        btnOkOnPress: () {
+                          authController.signOut();
+                        },
+                      ).show();
                     },
                     icon: Icon(
                       Icons.logout,

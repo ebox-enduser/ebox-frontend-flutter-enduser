@@ -7,32 +7,60 @@ import 'package:get/get.dart';
 import '../../../../core/theme/app_colors.dart';
 import 'map_screen.dart';
 
-class LocationScreen extends StatelessWidget {
+class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController _nameController = TextEditingController();
-    final TextEditingController _addressController = TextEditingController();
-    final TextEditingController _descriptionController =
-        TextEditingController();
+  State<LocationScreen> createState() => _LocationScreenState();
+}
 
+class _LocationScreenState extends State<LocationScreen> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  Color backgroundColor = Colors.grey.shade500;
+  Color foregroundColor = Colors.grey;
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _addressController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
       body: DetailScreen(
           screen: Padding(
             padding: REdgeInsets.only(left: 15, right: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  'Name'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                ),
                 Padding(
-                  padding: REdgeInsets.only(bottom: 15),
+                  padding: REdgeInsets.only(bottom: 15, top: 15),
                   child: TextFormField(
                     controller: _nameController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
+                    onChanged: (val) {
+                      setState(() {
+                        backgroundColor = val.isNotEmpty
+                            ? AppColors.primaryColor
+                            : Colors.grey.shade500;
+                        foregroundColor =
+                            val.isNotEmpty ? Colors.white : Colors.grey;
+                      });
+                    },
                     decoration: InputDecoration(
-                      label: Text(
-                          settingController.userLocation.value?.name ?? 'name'),
+                      hintText:
+                          settingController.userLocation.value?.name ?? 'Name',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -41,16 +69,21 @@ class LocationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Text(
+                  'Description'.tr,
+                  style:
+                      TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
+                ),
                 Padding(
-                  padding: REdgeInsets.only(bottom: 15),
+                  padding: REdgeInsets.only(bottom: 15, top: 15),
                   child: TextFormField(
                     controller: _descriptionController,
                     textInputAction: TextInputAction.next,
                     obscureText: false,
                     decoration: InputDecoration(
-                      label: Text(
+                      hintText:
                           settingController.userLocation.value?.description ??
-                              'Address'),
+                              'Description',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -59,35 +92,43 @@ class LocationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                ElevatedButton(
-                    onPressed: () {
-                      Get.to(() => MapScreen());
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.secondaryColor),
-                    child: Text(
-                      'Choose Your Location on Map',
-                      style: TextStyle(color: Colors.white, fontSize: 14.sp),
-                    )),
-                Obx(
-                  () => Padding(
-                    padding: REdgeInsets.only(bottom: 15),
-                    child: TextFormField(
-                      controller: _addressController,
-                      enabled: false,
-                      textInputAction: TextInputAction.next,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        label: Text(
-                            settingController.userLocation.value?.address ??
-                                'Address'),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0.r),
+                Padding(
+                  padding: REdgeInsets.only(bottom: 15, top: 15),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => Get.to(() => MapScreen()),
+                        child: Center(
+                          child: CircleAvatar(
+                              radius: 30.r,
+                              backgroundColor: AppColors.primaryColor,
+                              foregroundColor: Colors.white,
+                              child: Icon(Icons.location_on)),
                         ),
-                        hintStyle: TextStyle(fontSize: 14.sp),
-                        labelStyle: TextStyle(fontSize: 14.sp),
                       ),
-                    ),
+                      SizedBox(
+                        width: 15.w,
+                      ),
+                      SizedBox(
+                        width: 270.w,
+                        child: TextFormField(
+                          controller: _addressController,
+                          enabled: false,
+                          textInputAction: TextInputAction.next,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            label: Text(
+                                settingController.userLocation.value?.address ??
+                                    'Location'),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0.r),
+                            ),
+                            hintStyle: TextStyle(fontSize: 14.sp),
+                            labelStyle: TextStyle(fontSize: 14.sp),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -98,16 +139,27 @@ class LocationScreen extends StatelessWidget {
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
-            settingController.createUserLocation(
-                address: settingController.currentAddress.toString(),
-                description: _descriptionController.text,
-                name: _nameController.text,
-                position: settingController.currentPosition.toString());
+            if (_nameController.text.isEmpty) {
+              Get.snackbar(
+                  'Something wrong!'.tr, 'You need to set your name first',
+                  colorText: Colors.white,
+                  margin: REdgeInsets.all(15),
+                  backgroundColor: Colors.redAccent,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: const Duration(seconds: 2));
+              return;
+            } else {
+              settingController.createUserLocation(
+                  address: settingController.currentAddress.toString(),
+                  description: _descriptionController.text,
+                  name: _nameController.text,
+                  position: settingController.currentPosition.toString());
+            }
           },
           style: TextButton.styleFrom(
+            foregroundColor: foregroundColor,
             elevation: 5,
-            foregroundColor: Colors.white,
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: backgroundColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 60, right: 60),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.r)),

@@ -1,6 +1,6 @@
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/vendor.dart';
-import 'package:ebox/view/cart/confirm_payment_screen.dart';
+import 'package:ebox/view/cart/checkout_screen.dart';
 import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
 import 'package:ebox/view/home/widgets/vendor/vendor_detail.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
@@ -211,7 +211,7 @@ class CartScreen extends StatelessWidget {
               padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
               child: TextButton(
                 onPressed: () {
-                  Get.to(() => ConfirmPaymentScreen());
+                  Get.to(() => CheckoutScreen());
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,

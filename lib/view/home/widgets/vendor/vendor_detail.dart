@@ -40,7 +40,7 @@ class VendorDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: REdgeInsets.only(top: 30, left: 15),
+                    padding: REdgeInsets.only(top: 30, left: 15, right: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -48,7 +48,7 @@ class VendorDetail extends StatelessWidget {
                           onTap: () => Get.back(),
                           child: CircleAvatar(
                             radius: 20.r,
-                            backgroundColor: AppColors.secondaryColor,
+                            backgroundColor: Colors.black.withOpacity(0.4),
                             foregroundColor: Colors.white,
                             child: Icon(
                               Icons.arrow_back_ios_new,
@@ -56,13 +56,18 @@ class VendorDetail extends StatelessWidget {
                             ),
                           ),
                         ),
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
+                        GestureDetector(
+                          onTap: () {},
+                          child: CircleAvatar(
+                            radius: 20.r,
+                            backgroundColor: AppColors.thirdlyColor,
+                            foregroundColor: Colors.white,
+                            child: Icon(
                               Icons.info,
-                              color: AppColors.thirdlyColor,
                               size: 20.r,
-                            ))
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../api/auth_service.dart';
 import '../model/user.dart';
 import '../view/dashboard_screen.dart';
+import 'controllers.dart';
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();
@@ -26,7 +27,7 @@ class AuthController extends GetxController {
     if (userResult.statusCode == 200) {
       user.value = userFromJson(userResult.body);
     } else {
-      EasyLoading.showError('Something wrong. Try again!'.tr);
+      EasyLoading.showError('getProfile Failed. Try again!'.tr);
     }
   }
 
@@ -111,9 +112,9 @@ class AuthController extends GetxController {
 
   void updateUser(
       {required String password,
-      required String? oldEmail,
+      required String email,
       required String phoneNumber,
-      required String? imageURL,
+      required String imageURL,
       required String fullName,
       required String gender,
       required String birthday}) async {
@@ -124,7 +125,7 @@ class AuthController extends GetxController {
       );
 
       var result = await AuthService().signIn(
-        email: oldEmail,
+        email: email,
         password: password,
       );
       if (result.statusCode == 200) {
@@ -210,7 +211,13 @@ class AuthController extends GetxController {
   void signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('token');
+    prefs.remove('imageURL');
+    cartController.vendor.value = null;
+    settingController.userLocation.value = null;
+    settingController.currentAddress = null;
+    settingController.currentPosition = null;
     user.value = null;
     Get.offAll(() => const LoginScreen());
+    update();
   }
 }

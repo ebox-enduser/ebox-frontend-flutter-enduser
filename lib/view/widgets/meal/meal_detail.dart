@@ -60,7 +60,7 @@ class MealDetail extends StatelessWidget {
                       onTap: () => Get.back(),
                       child: CircleAvatar(
                         radius: 20.r,
-                        backgroundColor: AppColors.secondaryColor,
+                        backgroundColor: Colors.black.withOpacity(0.4),
                         foregroundColor: Colors.white,
                         child: Icon(
                           Icons.arrow_back_ios_new,

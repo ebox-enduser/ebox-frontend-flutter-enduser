@@ -23,6 +23,7 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
     settingController.permissionLocation();
+    settingController.getUserLocation();
   }
 
   @override
@@ -70,7 +71,15 @@ class _MapScreenState extends State<MapScreen> {
           top: 30,
           left: 15,
           child: GestureDetector(
-            onTap: () => Get.back(),
+            onTap: () {
+              Get.back();
+              Get.snackbar('Cancel!'.tr, 'You are not pick your location yet',
+                  colorText: Colors.white,
+                  margin: REdgeInsets.all(15),
+                  backgroundColor: Colors.redAccent,
+                  snackPosition: SnackPosition.BOTTOM,
+                  duration: const Duration(seconds: 2));
+            },
             child: CircleAvatar(
               radius: 20.r,
               backgroundColor: AppColors.secondaryColor,
@@ -85,6 +94,7 @@ class _MapScreenState extends State<MapScreen> {
           bottom: 15,
           child: TextButton(
             onPressed: () {
+              settingController.getCurrentLocation();
               Get.back();
             },
             style: TextButton.styleFrom(

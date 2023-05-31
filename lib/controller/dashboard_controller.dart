@@ -38,7 +38,6 @@ class DashboardController extends GetxController {
     getVendors();
     getPlans();
     getNotification();
-    getMealOrdered(email: 'sokheng@gmail.com');
     super.onInit();
   }
 
