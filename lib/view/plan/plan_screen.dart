@@ -21,9 +21,21 @@ class PlanScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Meal Plan".tr,
-                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+              Row(
+                children: [
+                  Image.asset(
+                    'assets/images/plan.png',
+                    scale: 20.r,
+                  ),
+                  SizedBox(
+                    width: 5.w,
+                  ),
+                  Text(
+                    "Meal Plan".tr,
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 15.h,

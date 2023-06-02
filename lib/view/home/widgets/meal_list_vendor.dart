@@ -28,7 +28,7 @@ class MealListVendor extends StatelessWidget {
         vendor: vendor,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 10.h),
+          crossAxisCount: 2, mainAxisSpacing: 0.h),
     );
   }
 }

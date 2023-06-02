@@ -2,6 +2,7 @@ import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/model/cart_meal.dart';
 import 'package:ebox/view/widgets/meal/customize_ingredients_screen.dart';
+import 'package:flutter_add_to_cart_button/flutter_add_to_cart_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -9,10 +10,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../model/vendor.dart';
 import '../../cart/cart_screen.dart';
 import 'package:badges/badges.dart' as badges;
 
-class MealDetail extends StatelessWidget {
+class MealDetail extends StatefulWidget {
   const MealDetail(
       {super.key,
       required this.mealName,
@@ -21,7 +23,9 @@ class MealDetail extends StatelessWidget {
       required this.fat,
       required this.mealImage,
       required this.ingredients,
-      required this.youtubeURL});
+      required this.youtubeURL,
+      required this.vendor});
+  final Vendor vendor;
   final String mealName;
   final String foodType;
   final int price;
@@ -31,319 +35,348 @@ class MealDetail extends StatelessWidget {
   final String youtubeURL;
 
   @override
+  State<MealDetail> createState() => _MealDetailState();
+}
+
+class _MealDetailState extends State<MealDetail> {
+  AddToCartButtonStateId stateId = AddToCartButtonStateId.idle;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          Positioned(
-              top: 0,
-              width: MediaQuery.of(context).size.width * 1,
-              height: MediaQuery.of(context).size.height * 1,
-              child: Container()),
-          Positioned(
+        body: Stack(
+      alignment: Alignment.center,
+      children: [
+        Positioned(
             top: 0,
-            child: Container(
-              width: MediaQuery.of(context).size.width * 1,
-              height: MediaQuery.of(context).size.height * 0.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover, image: NetworkImage(mealImage)),
-              ),
-              child: Padding(
-                padding: REdgeInsets.only(top: 45, left: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.back(),
-                      child: CircleAvatar(
-                        radius: 20.r,
-                        backgroundColor: Colors.black.withOpacity(0.4),
-                        foregroundColor: Colors.white,
-                        child: Icon(
-                          Icons.arrow_back_ios_new,
-                          size: 20.r,
-                        ),
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 1,
+            child: Container()),
+        Positioned(
+          top: 0,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.5,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover, image: NetworkImage(widget.mealImage)),
+            ),
+            child: Padding(
+              padding: REdgeInsets.only(top: 30, left: 15),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: CircleAvatar(
+                      radius: 20.r,
+                      backgroundColor: Colors.black.withOpacity(0.4),
+                      foregroundColor: Colors.white,
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20.r,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          Positioned(
-              bottom: 0,
-              child: Container(
-                width: MediaQuery.of(context).size.width * 1,
-                height: MediaQuery.of(context).size.height * 0.59,
-                decoration: BoxDecoration(
-                    color: AppColors.backgroundColor,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.w),
-                      topRight: Radius.circular(15.w),
-                    )),
-                child: Padding(
-                  padding: REdgeInsets.all(20),
-                  child: Column(
+        ),
+        Positioned(
+          bottom: 0,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 1,
+            height: MediaQuery.of(context).size.height * 0.59,
+            decoration: BoxDecoration(
+                color: AppColors.secondaryBackgroundColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15.w),
+                  topRight: Radius.circular(15.w),
+                )),
+            child: Padding(
+                padding: REdgeInsets.all(15),
+                child: Column(children: [
+                  //title and price
+                  Row(
                     children: [
-                      //title and price
-                      Row(
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Text(
+                            widget.mealName,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16.sp),
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
                             children: [
                               Text(
-                                mealName,
+                                'Food Types'.tr,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.sp),
+                                    color: AppColors.textColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11.sp),
                               ),
-                              SizedBox(
-                                height: 5.h,
+                              Text(
+                                ': ${widget.foodType}',
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                    color: AppColors.textColor,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11.sp),
                               ),
-                              Row(
+                            ],
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Text(
+                        '\$${widget.price}',
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.sp),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'Ingredients'.tr,
+                            style: TextStyle(
+                                fontSize: 12.sp, fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: 170.h,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.r),
+                                color: Colors.white),
+                            child: Padding(
+                              padding: REdgeInsets.only(left: 15, right: 15),
+                              child: Column(
                                 children: [
-                                  Text(
-                                    'Food Types'.tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: AppColors.textColor,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp),
+                                  SizedBox(
+                                    height: 15.h,
                                   ),
-                                  Text(
-                                    ': ${foodType}',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: AppColors.textColor,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 11.sp),
+                                  Expanded(
+                                    child: Container(
+                                        width: Get.width,
+                                        height: 200.h,
+                                        // decoration:
+                                        //     BoxDecoration(color: Colors.red),
+                                        child: Text(
+                                          widget.ingredients,
+                                          style: TextStyle(
+                                              fontSize: 11.sp,
+                                              overflow: TextOverflow.ellipsis,
+                                              color: AppColors.textColor),
+                                        )),
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                          const Spacer(),
-                          Text(
-                            '\$${price}',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20.sp),
-                          ),
+                            ),
+                          )
                         ],
                       ),
-
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
                         children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Ingredients'.tr,
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(
-                                height: 15.h,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.45,
-                                height: 170.h,
-                                decoration: BoxDecoration(
+                          Text(
+                            'How to Cook'.tr,
+                            style: TextStyle(
+                                fontSize: 12.sp, fontWeight: FontWeight.w500),
+                          ),
+                          SizedBox(
+                            height: 15.h,
+                          ),
+                          GestureDetector(
+                            onTap: () async {
+                              await launch(
+                                widget.youtubeURL,
+                                forceSafariVC: false,
+                                forceWebView: false,
+                                headers: <String, String>{
+                                  'my_header_key': 'my_header_value'
+                                },
+                              );
+                            },
+                            child:
+                                Stack(alignment: Alignment.center, children: [
+                              Positioned(
+                                  child: Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: 120.h,
+                              )),
+                              Positioned(
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  height: 120.h,
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(15.r),
-                                    color: AppColors.secondaryBackgroundColor),
-                                child: Padding(
-                                  padding:
-                                      REdgeInsets.only(left: 15, right: 15),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 15.h,
-                                      ),
-                                      Expanded(
-                                        child: Container(
-                                            width: Get.width,
-                                            height: 200.h,
-                                            // decoration:
-                                            //     BoxDecoration(color: Colors.red),
-                                            child: Text(
-                                              ingredients,
-                                              style: TextStyle(
-                                                  fontSize: 11.sp,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  color: AppColors.textColor),
-                                            )),
-                                      ),
-                                    ],
+                                    image: DecorationImage(
+                                        image: NetworkImage(widget.mealImage),
+                                        fit: BoxFit.cover),
                                   ),
                                 ),
+                              ),
+                              Positioned(
+                                  child: Container(
+                                width: MediaQuery.of(context).size.width * 0.4,
+                                height: 120.h,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15.r),
+                                    color: Colors.black.withOpacity(0.2)),
+                              )),
+                              const Positioned(
+                                child: Icon(
+                                  Icons.play_circle,
+                                  color: Colors.red,
+                                ),
                               )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'How to Cook'.tr,
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              SizedBox(
-                                height: 15.h,
-                              ),
-                              GestureDetector(
-                                onTap: () async {
-                                  await launch(
-                                    youtubeURL,
-                                    forceSafariVC: false,
-                                    forceWebView: false,
-                                    headers: <String, String>{
-                                      'my_header_key': 'my_header_value'
-                                    },
-                                  );
-                                },
-                                child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Positioned(
-                                          child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.4,
-                                        height: 120.h,
-                                      )),
-                                      Positioned(
-                                        child: Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.4,
-                                          height: 120.h,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15.r),
-                                            image: DecorationImage(
-                                                image: NetworkImage(mealImage),
-                                                fit: BoxFit.cover),
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                          child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.4,
-                                        height: 120.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15.r),
-                                            color:
-                                                Colors.black.withOpacity(0.2)),
-                                      )),
-                                      const Positioned(
-                                        child: Icon(
-                                          Icons.play_circle,
-                                          color: Colors.red,
-                                        ),
-                                      )
-                                    ]),
-                              ),
-                            ],
+                            ]),
                           ),
                         ],
                       ),
-                      Spacer(),
-                      //add ingredient and add to cart
+                    ],
+                  ),
+                  Spacer(),
+                  //add ingredient and add to cart
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => CustomizeIngredientsScreen(
-                                    mealImage: mealImage,
-                                    title: mealName,
-                                    ingredient: ingredients,
-                                  ));
-                            },
-                            child: Container(
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => CustomizeIngredientsScreen(
+                                  mealImage: widget.mealImage,
+                                  title: widget.mealName,
+                                  ingredient: widget.ingredients,
+                                ));
+                          },
+                          child: Container(
+                            width: 160.w,
+                            height: 40.h,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15.w)),
+                            child: Center(
+                                child: Text(
+                              'Customize Ingredient'.tr,
+                              style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.textColor),
+                            )),
+                          ),
+                        ),
+                        Obx(() {
+                          if (cartController.meals.entries
+                              .map((meal) => meal.key.mealName)
+                              .toList()
+                              .contains(widget.mealName)) {
+                            return Center(
+                              child: SizedBox(
+                                width: 160.w,
+                                height: 40.h,
+                                child: Icon(
+                                  Icons.check_circle,
+                                  color: AppColors.secondaryColor,
+                                  size: 40.r,
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Container(
                               width: 160.w,
                               height: 40.h,
                               decoration: BoxDecoration(
-                                  color: AppColors.secondaryBackgroundColor,
-                                  borderRadius: BorderRadius.circular(15.w)),
+                                  borderRadius: BorderRadius.circular(15.r)),
                               child: Center(
-                                  child: Text(
-                                'Customize Ingredient'.tr,
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.textColor),
-                              )),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => CartScreen());
-                            },
-                            child: Obx(() {
-                              if (cartController.meals.isEmpty) {
-                                return Container(
-                                    width: 160.w,
+                                child: AddToCartButton(
+                                  trolley: Image.asset(
+                                    'assets/images/cart.png',
+                                    width: 20,
+                                    height: 18,
+                                    color: Colors.white,
+                                  ),
+                                  text: Text(
+                                    'Add to cart',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 12.sp, color: Colors.white),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.fade,
+                                  ),
+                                  check: SizedBox(
+                                    width: 40.w,
                                     height: 40.h,
-                                    decoration: BoxDecoration(
-                                        color: AppColors.secondaryColor,
-                                        borderRadius:
-                                            BorderRadius.circular(15.w)),
-                                    child: Center(
-                                        child: Icon(
-                                      Icons.shopping_cart,
+                                    child: Icon(
+                                      Icons.check,
                                       color: Colors.white,
                                       size: 20.r,
-                                    )));
-                              } else {
-                                return badges.Badge(
-                                  position: badges.BadgePosition.topEnd(
-                                      top: -15, end: 10),
-                                  badgeContent: Text(
-                                    cartController.quantity.toString(),
-                                    style: const TextStyle(color: Colors.white),
+                                    ),
                                   ),
-                                  child: Container(
-                                      width: 160.w,
-                                      height: 40.h,
-                                      decoration: BoxDecoration(
-                                          color: AppColors.secondaryColor,
-                                          borderRadius:
-                                              BorderRadius.circular(15.w)),
-                                      child: Center(
-                                          child: Icon(
-                                        Icons.shopping_cart,
-                                        color: Colors.white,
-                                        size: 20.r,
-                                      ))),
-                                );
-                              }
-                            }),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              )),
-        ],
-      ),
-    );
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  backgroundColor: AppColors.primaryColor,
+                                  onPressed: (id) {
+                                    if (cartController.meals.entries
+                                        .map((meal) => meal.key.mealName)
+                                        .toList()
+                                        .contains(widget.mealName)) {
+                                      setState(() {
+                                        stateId = AddToCartButtonStateId.done;
+                                      });
+                                    } else {
+                                      //handle logic when pressed on idle state button.
+                                      setState(() {
+                                        stateId =
+                                            AddToCartButtonStateId.loading;
+                                        Future.delayed(
+                                            const Duration(seconds: 2), () {
+                                          setState(() {
+                                            cartController.addMealByVendor(
+                                                meal: CartMeal(
+                                                    mealName: widget.mealName,
+                                                    mealImage: widget.mealImage,
+                                                    price: widget.price),
+                                                vendors: widget.vendor,
+                                                context: context);
+                                            stateId =
+                                                AddToCartButtonStateId.done;
+                                          });
+                                        });
+                                      });
+                                    }
+                                  },
+                                  stateId: stateId,
+                                ),
+                              ),
+                            );
+                          }
+                        }),
+                      ])
+                ])),
+          ),
+        )
+      ],
+    ));
   }
 }

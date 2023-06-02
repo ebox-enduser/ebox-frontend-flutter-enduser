@@ -15,7 +15,7 @@ class MealOrderedService {
 
   Future<dynamic> getByUser({required String email}) async {
     var response = await client.get(Uri.parse(
-        '$baseUrl/api/users?populate=meal_ordereds.vendor.image&filters[email][\$eq]=$email'));
+        '$baseUrl/api/users?populate=meal_ordereds.vendor.image,meal_ordereds.vendor.locations,meal_ordereds.meals.image,meal_ordereds.vendor.vendorImageBackground&filters[email][\$eq]=$email'));
     return response;
   }
 

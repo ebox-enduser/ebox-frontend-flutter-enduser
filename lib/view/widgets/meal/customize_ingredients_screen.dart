@@ -25,7 +25,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
       extendBody: true,
       body: DetailScreen(
           screen: Padding(
-            padding: REdgeInsets.all(15),
+            padding: REdgeInsets.only(left: 15, right: 15),
             child: Column(children: [
               Row(
                 children: [
@@ -44,7 +44,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    width: 15.w,
+                    width: 10.w,
                   ),
                   Text(
                     title,
@@ -60,12 +60,14 @@ class CustomizeIngredientsScreen extends StatelessWidget {
                 controller: ingredientsController,
                 maxLines: 15,
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   hintText: ingredient,
                   focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: AppColors.textColor),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(15.r)),
                   enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: AppColors.textColor),
+                      borderSide: const BorderSide(color: Colors.white),
                       borderRadius: BorderRadius.circular(15.r)),
                   hintStyle: TextStyle(
                       fontSize: 12.sp,

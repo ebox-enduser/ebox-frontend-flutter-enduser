@@ -279,7 +279,7 @@ class PlanMealDetail extends StatelessWidget {
                               width: 160.w,
                               height: 40.h,
                               decoration: BoxDecoration(
-                                  color: AppColors.secondaryBackgroundColor,
+                                  color: Colors.white,
                                   borderRadius: BorderRadius.circular(15.w)),
                               child: Center(
                                   child: Text(

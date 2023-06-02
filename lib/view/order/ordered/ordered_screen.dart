@@ -25,10 +25,21 @@ class OrderedScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: REdgeInsets.all(15),
-                child: Text(
-                  "Ordered History".tr,
-                  style:
-                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/receipt.png',
+                      scale: 20.r,
+                    ),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    Text(
+                      "Ordered History".tr,
+                      style: TextStyle(
+                          fontSize: 16.sp, fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
               ),
               Obx(() {
@@ -37,32 +48,10 @@ class OrderedScreen extends StatelessWidget {
                 if (dashboardController.mealOrderedList.isNotEmpty &&
                     dashboardController.mealOrderedList != null) {
                   return OrderedList(
-                      mealOrdered: dashboardController.mealOrderedList);
-                } else {
-                  return Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 60.h,
-                        ),
-                        Image.asset(
-                          'assets/images/no_order.png',
-                          width: 300.w,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          'You have no order yet!'.tr,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.sp,
-                              color: AppColors.textColor),
-                        )
-                      ],
-                    ),
+                    mealOrderedList: dashboardController.mealOrderedList,
                   );
+                } else {
+                  return const Center(child: CircularProgressIndicator());
                 }
               }),
             ],

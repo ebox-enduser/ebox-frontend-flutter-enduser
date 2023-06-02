@@ -21,13 +21,24 @@ class AuthController extends GetxController {
   }
 
   void checkToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    token = prefs.getString('token');
-    var userResult = await AuthService().getProfile(token: token);
-    if (userResult.statusCode == 200) {
-      user.value = userFromJson(userResult.body);
-    } else {
-      EasyLoading.showError('getProfile Failed. Try again!'.tr);
+    try {
+      EasyLoading.show(
+        status: 'Loading...'.tr,
+        dismissOnTap: false,
+      );
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      token = prefs.getString('token');
+      var userResult = await AuthService().getProfile(token: token);
+      if (userResult.statusCode == 200) {
+        user.value = userFromJson(userResult.body);
+      } else {
+        EasyLoading.showError('getProfile Failed. Try again!'.tr);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      EasyLoading.showError('Something wrong. Try again!'.tr);
+    } finally {
+      EasyLoading.dismiss();
     }
   }
 

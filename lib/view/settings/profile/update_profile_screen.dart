@@ -464,7 +464,6 @@ class _UpdateInformationState extends State<UpdateInformation> {
           },
           style: TextButton.styleFrom(
             foregroundColor: foregroundColor,
-            elevation: 5,
             backgroundColor: backgroundColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
             shape: RoundedRectangleBorder(

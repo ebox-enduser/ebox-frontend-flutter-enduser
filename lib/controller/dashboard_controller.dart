@@ -10,7 +10,6 @@ import '../api/vendor_service.dart';
 import '../model/ad_banner.dart';
 
 import '../model/meal_ordered.dart';
-import '../model/meal_ordered_vendor.dart';
 import '../model/notifications.dart';
 import '../model/vendor.dart';
 
@@ -22,8 +21,6 @@ class DashboardController extends GetxController {
       List<Notifications>.empty(growable: true).obs;
   RxList<MealOrdered> mealOrderedList =
       List<MealOrdered>.empty(growable: true).obs;
-  RxList<MealOrderedVendor> mealOrderedVendorList =
-      List<MealOrderedVendor>.empty(growable: true).obs;
 
   RxBool isBannerLoading = false.obs;
   RxBool isVendorLoading = false.obs;
@@ -39,21 +36,6 @@ class DashboardController extends GetxController {
     getPlans();
     getNotification();
     super.onInit();
-  }
-
-  void getVendorId({required int vendorId}) async {
-    try {
-      isMealOrderedVendorLoading(true);
-      //call api
-      var result = await VendorService().getById(id: vendorId);
-      if (result != null) {
-        //assign api result
-        mealOrderedVendorList
-            .assignAll(mealOrderedVendorListFromJson(result.body));
-      }
-    } finally {
-      isMealOrderedVendorLoading(false);
-    }
   }
 
   void getMealOrdered({required String email}) async {

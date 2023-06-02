@@ -30,14 +30,14 @@ class PlanCard extends StatelessWidget {
               color: Colors.amber,
               image: DecorationImage(
                   image: NetworkImage(plan.planImage), fit: BoxFit.cover),
-              borderRadius: BorderRadius.all(Radius.circular(15.r)),
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
             ),
           )),
           Positioned(
               child: Container(
             decoration: BoxDecoration(
               color: Colors.black.withOpacity(0.3),
-              borderRadius: BorderRadius.all(Radius.circular(15.r)),
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
             ),
           )),
           Positioned(

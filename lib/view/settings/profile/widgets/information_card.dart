@@ -19,14 +19,6 @@ class InformationCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1.r),
-              spreadRadius: 2.r,
-              blurRadius: 5.r,
-              offset: Offset(0.r, 2.r),
-            ),
-          ],
         ),
         width: MediaQuery.of(context).size.height * 0.5,
         child: Padding(

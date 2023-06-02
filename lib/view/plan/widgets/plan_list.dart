@@ -20,8 +20,8 @@ class PlanList extends StatelessWidget {
       children: [
         StaggeredGrid.count(
           crossAxisCount: 5,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+          mainAxisSpacing: 5,
+          crossAxisSpacing: 5,
           children: [
             StaggeredGridTile.count(
               crossAxisCellCount: 2,

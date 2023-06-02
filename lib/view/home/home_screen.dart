@@ -16,7 +16,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import '../../controller/controllers.dart';
 import '../../core/theme/app_colors.dart';
-import '../order/ordering/delivery_received.dart';
+import '../order/ordering/rider_delivering_screen.dart';
 import '../widgets/search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -40,25 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.location_on,
-                              color: AppColors.iconColor,
-                              size: 20.r,
-                            ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            Text(
-                                settingController.userLocation.value?.address ??
-                                    'Please set your location address first'.tr,
-                                style: TextStyle(
-                                    color: AppColors.textColor,
-                                    fontSize: 10.sp)),
-                          ],
-                        ),
                         SizedBox(
                           height: 10.h,
                         ),

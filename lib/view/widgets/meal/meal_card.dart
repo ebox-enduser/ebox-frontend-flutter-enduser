@@ -44,6 +44,7 @@ class MealCard extends StatelessWidget {
               mealName: mealName,
               ingredients: ingredients,
               youtubeURL: youtubeURL,
+              vendor: vendor,
             ));
       },
       child: Stack(
@@ -57,21 +58,13 @@ class MealCard extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Padding(
-              padding: REdgeInsets.only(bottom: 15),
+              padding: REdgeInsets.only(bottom: 10),
               child: Container(
                 width: 140.w,
                 height: 120.h,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.w),
-                  color: AppColors.backgroundColor,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3.r),
-                      spreadRadius: 2.r,
-                      blurRadius: 10.r,
-                      offset: Offset(0.r, 3.r),
-                    ),
-                  ],
+                  borderRadius: BorderRadius.circular(10.w),
+                  color: Colors.white,
                 ),
                 child: Padding(
                   padding: REdgeInsets.only(
@@ -88,7 +81,7 @@ class MealCard extends StatelessWidget {
                       ),
                       Spacer(),
                       Padding(
-                        padding: REdgeInsets.only(bottom: 5, left: 5, right: 5),
+                        padding: REdgeInsets.only(bottom: 5, left: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -101,18 +94,45 @@ class MealCard extends StatelessWidget {
                             ),
                             IconButton(
                                 onPressed: () {
-                                  cartController.addMealByVendor(
-                                      meal: CartMeal(
-                                          mealName: mealName,
-                                          mealImage: mealImage,
-                                          price: price),
-                                      vendors: vendor,
-                                      context: context);
+                                  // print(cartController.meals.entries
+                                  //     .map((meal) => meal.key.mealName)
+                                  //     .toList());
+                                  // print(cartController.meals.entries
+                                  //     .map((meal) => meal.key.mealName)
+                                  //     .toList()
+                                  //     .contains(mealName));
+
+                                  if (cartController.meals.entries
+                                      .map((meal) => meal.key.mealName)
+                                      .toList()
+                                      .contains(mealName)) {
+                                    return;
+                                  } else {
+                                    cartController.addMealByVendor(
+                                        meal: CartMeal(
+                                            mealName: mealName,
+                                            mealImage: mealImage,
+                                            price: price),
+                                        vendors: vendor,
+                                        context: context);
+                                  }
                                 },
-                                icon: Icon(
-                                  Icons.add_circle,
-                                  color: AppColors.secondaryColor,
-                                  size: 30.r,
+                                icon: Obx(
+                                  () => Icon(
+                                    cartController.meals.entries
+                                            .map((meal) => meal.key.mealName)
+                                            .toList()
+                                            .contains(mealName)
+                                        ? Icons.check_circle
+                                        : Icons.add_circle,
+                                    color: cartController.meals.entries
+                                            .map((meal) => meal.key.mealName)
+                                            .toList()
+                                            .contains(mealName)
+                                        ? AppColors.secondaryColor
+                                        : AppColors.primaryColor,
+                                    size: 40.r,
+                                  ),
                                 )),
                           ],
                         ),

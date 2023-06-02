@@ -30,7 +30,7 @@ class MealListPlan extends StatelessWidget {
         youtubeURL: plan.youtubeURL[index],
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 30.h),
+          crossAxisCount: 2, mainAxisSpacing: 0.h),
     );
   }
 }

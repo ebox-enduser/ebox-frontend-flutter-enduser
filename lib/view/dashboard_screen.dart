@@ -1,27 +1,19 @@
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/view/cart/cart_screen.dart';
 import 'package:ebox/view/order/ordered/ordered_screen.dart';
-import 'package:ebox/view/order/ordering/done_ordering.dart';
-import 'package:ebox/view/order/ordering/finding_ingredients.dart';
-import 'package:ebox/view/order/ordering/packaging_meal.dart';
+
 import 'package:ebox/view/plan/plan_screen.dart';
-import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
 import 'package:ebox/view/settings/profile/profile_screen.dart';
-import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
 import 'package:ebox/view/home/home_screen.dart';
-import 'package:ebox/view/cart/checkout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../model/vendor.dart';
-import 'order/ordering/delivery_received.dart';
+import 'package:text_scroll/text_scroll.dart';
 import 'widgets/drawer/custom_drawer.dart';
-import 'order/ordering/no_order_found.dart';
 import 'package:badges/badges.dart' as badges;
 
 class DashboardScreen extends StatefulWidget {
@@ -34,7 +26,7 @@ class DashboardScreen extends StatefulWidget {
 class _MainScreenState extends State<DashboardScreen> {
   int _selectedIndex = 1;
   List listScreen = [
-    PlanScreen(),
+    const PlanScreen(),
     const HomeScreen(),
     OrderedScreen(),
   ];
@@ -55,7 +47,6 @@ class _MainScreenState extends State<DashboardScreen> {
     // This is where you can initialize the resources needed by your app while
     // the splash screen is displayed.  Remove the following example because
     // delaying the user experience is a bad design practice!
-    // ignore_for_file: avoid_print
 
     await Future.delayed(const Duration(seconds: 3));
     FlutterNativeSplash.remove();
@@ -66,7 +57,18 @@ class _MainScreenState extends State<DashboardScreen> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
+      backgroundColor: AppColors.secondaryBackgroundColor,
       appBar: AppBar(
+        title: Obx(
+          () => TextScroll(
+            '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
+            velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+            mode: TextScrollMode.endless,
+            style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
+            textAlign: TextAlign.left,
+            selectable: true,
+          ),
+        ),
         leading: Builder(
           builder: (BuildContext context) {
             return GestureDetector(
@@ -76,6 +78,7 @@ class _MainScreenState extends State<DashboardScreen> {
               child: Image.asset(
                 'assets/images/drawer.png',
                 scale: 15.r,
+                color: AppColors.secondaryColor,
               ),
             );
           },
@@ -89,11 +92,13 @@ class _MainScreenState extends State<DashboardScreen> {
               onTap: () {
                 Get.to(() => ProfileScreen());
               },
-              child: CircleAvatar(
-                  radius: 20.r,
-                  backgroundImage: NetworkImage(authController
-                          .user.value?.imageURL ??
-                      'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/blank-profile-picture-973460_960_720.webp?alt=media&token=a5a714ac-2722-4380-a939-f347fb7acb87&_gl=1*1g2b3vl*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NTUyMzk0MC4xLjEuMTY4NTUyNDEzNS4wLjAuMA..')),
+              child: Obx(
+                () => CircleAvatar(
+                    radius: 20.r,
+                    backgroundImage: NetworkImage(authController
+                            .user.value?.imageURL ??
+                        'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/blank-profile-picture-973460_960_720.webp?alt=media&token=a5a714ac-2722-4380-a939-f347fb7acb87&_gl=1*1g2b3vl*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NTUyMzk0MC4xLjEuMTY4NTUyNDEzNS4wLjAuMA..')),
+              ),
             ),
           )
         ],
@@ -102,7 +107,6 @@ class _MainScreenState extends State<DashboardScreen> {
       body: listScreen.elementAt(_selectedIndex),
       bottomNavigationBar: SnakeNavigationBar.color(
         height: 60.h,
-        elevation: 5,
         backgroundColor: AppColors.secondaryColor,
         unselectedItemColor: AppColors.black.withOpacity(0.4),
         snakeViewColor: AppColors.primaryColor,

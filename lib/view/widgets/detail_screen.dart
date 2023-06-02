@@ -1,3 +1,5 @@
+import 'package:ebox/view/settings/about_ebox_screen.dart';
+import 'package:ebox/view/settings/contact_us_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -23,7 +25,7 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: REdgeInsets.only(top: 45, left: 15, right: 15),
+              padding: REdgeInsets.only(top: 30, left: 15, right: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -39,17 +41,24 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(title,
-                      style: TextStyle(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold)),
+                  SizedBox(
+                    width: 240.w,
+                    child: Text(title,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 20.sp, fontWeight: FontWeight.bold)),
+                  ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => ContactUsScreen());
+                    },
                     child: CircleAvatar(
                       radius: 20.r,
                       backgroundColor: AppColors.thirdlyColor,
                       foregroundColor: Colors.white,
                       child: Icon(
-                        Icons.info,
+                        Icons.help_outline,
                         size: 20.r,
                       ),
                     ),
@@ -70,9 +79,9 @@ class DetailScreen extends StatelessWidget {
                 Positioned(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 1,
-                    height: MediaQuery.of(context).size.height * 0.85,
+                    height: MediaQuery.of(context).size.height * 0.88,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.secondaryBackgroundColor,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15.r),
                             topRight: Radius.circular(15.r))),

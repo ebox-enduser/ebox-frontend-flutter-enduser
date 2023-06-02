@@ -16,14 +16,6 @@ class NotificationCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.r),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1.r),
-              spreadRadius: 1.r,
-              blurRadius: 10.r,
-              offset: Offset(0.r, 2.r),
-            ),
-          ],
         ),
         width: MediaQuery.of(context).size.height * 0.5,
         child: Padding(

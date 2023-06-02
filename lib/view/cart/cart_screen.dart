@@ -59,7 +59,7 @@ class CartScreen extends StatelessWidget {
                             width: MediaQuery.of(context).size.width * 1,
                             height: 60.h,
                             decoration: BoxDecoration(
-                                color: AppColors.secondaryBackgroundColor,
+                                color: Colors.white,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15.r))),
                             child: Padding(
@@ -94,13 +94,13 @@ class CartScreen extends StatelessWidget {
                         ),
                         Obx(() {
                           if (cartController.meals.isEmpty) {
-                            return CircularProgressIndicator();
+                            return const CircularProgressIndicator();
                           } else {
                             return ListView.builder(
                                 shrinkWrap: true,
-                                padding: REdgeInsets.only(top: 15),
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: cartController.meals.length,
+                                itemCount:
+                                    cartController.meals.keys.toList().length,
                                 itemBuilder: (context, index) => CartMealCard(
                                       index: index,
                                       cartMeal: cartController.meals.keys
@@ -127,10 +127,12 @@ class CartScreen extends StatelessWidget {
                                     Icon(
                                       Icons.delivery_dining,
                                       color: Colors.white,
+                                      size: 30.r,
                                     ),
                                     Text(
                                       '\$${cartController.vendor.value?.delivery.toString()}',
                                       style: TextStyle(
+                                          fontSize: 14.sp,
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold),
                                     )
@@ -145,7 +147,6 @@ class CartScreen extends StatelessWidget {
                                 Text(
                                   'Total'.tr,
                                   style: TextStyle(
-                                      color: AppColors.textColor,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 14.sp),
                                 ),
@@ -190,7 +191,6 @@ class CartScreen extends StatelessWidget {
                 onPressed: () {},
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
-                  elevation: 5,
                   backgroundColor: Colors.grey,
                   padding: REdgeInsets.only(
                       top: 20, bottom: 20, left: 40, right: 40),
@@ -215,7 +215,6 @@ class CartScreen extends StatelessWidget {
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
-                  elevation: 5,
                   backgroundColor: AppColors.primaryColor,
                   padding: REdgeInsets.only(
                       top: 20, bottom: 20, left: 40, right: 40),

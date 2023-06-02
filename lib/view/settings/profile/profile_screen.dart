@@ -70,7 +70,6 @@ class ProfileScreen extends StatelessWidget {
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
-                elevation: 5,
                 backgroundColor: Colors.red,
                 padding:
                     REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
@@ -94,7 +93,6 @@ class ProfileScreen extends StatelessWidget {
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
-            elevation: 5,
             backgroundColor: AppColors.primaryColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
             shape: RoundedRectangleBorder(

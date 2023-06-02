@@ -63,15 +63,15 @@ class CartController extends GetxController {
     if (_meals.containsKey(meal)) {
       _meals[meal] += 1;
     } else {
+      Get.snackbar('Meal Added'.tr,
+          'You have add the ${meal.mealName} to the shopping cart',
+          colorText: Colors.white,
+          margin: REdgeInsets.all(15),
+          backgroundColor: AppColors.secondaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 2));
       _meals[meal] = 1;
     }
-    Get.snackbar('Meal Added'.tr,
-        'You have add the ${meal.mealName} to the shopping cart',
-        colorText: Colors.white,
-        margin: REdgeInsets.all(15),
-        backgroundColor: AppColors.secondaryColor,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 2));
   }
 
   void removeMeal(CartMeal meal) {
@@ -86,13 +86,6 @@ class CartController extends GetxController {
           duration: const Duration(seconds: 2));
     } else {
       _meals[meal] -= 1;
-      Get.snackbar('Meal Removed'.tr,
-          'You have remove the ${meal.mealName} from the shopping cart',
-          colorText: Colors.white,
-          margin: REdgeInsets.all(15),
-          backgroundColor: Colors.redAccent,
-          snackPosition: SnackPosition.BOTTOM,
-          duration: const Duration(seconds: 2));
     }
   }
 

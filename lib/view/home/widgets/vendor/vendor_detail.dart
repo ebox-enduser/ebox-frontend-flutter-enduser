@@ -1,5 +1,6 @@
 import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/home/widgets/meal_list_vendor.dart';
+import 'package:ebox/view/home/widgets/vendor/vendor_info_screen.dart';
 import 'package:ebox/view/home/widgets/vendor/widgets/category_meal_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,13 +58,17 @@ class VendorDetail extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => VendorInfoScreen(
+                                  vendor: vendor,
+                                ));
+                          },
                           child: CircleAvatar(
                             radius: 20.r,
                             backgroundColor: AppColors.thirdlyColor,
                             foregroundColor: Colors.white,
                             child: Icon(
-                              Icons.info,
+                              Icons.person,
                               size: 20.r,
                             ),
                           ),
@@ -81,7 +86,7 @@ class VendorDetail extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.height * 0.75,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.secondaryBackgroundColor,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15.r),
                       topRight: Radius.circular(15.r))),

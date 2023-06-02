@@ -15,7 +15,6 @@ class SearchBar extends StatelessWidget {
       padding: REdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
       child: Material(
         borderRadius: BorderRadius.circular(15),
-        shadowColor: Colors.black.withOpacity(0.2),
         child: TextField(
           cursorColor: AppColors.primaryColor,
           decoration: InputDecoration(
@@ -26,7 +25,7 @@ class SearchBar extends StatelessWidget {
               size: 20.r,
             ),
             filled: true,
-            fillColor: AppColors.secondaryBackgroundColor,
+            fillColor: Colors.white,
             hintText: 'Search your vendor'.tr,
             hintStyle: TextStyle(
                 fontSize: 12.sp,
@@ -34,12 +33,10 @@ class SearchBar extends StatelessWidget {
                 fontWeight: FontWeight.w300),
             contentPadding: REdgeInsets.only(top: 30),
             focusedBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: AppColors.secondaryBackgroundColor),
+                borderSide: const BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.circular(30.r)),
             enabledBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: AppColors.secondaryBackgroundColor),
+                borderSide: const BorderSide(color: Colors.white),
                 borderRadius: BorderRadius.circular(30.r)),
           ),
         ),

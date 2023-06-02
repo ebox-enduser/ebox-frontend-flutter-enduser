@@ -22,7 +22,7 @@ class VendorCard extends StatelessWidget {
             ));
       },
       child: Padding(
-        padding: REdgeInsets.all(15),
+        padding: REdgeInsets.only(left: 15, right: 15, top: 10),
         child: Stack(
           alignment: Alignment.center,
           children: [
@@ -42,14 +42,6 @@ class VendorCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3.r), // changes position of shadow
-                      ),
-                    ],
                   ),
                   child: Row(
                     children: [

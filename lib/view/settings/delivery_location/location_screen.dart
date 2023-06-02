@@ -158,7 +158,6 @@ class _LocationScreenState extends State<LocationScreen> {
           },
           style: TextButton.styleFrom(
             foregroundColor: foregroundColor,
-            elevation: 5,
             backgroundColor: backgroundColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 60, right: 60),
             shape: RoundedRectangleBorder(

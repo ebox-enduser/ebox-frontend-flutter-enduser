@@ -48,14 +48,6 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3.r), // changes position of shadow
-                        ),
-                      ],
                     ),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,14 +86,6 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3.r), // changes position of shadow
-                        ),
-                      ],
                     ),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,

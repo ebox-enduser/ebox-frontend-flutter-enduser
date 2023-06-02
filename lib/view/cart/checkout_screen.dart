@@ -3,6 +3,7 @@ import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/cart_meal.dart';
 import 'package:ebox/view/dashboard_screen.dart';
+import 'package:ebox/view/order/ordering/finding_ingredients_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:get/get.dart';
 import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
@@ -84,7 +85,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       width: 5.w,
                     ),
                     Text(
-                      'Your location:',
+                      'Delivery time:',
                       style: TextStyle(
                           fontSize: 14.sp, fontWeight: FontWeight.w500),
                     ),
@@ -100,7 +101,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     value: selectedValueDelivery,
                     buttonDecoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.w),
-                      color: AppColors.lightBlue,
+                      color: Colors.white,
                     ),
                     dropdownWidth: MediaQuery.of(context).size.width * 0.9,
                     dropdownDecoration: BoxDecoration(
@@ -148,15 +149,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3.r), // changes position of shadow
-                            ),
-                          ],
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -194,15 +186,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.r)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 3.r), // changes position of shadow
-                            ),
-                          ],
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -250,14 +233,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               dialogType: DialogType.success,
               animType: AnimType.bottomSlide,
               title: 'Order Success!',
+              dismissOnTouchOutside: false,
               btnOkOnPress: () {
-                Get.offAll(() => DashboardScreen());
+                Get.offAll(() => FindingIngredientsScreen());
               },
             ).show();
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
-            elevation: 5,
             backgroundColor: AppColors.primaryColor,
             padding: REdgeInsets.only(
               top: 20,

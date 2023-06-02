@@ -100,7 +100,8 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               // fontFamily: 'Visby',
               primarySwatch: Colors.orange,
-            ).copyWith(scaffoldBackgroundColor: AppColors.backgroundColor),
+            ).copyWith(
+                scaffoldBackgroundColor: AppColors.secondaryBackgroundColor),
             debugShowCheckedModeBanner: false,
           );
         });
