@@ -16,16 +16,18 @@ class MealListVendor extends StatelessWidget {
     return GridView.builder(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: vendor.mealName.length,
+      itemCount: vendor.nameMeal.length,
       itemBuilder: (context, index) => MealCard(
         fat: vendor.fat[index],
         foodType: vendor.foodType[index],
-        mealImage: vendor.mealImage[index],
+        mealImage: vendor.imageMeal[index],
         price: vendor.price[index],
-        mealName: vendor.mealName[index],
-        ingredients: vendor.ingredients[index],
+        nameMeal: vendor.nameMeal[index],
+        ingredient: vendor.ingredients[index],
         youtubeURL: vendor.youtubeURL[index],
         vendor: vendor,
+        idMeal: vendor.idMeal[index],
+        idVendor: vendor.idVendor,
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, mainAxisSpacing: 0.h),

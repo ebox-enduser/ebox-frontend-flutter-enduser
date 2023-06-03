@@ -60,13 +60,16 @@ class _MainScreenState extends State<DashboardScreen> {
       backgroundColor: AppColors.secondaryBackgroundColor,
       appBar: AppBar(
         title: Obx(
-          () => TextScroll(
-            '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
-            velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
-            mode: TextScrollMode.endless,
-            style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
-            textAlign: TextAlign.left,
-            selectable: true,
+          () => SizedBox(
+            height: 15.h,
+            child: TextScroll(
+              '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
+              velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+              mode: TextScrollMode.endless,
+              style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
+              textAlign: TextAlign.left,
+              selectable: true,
+            ),
           ),
         ),
         leading: Builder(
@@ -173,7 +176,7 @@ class _MainScreenState extends State<DashboardScreen> {
           return badges.Badge(
             position: badges.BadgePosition.topEnd(top: -5, end: -5),
             badgeContent: Text(
-              cartController.quantity.toString(),
+              cartController.totalQuantity.toString(),
               style: const TextStyle(color: Colors.white),
             ),
             child: FloatingActionButton(

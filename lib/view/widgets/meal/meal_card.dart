@@ -12,22 +12,27 @@ import '../../../model/cart_meal.dart';
 import 'meal_detail.dart';
 
 class MealCard extends StatelessWidget {
-  final String mealName;
+  final String nameMeal;
   final String foodType;
   final int price;
   final int fat;
+  final int idMeal;
+  final int idVendor;
+
   final String mealImage;
-  final String ingredients;
+  final String ingredient;
   final String youtubeURL;
   final Vendor vendor;
   const MealCard(
       {Key? key,
-      required this.mealName,
+      required this.nameMeal,
+      required this.idMeal,
+      required this.idVendor,
       required this.foodType,
       required this.price,
       required this.fat,
       required this.mealImage,
-      required this.ingredients,
+      required this.ingredient,
       required this.youtubeURL,
       required this.vendor})
       : super(key: key);
@@ -41,10 +46,12 @@ class MealCard extends StatelessWidget {
               foodType: foodType,
               mealImage: mealImage,
               price: price,
-              mealName: mealName,
-              ingredients: ingredients,
+              nameMeal: nameMeal,
+              ingredient: ingredient,
               youtubeURL: youtubeURL,
               vendor: vendor,
+              idMeal: idMeal,
+              idVendor: idVendor,
             ));
       },
       child: Stack(
@@ -73,7 +80,7 @@ class MealCard extends StatelessWidget {
                     padding: REdgeInsets.only(left: 10, right: 10),
                     child: Column(children: [
                       Text(
-                        mealName,
+                        nameMeal,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
@@ -103,16 +110,19 @@ class MealCard extends StatelessWidget {
                                   //     .contains(mealName));
 
                                   if (cartController.meals.entries
-                                      .map((meal) => meal.key.mealName)
+                                      .map((meal) => meal.key.nameMeal)
                                       .toList()
-                                      .contains(mealName)) {
+                                      .contains(nameMeal)) {
                                     return;
                                   } else {
                                     cartController.addMealByVendor(
                                         meal: CartMeal(
-                                            mealName: mealName,
-                                            mealImage: mealImage,
-                                            price: price),
+                                            nameMeal: nameMeal,
+                                            imageMeal: mealImage,
+                                            price: price,
+                                            ingredient: ingredient,
+                                            idMeal: idMeal,
+                                            idVendor: idVendor),
                                         vendors: vendor,
                                         context: context);
                                   }
@@ -120,15 +130,15 @@ class MealCard extends StatelessWidget {
                                 icon: Obx(
                                   () => Icon(
                                     cartController.meals.entries
-                                            .map((meal) => meal.key.mealName)
+                                            .map((meal) => meal.key.nameMeal)
                                             .toList()
-                                            .contains(mealName)
+                                            .contains(nameMeal)
                                         ? Icons.check_circle
                                         : Icons.add_circle,
                                     color: cartController.meals.entries
-                                            .map((meal) => meal.key.mealName)
+                                            .map((meal) => meal.key.nameMeal)
                                             .toList()
-                                            .contains(mealName)
+                                            .contains(nameMeal)
                                         ? AppColors.secondaryColor
                                         : AppColors.primaryColor,
                                     size: 40.r,

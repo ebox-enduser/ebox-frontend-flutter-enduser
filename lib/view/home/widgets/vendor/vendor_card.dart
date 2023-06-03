@@ -53,7 +53,7 @@ class VendorCard extends StatelessWidget {
                             SizedBox(
                               width: 140.w,
                               child: Text(
-                                vendor.vendorName,
+                                vendor.nameVendor,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                                 style: TextStyle(
@@ -191,7 +191,7 @@ class VendorCard extends StatelessWidget {
                                 BorderRadius.all(Radius.circular(15.r)),
                             image: DecorationImage(
                                 image:
-                                    NetworkImage(vendor.vendorImageBackground),
+                                    NetworkImage(vendor.imageVendorBackground),
                                 fit: BoxFit.cover)),
                       )
                     ],
@@ -203,7 +203,7 @@ class VendorCard extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 40.r,
                   foregroundImage: NetworkImage(
-                    vendor.vendorImage,
+                    vendor.imageVendor,
                   ),
                 ))
           ],

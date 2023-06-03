@@ -2,6 +2,7 @@ import 'package:ebox/api/meal_ordered_service.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/plan.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/banner_service.dart';
 import '../api/notification_service.dart';
@@ -35,14 +36,16 @@ class DashboardController extends GetxController {
     getVendors();
     getPlans();
     getNotification();
+    getMealOrdered();
     super.onInit();
   }
 
-  void getMealOrdered({required String email}) async {
+  void getMealOrdered() async {
     try {
-      isMealOrderedLoading(true);
       //call api
-      var result = await MealOrderedService().getByUser(email: email);
+      var result = await MealOrderedService()
+          .getMealOrdered(token: authController.token);
+
       if (result != null) {
         //assign api result
         mealOrderedList.assignAll(mealOrderedListFromJson(result.body));
@@ -50,6 +53,25 @@ class DashboardController extends GetxController {
     } finally {
       isMealOrderedLoading(false);
     }
+  }
+
+  void createMealOrder({
+    required String name,
+    required String totalPrice,
+    required String paymentMethod,
+    required String address,
+    required List<dynamic> meals,
+    required int vendor,
+  }) async {
+    await MealOrderedService().createMealOrder(
+      name: name,
+      totalPrice: totalPrice,
+      paymentMethod: paymentMethod,
+      address: address,
+      meals: meals,
+      token: authController.token,
+      vendor: vendor,
+    );
   }
 
   void getNotification() async {

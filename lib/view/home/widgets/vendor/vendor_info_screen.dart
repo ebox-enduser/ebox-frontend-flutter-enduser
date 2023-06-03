@@ -15,18 +15,18 @@ class VendorInfoScreen extends StatelessWidget {
       body: DetailScreen(
           screen: Column(
             children: [
-              InformationCard(title: 'Name', Data: vendor.vendorName),
+              InformationCard(title: 'Name', Data: vendor.nameVendor),
               InformationCard(
                   title: 'Business Time', Data: vendor.businessTime),
               InformationCard(
-                  title: 'Location', Data: vendor.locations.toString()),
+                  title: 'Location', Data: vendor.location.toString()),
               InformationCard(title: 'Distance', Data: '${vendor.distance}km'),
               InformationCard(title: 'Phone Number', Data: vendor.phoneNumber),
               InformationCard(title: 'Delivery', Data: '\$${vendor.delivery}'),
               InformationCard(title: 'Ordered', Data: vendor.ordered),
             ],
           ),
-          title: vendor.vendorName),
+          title: vendor.nameVendor),
     );
   }
 }

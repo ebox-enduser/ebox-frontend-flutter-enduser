@@ -1,11 +1,18 @@
 class CartMeal {
-  final String mealName;
+  final String nameMeal;
   final int price;
-  final String mealImage;
+  final int idMeal;
+  final int idVendor;
+  final String imageMeal;
+  final String ingredient;
+
   CartMeal({
-    required this.mealName,
+    required this.nameMeal,
     required this.price,
-    required this.mealImage,
+    required this.idMeal,
+    required this.idVendor,
+    required this.imageMeal,
+    required this.ingredient,
   });
 
   static const List<CartMeal> meals = [];

@@ -2,6 +2,7 @@ import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/home/widgets/meal_list_vendor.dart';
 import 'package:ebox/view/home/widgets/vendor/vendor_info_screen.dart';
 import 'package:ebox/view/home/widgets/vendor/widgets/category_meal_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -33,7 +34,7 @@ class VendorDetail extends StatelessWidget {
               height: 300.h,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(vendor.vendorImageBackground),
+                  image: NetworkImage(vendor.imageVendorBackground),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -57,21 +58,40 @@ class VendorDetail extends StatelessWidget {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => VendorInfoScreen(
-                                  vendor: vendor,
-                                ));
-                          },
-                          child: CircleAvatar(
-                            radius: 20.r,
-                            backgroundColor: AppColors.thirdlyColor,
-                            foregroundColor: Colors.white,
-                            child: Icon(
-                              Icons.person,
-                              size: 20.r,
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: CircleAvatar(
+                                radius: 20.r,
+                                backgroundColor: Colors.black.withOpacity(0.4),
+                                foregroundColor: Colors.red,
+                                child: Icon(
+                                  Icons.favorite,
+                                  size: 20.r,
+                                ),
+                              ),
                             ),
-                          ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(() => VendorInfoScreen(
+                                      vendor: vendor,
+                                    ));
+                              },
+                              child: CircleAvatar(
+                                radius: 20.r,
+                                backgroundColor: AppColors.thirdlyColor,
+                                foregroundColor: Colors.white,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 20.r,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -98,7 +118,7 @@ class VendorDetail extends StatelessWidget {
                     Padding(
                       padding: REdgeInsets.only(left: 120, bottom: 30),
                       child: Text(
-                        vendor.vendorName,
+                        vendor.nameVendor,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
@@ -213,7 +233,7 @@ class VendorDetail extends StatelessWidget {
               left: 30,
               child: CircleAvatar(
                 radius: 50.r,
-                foregroundImage: NetworkImage(vendor.vendorImage),
+                foregroundImage: NetworkImage(vendor.imageVendor),
               )),
         ],
       ),

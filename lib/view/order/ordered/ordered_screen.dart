@@ -43,10 +43,7 @@ class OrderedScreen extends StatelessWidget {
                 ),
               ),
               Obx(() {
-                dashboardController.getMealOrdered(
-                    email: authController.user.value!.email);
-                if (dashboardController.mealOrderedList.isNotEmpty &&
-                    dashboardController.mealOrderedList != null) {
+                if (dashboardController.mealOrderedList.isNotEmpty) {
                   return OrderedList(
                     mealOrderedList: dashboardController.mealOrderedList,
                   );

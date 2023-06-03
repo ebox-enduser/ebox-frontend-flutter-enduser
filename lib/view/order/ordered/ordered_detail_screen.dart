@@ -29,25 +29,26 @@ class OrderedDetailScreen extends StatelessWidget {
                     onTap: () {
                       Get.to(() => VendorDetail(
                             vendor: Vendor(
-                                id: 0,
-                                vendorImage: mealOrdered.vendorImage[index],
-                                vendorImageBackground:
-                                    mealOrdered.vendorImageBackground[index],
-                                mealName: mealOrdered.mealName[index],
-                                mealImage: mealOrdered.mealImage[index],
-                                foodType: mealOrdered.foodType[index],
-                                price: mealOrdered.price[index],
-                                fat: mealOrdered.fat[index],
-                                locations: mealOrdered.locations[index],
-                                vendorName: mealOrdered.vendorName[index],
-                                phoneNumber: mealOrdered.phoneNumber[index],
-                                businessTime: mealOrdered.businessTime[index],
-                                duration: mealOrdered.duration[index],
-                                delivery: mealOrdered.delivery[index],
-                                distance: mealOrdered.distance[index],
-                                youtubeURL: mealOrdered.youtubeURL[index],
-                                ingredients: mealOrdered.ingredients[index],
-                                ordered: mealOrdered.ordered[index]),
+                                idVendor: mealOrdered.idVendor,
+                                imageVendor: mealOrdered.imageVendor,
+                                imageVendorBackground:
+                                    mealOrdered.imageVendorBackground,
+                                nameMeal: mealOrdered.nameMealVendor,
+                                imageMeal: mealOrdered.imageMealVendor,
+                                foodType: mealOrdered.foodTypeVendor,
+                                price: mealOrdered.priceVendor,
+                                fat: mealOrdered.fatVendor,
+                                location: mealOrdered.location,
+                                nameVendor: mealOrdered.nameVendor,
+                                phoneNumber: mealOrdered.phoneNumber,
+                                businessTime: mealOrdered.businessTime,
+                                duration: mealOrdered.duration,
+                                delivery: mealOrdered.delivery,
+                                distance: mealOrdered.distance,
+                                youtubeURL: mealOrdered.youtubeURLVendor,
+                                ingredients: mealOrdered.ingredientsVendor,
+                                ordered: mealOrdered.ordered,
+                                idMeal: mealOrdered.idMealVendor),
                           ));
                     },
                     child: Container(
@@ -63,13 +64,13 @@ class OrderedDetailScreen extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               foregroundImage:
-                                  NetworkImage(mealOrdered.vendorImage[index]),
+                                  NetworkImage(mealOrdered.imageVendor),
                             ),
                             SizedBox(
                               width: 10.w,
                             ),
                             Text(
-                              mealOrdered.vendorName[index],
+                              mealOrdered.nameVendor,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 14.sp, fontWeight: FontWeight.w500),
@@ -118,7 +119,7 @@ class OrderedDetailScreen extends StatelessWidget {
                             ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: mealOrdered.mealName[index].length,
+                                itemCount: mealOrdered.nameMeal.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
                                     padding: REdgeInsets.only(bottom: 10),
@@ -133,8 +134,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                               image: DecorationImage(
                                                   image: NetworkImage(
                                                       mealOrdered
-                                                              .mealImage[index]
-                                                          [index]),
+                                                          .imageMeal[index]),
                                                   fit: BoxFit.cover)),
                                         ),
                                         SizedBox(
@@ -147,15 +147,13 @@ class OrderedDetailScreen extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              mealOrdered.mealName[index]
-                                                  [index],
+                                              mealOrdered.nameMeal[index],
                                               style: TextStyle(
                                                   fontSize: 12.sp,
                                                   fontWeight: FontWeight.w500),
                                             ),
                                             Text(
-                                              mealOrdered.ingredients[index]
-                                                  [index],
+                                              mealOrdered.ingredients[index],
                                               style: TextStyle(
                                                   fontSize: 10.sp,
                                                   color: AppColors.textColor),
@@ -164,7 +162,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                         ),
                                         Spacer(),
                                         Text(
-                                          '\$${mealOrdered.price[index][index]}',
+                                          '\$${mealOrdered.price[index]}',
                                           style: TextStyle(
                                               fontSize: 14.sp,
                                               color: Colors.red,
@@ -185,7 +183,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                 ),
                                 Spacer(),
                                 Text(
-                                  '\$${mealOrdered.delivery[index]}',
+                                  '\$${mealOrdered.delivery}',
                                   style: TextStyle(
                                     fontSize: 14.sp,
                                   ),
@@ -209,7 +207,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      '\$${mealOrdered.totalPrice[index]}',
+                                      '\$${mealOrdered.totalPrice}',
                                       style: TextStyle(
                                           fontSize: 14.sp,
                                           color: Colors.red,
@@ -304,7 +302,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
-                                    mealOrdered.createdAt[index].toString(),
+                                    mealOrdered.createdAt.toString(),
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontSize: 12.sp,
@@ -363,7 +361,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
-                                    mealOrdered.id[index].toString(),
+                                    mealOrdered.id.toString(),
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontSize: 12.sp,
@@ -389,7 +387,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
-                                    mealOrdered.paymentMethod[index].toString(),
+                                    mealOrdered.paymentMethod.toString(),
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontSize: 12.sp,
@@ -415,7 +413,7 @@ class OrderedDetailScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
-                                    mealOrdered.createdAt[index].toString(),
+                                    mealOrdered.createdAt.toString(),
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontSize: 12.sp,

@@ -15,24 +15,29 @@ import '../../cart/cart_screen.dart';
 import 'package:badges/badges.dart' as badges;
 
 class MealDetail extends StatefulWidget {
+  final Vendor vendor;
+  final String nameMeal;
+  final String foodType;
+  final int price;
+  final int fat;
+  final int idMeal;
+  final int idVendor;
+  final String mealImage;
+  final String ingredient;
+  final String youtubeURL;
+
   const MealDetail(
       {super.key,
-      required this.mealName,
+      required this.nameMeal,
+      required this.idVendor,
+      required this.idMeal,
       required this.foodType,
       required this.price,
       required this.fat,
       required this.mealImage,
-      required this.ingredients,
+      required this.ingredient,
       required this.youtubeURL,
       required this.vendor});
-  final Vendor vendor;
-  final String mealName;
-  final String foodType;
-  final int price;
-  final int fat;
-  final String mealImage;
-  final String ingredients;
-  final String youtubeURL;
 
   @override
   State<MealDetail> createState() => _MealDetailState();
@@ -106,7 +111,7 @@ class _MealDetailState extends State<MealDetail> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.mealName,
+                            widget.nameMeal,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16.sp),
@@ -183,7 +188,7 @@ class _MealDetailState extends State<MealDetail> {
                                         // decoration:
                                         //     BoxDecoration(color: Colors.red),
                                         child: Text(
-                                          widget.ingredients,
+                                          widget.ingredient,
                                           style: TextStyle(
                                               fontSize: 11.sp,
                                               overflow: TextOverflow.ellipsis,
@@ -267,8 +272,8 @@ class _MealDetailState extends State<MealDetail> {
                           onTap: () {
                             Get.to(() => CustomizeIngredientsScreen(
                                   mealImage: widget.mealImage,
-                                  title: widget.mealName,
-                                  ingredient: widget.ingredients,
+                                  title: widget.nameMeal,
+                                  ingredient: widget.ingredient,
                                 ));
                           },
                           child: Container(
@@ -289,9 +294,9 @@ class _MealDetailState extends State<MealDetail> {
                         ),
                         Obx(() {
                           if (cartController.meals.entries
-                              .map((meal) => meal.key.mealName)
+                              .map((meal) => meal.key.nameMeal)
                               .toList()
-                              .contains(widget.mealName)) {
+                              .contains(widget.nameMeal)) {
                             return Center(
                               child: SizedBox(
                                 width: 160.w,
@@ -338,9 +343,9 @@ class _MealDetailState extends State<MealDetail> {
                                   backgroundColor: AppColors.primaryColor,
                                   onPressed: (id) {
                                     if (cartController.meals.entries
-                                        .map((meal) => meal.key.mealName)
+                                        .map((meal) => meal.key.nameMeal)
                                         .toList()
-                                        .contains(widget.mealName)) {
+                                        .contains(widget.nameMeal)) {
                                       setState(() {
                                         stateId = AddToCartButtonStateId.done;
                                       });
@@ -354,9 +359,13 @@ class _MealDetailState extends State<MealDetail> {
                                           setState(() {
                                             cartController.addMealByVendor(
                                                 meal: CartMeal(
-                                                    mealName: widget.mealName,
-                                                    mealImage: widget.mealImage,
-                                                    price: widget.price),
+                                                    nameMeal: widget.nameMeal,
+                                                    imageMeal: widget.mealImage,
+                                                    price: widget.price,
+                                                    ingredient:
+                                                        widget.ingredient,
+                                                    idMeal: widget.idMeal,
+                                                    idVendor: widget.idVendor),
                                                 vendors: widget.vendor,
                                                 context: context);
                                             stateId =

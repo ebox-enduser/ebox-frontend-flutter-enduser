@@ -20,41 +20,13 @@ class OrderedList extends StatelessWidget {
       child: ListView.builder(
           shrinkWrap: true,
           padding: REdgeInsets.only(top: 15),
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: mealOrderedList.length,
           itemBuilder: (context, index) {
-            if (authController.user.value!.email ==
-                mealOrderedList[index].email) {
-              return OrderedCard(
-                mealOrdered: mealOrderedList[index],
-                firstIndex: index,
-              );
-            } else {
-              return Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 60.h,
-                    ),
-                    Image.asset(
-                      'assets/images/no_order.png',
-                      width: 300.w,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      'You have no order yet!'.tr,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.sp,
-                          color: AppColors.textColor),
-                    )
-                  ],
-                ),
-              );
-            }
+            return OrderedCard(
+              mealOrdered: mealOrderedList.reversed.toList()[index],
+              index: index,
+            );
           }),
     );
   }

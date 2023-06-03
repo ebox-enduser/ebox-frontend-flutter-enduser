@@ -31,14 +31,16 @@ class CartMealCard extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Get.to(() => MealDetail(
-                  mealName: vendor.mealName[index],
+                  nameMeal: vendor.nameMeal[index],
                   foodType: vendor.foodType[index],
                   price: vendor.price[index],
                   fat: vendor.fat[index],
-                  mealImage: vendor.mealImage[index],
-                  ingredients: vendor.ingredients[index],
+                  mealImage: vendor.imageMeal[index],
+                  ingredient: vendor.ingredients[index],
                   youtubeURL: vendor.youtubeURL[index],
                   vendor: vendor,
+                  idMeal: vendor.idMeal[index],
+                  idVendor: vendor.idVendor,
                 ));
           },
           child: Row(
@@ -50,7 +52,7 @@ class CartMealCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.w),
                     image: DecorationImage(
-                        image: NetworkImage(cartMeal.mealImage),
+                        image: NetworkImage(cartMeal.imageMeal),
                         fit: BoxFit.cover)),
               ),
               SizedBox(
@@ -64,7 +66,7 @@ class CartMealCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        cartMeal.mealName,
+                        cartMeal.nameMeal,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 12.sp),

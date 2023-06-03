@@ -67,15 +67,16 @@ class CartScreen extends StatelessWidget {
                               child: Row(
                                 children: [
                                   CircleAvatar(
+                                    radius: 20.r,
                                     foregroundImage: NetworkImage(cartController
-                                            .vendor.value?.vendorImage ??
+                                            .vendor.value?.imageVendor ??
                                         ''),
                                   ),
                                   SizedBox(
                                     width: 10.w,
                                   ),
                                   Text(
-                                    cartController.vendor.value?.vendorName ??
+                                    cartController.vendor.value?.nameVendor ??
                                         'Not Yet'.tr,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -153,7 +154,7 @@ class CartScreen extends StatelessWidget {
                                 Obx(() {
                                   if (cartController.vendor.value == null) {
                                     return Text(
-                                      '\$ ${cartController.total}',
+                                      '\$ ${cartController.totalPrice}',
                                       style: TextStyle(
                                         fontSize: 20.sp,
                                         fontWeight: FontWeight.bold,
@@ -163,7 +164,7 @@ class CartScreen extends StatelessWidget {
                                     return Text(
                                       '\$${[
                                         cartController.vendor.value?.delivery,
-                                        cartController.total
+                                        cartController.totalPrice
                                       ].reduce((value, element) => value + element).toString()}',
                                       style: TextStyle(
                                         fontSize: 20.sp,

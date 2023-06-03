@@ -10,6 +10,7 @@ import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/theme/app_colors.dart';
 
@@ -227,17 +228,60 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       bottomNavigationBar: Padding(
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
-          onPressed: () {
-            AwesomeDialog(
-              context: context,
-              dialogType: DialogType.success,
-              animType: AnimType.bottomSlide,
-              title: 'Order Success!',
-              dismissOnTouchOutside: false,
-              btnOkOnPress: () {
-                Get.offAll(() => FindingIngredientsScreen());
-              },
-            ).show();
+          onPressed: () async {
+            // /// name of meals
+            // print(cartController.meals.entries
+            //     .map((meal) => meal.key.nameMeal)
+            //     .toList());
+
+            // /// quantity meals
+            // print(cartController.meals.values.toList());
+
+            print(settingController.userLocation.value?.address);
+            print(cartController.mealsWithQuantity);
+            print(_selectedPayment);
+            print([
+              cartController.vendor.value?.delivery,
+              cartController.totalPrice
+            ].reduce((value, element) => value + element).toString());
+            print(cartController.idMeals);
+            print(cartController.idVendor);
+
+            print(settingController.userLocation.value?.address.runtimeType);
+            print(cartController.mealsWithQuantity.runtimeType);
+            print(_selectedPayment.runtimeType);
+            print([
+              cartController.vendor.value?.delivery,
+              cartController.totalPrice
+            ]
+                .reduce((value, element) => value + element)
+                .toString()
+                .runtimeType);
+            print(cartController.idMeals.runtimeType);
+            print(cartController.idVendor.runtimeType);
+
+            dashboardController.createMealOrder(
+              address:
+                  settingController.userLocation.value?.address ?? 'Not Yet',
+              name: cartController.mealsWithQuantity,
+              paymentMethod: _selectedPayment ?? 'Not Yet',
+              totalPrice: [
+                cartController.vendor.value?.delivery,
+                cartController.totalPrice
+              ].reduce((value, element) => value + element).toString(),
+              meals: cartController.idMeals,
+              vendor: cartController.idVendor,
+            );
+            // AwesomeDialog(
+            //   context: context,
+            //   dialogType: DialogType.success,
+            //   animType: AnimType.bottomSlide,
+            //   title: 'Order Success!',
+            //   dismissOnTouchOutside: false,
+            //   btnOkOnPress: () {
+            //     Get.offAll(() => FindingIngredientsScreen());
+            //   },
+            // ).show();
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
