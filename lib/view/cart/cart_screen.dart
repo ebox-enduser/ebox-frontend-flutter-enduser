@@ -2,7 +2,7 @@ import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/vendor.dart';
 import 'package:ebox/view/cart/checkout_screen.dart';
 import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_detail.dart';
+import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

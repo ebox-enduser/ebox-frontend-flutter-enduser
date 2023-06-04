@@ -3,7 +3,7 @@ import 'package:ebox/view/cart/cart_screen.dart';
 import 'package:ebox/view/order/ordered/ordered_screen.dart';
 
 import 'package:ebox/view/plan/plan_screen.dart';
-import 'package:ebox/view/settings/profile/profile_screen.dart';
+import 'package:ebox/view/drawer/profile/profile_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:get/get.dart';
@@ -81,7 +81,7 @@ class _MainScreenState extends State<DashboardScreen> {
               child: Image.asset(
                 'assets/images/drawer.png',
                 scale: 15.r,
-                color: AppColors.secondaryColor,
+                color: AppColors.primaryColor,
               ),
             );
           },
@@ -110,9 +110,9 @@ class _MainScreenState extends State<DashboardScreen> {
       body: listScreen.elementAt(_selectedIndex),
       bottomNavigationBar: SnakeNavigationBar.color(
         height: 60.h,
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.primaryColor,
         unselectedItemColor: AppColors.black.withOpacity(0.4),
-        snakeViewColor: AppColors.primaryColor,
+        snakeViewColor: AppColors.secondaryColor,
         selectedItemColor: Colors.white,
         snakeShape: SnakeShape.circle,
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
@@ -168,7 +168,7 @@ class _MainScreenState extends State<DashboardScreen> {
               Get.to(() => CartScreen());
             },
             foregroundColor: Colors.white,
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: AppColors.secondaryColor,
             child: Image.asset('assets/images/cart.png',
                 scale: 20.r, color: Colors.white),
           );
@@ -184,7 +184,7 @@ class _MainScreenState extends State<DashboardScreen> {
                 Get.to(() => CartScreen());
               },
               foregroundColor: Colors.white,
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: AppColors.secondaryColor,
               child: Image.asset('assets/images/cart.png',
                   scale: 20.r, color: Colors.white),
             ),

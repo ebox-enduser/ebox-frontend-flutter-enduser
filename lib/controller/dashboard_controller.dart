@@ -28,7 +28,8 @@ class DashboardController extends GetxController {
   RxBool isPlanLoading = false.obs;
   RxBool isNotificationLoading = false.obs;
   RxBool isMealOrderedLoading = false.obs;
-  RxBool isMealOrderedVendorLoading = false.obs;
+  RxBool isFavoriteVendorsLoading = false.obs;
+  RxBool isFavoriteVendorLoading = false.obs;
 
   @override
   void onInit() async {
@@ -42,6 +43,8 @@ class DashboardController extends GetxController {
 
   void getMealOrdered() async {
     try {
+      isMealOrderedLoading(true);
+
       //call api
       var result = await MealOrderedService()
           .getMealOrdered(token: authController.token);

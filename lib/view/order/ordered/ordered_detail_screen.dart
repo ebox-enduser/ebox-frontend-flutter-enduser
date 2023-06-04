@@ -8,7 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../home/widgets/vendor/vendor_detail.dart';
+import '../../widgets/vendor/vendor_detail.dart';
 
 class OrderedDetailScreen extends StatelessWidget {
   final MealOrdered mealOrdered;

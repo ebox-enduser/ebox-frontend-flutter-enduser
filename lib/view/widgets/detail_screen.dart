@@ -1,5 +1,5 @@
-import 'package:ebox/view/settings/about_ebox_screen.dart';
-import 'package:ebox/view/settings/contact_us_screen.dart';
+import 'package:ebox/view/drawer/about_ebox_screen.dart';
+import 'package:ebox/view/drawer/contact_us_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

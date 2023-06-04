@@ -1,7 +1,7 @@
 import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/view/settings/profile/widgets/information_card.dart';
-import 'package:ebox/view/settings/profile/update_profile_screen.dart';
+import 'package:ebox/view/drawer/profile/widgets/information_card.dart';
+import 'package:ebox/view/drawer/profile/update_profile_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

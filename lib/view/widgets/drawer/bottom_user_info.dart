@@ -21,7 +21,7 @@ class BottomUserInfo extends StatelessWidget {
       height: isCollapsed ? 70.h : 90.h,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColors.secondaryColor,
+        color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: isCollapsed

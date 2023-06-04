@@ -1,13 +1,13 @@
 import 'package:ebox/core/constants/const.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_detail.dart';
+import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/controllers.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../../../model/cart_meal.dart';
-import '../../../../model/vendor.dart';
+import '../../../controller/controllers.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../model/cart_meal.dart';
+import '../../../model/vendor.dart';
 
 class VendorCard extends StatelessWidget {
   final Vendor vendor;

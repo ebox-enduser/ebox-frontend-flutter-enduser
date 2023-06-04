@@ -1,3 +1,4 @@
+
 import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/core/theme/app_colors.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';

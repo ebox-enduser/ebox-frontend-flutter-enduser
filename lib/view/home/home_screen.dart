@@ -2,9 +2,9 @@
 import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/home/widgets/carousel_slider/carousel_loading.dart';
 import 'package:ebox/view/home/widgets/carousel_slider/carousel_slider_view.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_card.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_detail.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_list.dart';
+import 'package:ebox/view/widgets/vendor/vendor_card.dart';
+import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
+import 'package:ebox/view/home/widgets/vendor_list.dart';
 import 'package:ebox/view/widgets/drawer/custom_drawer.dart';
 
 import 'package:ebox/view/home/widgets/notification/notification_screen.dart';

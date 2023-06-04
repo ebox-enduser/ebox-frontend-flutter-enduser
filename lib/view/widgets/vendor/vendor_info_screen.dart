@@ -1,8 +1,8 @@
-import 'package:ebox/view/settings/profile/widgets/information_card.dart';
+import 'package:ebox/view/drawer/profile/widgets/information_card.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../model/vendor.dart';
+import '../../../model/vendor.dart';
 
 class VendorInfoScreen extends StatelessWidget {
   final Vendor vendor;

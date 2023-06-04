@@ -1,15 +1,15 @@
 import 'package:ebox/core/theme/app_colors.dart';
-import 'package:ebox/view/settings/contact_us_screen.dart';
+import 'package:ebox/view/drawer/contact_us_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
-import 'package:ebox/view/settings/about_ebox_screen.dart';
-import 'package:ebox/view/settings/change_language_screen.dart';
-import 'package:ebox/view/settings/profile/profile_screen.dart';
+import 'package:ebox/view/drawer/about_ebox_screen.dart';
+import 'package:ebox/view/drawer/change_language_screen.dart';
+import 'package:ebox/view/drawer/profile/profile_screen.dart';
 import 'package:ebox/view/home/widgets/notification/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../settings/delivery_location/location_screen.dart';
+import '../../drawer/delivery_location/location_screen.dart';
 import 'bottom_user_info.dart';
 import 'custom_list_tile.dart';
 import 'header.dart';

@@ -6,6 +6,7 @@ import '../../core/constants/const.dart';
 
 class UserLocationService {
   var client = http.Client();
+  var remoteUrl = '$baseUrl/api/user-location/location';
 
   Future<dynamic> createUserLocation({
     required String name,
@@ -21,7 +22,7 @@ class UserLocationService {
       "address": address,
     };
     var response = await client.post(
-      Uri.parse('$baseUrl/api/user-location/location'),
+      Uri.parse(remoteUrl),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token"
@@ -35,7 +36,7 @@ class UserLocationService {
     required String token,
   }) async {
     var response = await client.get(
-      Uri.parse('$baseUrl/api/user-location/location'),
+      Uri.parse(remoteUrl),
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token"

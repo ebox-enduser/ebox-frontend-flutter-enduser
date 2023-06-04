@@ -1,16 +1,15 @@
 import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/home/widgets/meal_list_vendor.dart';
-import 'package:ebox/view/home/widgets/vendor/vendor_info_screen.dart';
-import 'package:ebox/view/home/widgets/vendor/widgets/category_meal_card.dart';
+import 'package:ebox/view/widgets/vendor/vendor_info_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../controller/controllers.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../../../model/vendor.dart';
-import '../../../cart/cart_screen.dart';
+import '../../../controller/controllers.dart';
+import '../../../core/theme/app_colors.dart';
+import '../../../model/vendor.dart';
+import '../../cart/cart_screen.dart';
 
 class VendorDetail extends StatelessWidget {
   const VendorDetail({super.key, required this.vendor});
@@ -58,40 +57,21 @@ class VendorDetail extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: CircleAvatar(
-                                radius: 20.r,
-                                backgroundColor: Colors.black.withOpacity(0.4),
-                                foregroundColor: Colors.red,
-                                child: Icon(
-                                  Icons.favorite,
-                                  size: 20.r,
-                                ),
-                              ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.to(() => VendorInfoScreen(
+                                  vendor: vendor,
+                                ));
+                          },
+                          child: CircleAvatar(
+                            radius: 20.r,
+                            backgroundColor: AppColors.thirdlyColor,
+                            foregroundColor: Colors.white,
+                            child: Icon(
+                              Icons.person,
+                              size: 20.r,
                             ),
-                            SizedBox(
-                              width: 5.w,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Get.to(() => VendorInfoScreen(
-                                      vendor: vendor,
-                                    ));
-                              },
-                              child: CircleAvatar(
-                                radius: 20.r,
-                                backgroundColor: AppColors.thirdlyColor,
-                                foregroundColor: Colors.white,
-                                child: Icon(
-                                  Icons.person,
-                                  size: 20.r,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
