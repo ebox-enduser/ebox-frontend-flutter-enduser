@@ -24,45 +24,49 @@ class DetailScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: REdgeInsets.only(top: 30, left: 15, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.back(),
-                    child: CircleAvatar(
-                      radius: 20.r,
-                      backgroundColor: Colors.black.withOpacity(0.4),
-                      foregroundColor: Colors.white,
-                      child: Icon(
-                        Icons.arrow_back_ios_new,
-                        size: 20.r,
+              padding:
+                  REdgeInsets.only(left: 15, right: 15, top: 45, bottom: 15),
+              child: SizedBox(
+                height: 30.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: CircleAvatar(
+                        radius: 20.r,
+                        backgroundColor: Colors.black.withOpacity(0.4),
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.arrow_back_ios_new,
+                          size: 20.r,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 240.w,
-                    child: Text(title.tr,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(() => const ContactUsScreen());
-                    },
-                    child: CircleAvatar(
-                      radius: 20.r,
-                      backgroundColor: AppColors.thirdlyColor,
-                      foregroundColor: Colors.white,
-                      child: Icon(
-                        Icons.help_outline,
-                        size: 20.r,
+                    SizedBox(
+                      width: 240.w,
+                      child: Text(title.tr,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 20.sp, fontWeight: FontWeight.bold)),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const ContactUsScreen());
+                      },
+                      child: CircleAvatar(
+                        radius: 20.r,
+                        backgroundColor: AppColors.thirdlyColor,
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.help_outline,
+                          size: 20.r,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const Spacer(),
@@ -72,19 +76,20 @@ class DetailScreen extends StatelessWidget {
                 Positioned(
                     top: 0,
                     child: SizedBox(
-                      width: MediaQuery.of(context).size.width * 1,
-                      height: MediaQuery.of(context).size.height * 1,
+                      width: Get.width,
+                      height: Get.height,
                     )),
                 Positioned(
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 1,
-                    height: MediaQuery.of(context).size.height * 0.88,
+                    width: Get.width,
+                    height: Get.height - 92.h,
                     decoration: BoxDecoration(
                         color: AppColors.secondaryBackgroundColor,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(15.r),
                             topRight: Radius.circular(15.r))),
                     child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: SafeArea(
                         child: screen,
                       ),

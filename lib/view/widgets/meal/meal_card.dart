@@ -56,103 +56,84 @@ class MealCard extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned(
-              child: Container(
-            width: MediaQuery.of(context).size.width * 0.4,
-            // decoration: BoxDecoration(color: Colors.blue),
-          )),
-          Positioned(
-            bottom: 0,
-            child: Padding(
-              padding: REdgeInsets.only(bottom: 10),
-              child: Container(
-                width: 140.w,
-                height: 120.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.w),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: REdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.08),
-                  child: Padding(
-                    padding: REdgeInsets.only(left: 10, right: 10),
-                    child: Column(children: [
-                      Text(
-                        nameMeal,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 11.sp, fontWeight: FontWeight.bold),
-                      ),
-                      const Spacer(),
-                      Padding(
-                        padding: REdgeInsets.only(bottom: 5, left: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              '\$$price',
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14.sp),
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  // print(cartController.meals.entries
-                                  //     .map((meal) => meal.key.mealName)
-                                  //     .toList());
-                                  // print(cartController.meals.entries
-                                  //     .map((meal) => meal.key.mealName)
-                                  //     .toList()
-                                  //     .contains(mealName));
-
-                                  if (cartController.meals.entries
-                                      .map((meal) => meal.key.nameMeal)
-                                      .toList()
-                                      .contains(nameMeal)) {
-                                    return;
-                                  } else {
-                                    cartController.addMealByVendor(
-                                        meal: CartMeal(
-                                            nameMeal: nameMeal,
-                                            imageMeal: mealImage,
-                                            price: price,
-                                            ingredient: ingredient,
-                                            idMeal: idMeal,
-                                            idVendor: idVendor),
-                                        vendors: vendor,
-                                        context: context);
-                                  }
-                                },
-                                icon: Obx(
-                                  () => Icon(
-                                    cartController.meals.entries
-                                            .map((meal) => meal.key.nameMeal)
-                                            .toList()
-                                            .contains(nameMeal)
-                                        ? Icons.check_circle
-                                        : Icons.add_circle,
-                                    color: cartController.meals.entries
-                                            .map((meal) => meal.key.nameMeal)
-                                            .toList()
-                                            .contains(nameMeal)
-                                        ? AppColors.secondaryColor
-                                        : AppColors.primaryColor,
-                                    size: 40.r,
-                                  ),
-                                )),
-                          ],
-                        ),
-                      ),
-                    ]),
-                  ),
-                ),
+            bottom: 0.h,
+            child: Container(
+              width: 140.w,
+              height: 130.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.w),
+                color: Colors.white,
               ),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: REdgeInsets.only(
+                          bottom: 15.h, left: 15.w, right: 15.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '\$$price',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.sp),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                // print(cartController.meals.entries
+                                //     .map((meal) => meal.key.mealName)
+                                //     .toList());
+                                // print(cartController.meals.entries
+                                //     .map((meal) => meal.key.mealName)
+                                //     .toList()
+                                //     .contains(mealName));
+
+                                if (cartController.meals.entries
+                                    .map((meal) => meal.key.nameMeal)
+                                    .toList()
+                                    .contains(nameMeal)) {
+                                  return;
+                                } else {
+                                  cartController.addMealByVendor(
+                                      meal: CartMeal(
+                                          nameMeal: nameMeal,
+                                          imageMeal: mealImage,
+                                          price: price,
+                                          ingredient: ingredient,
+                                          idMeal: idMeal,
+                                          idVendor: idVendor),
+                                      vendors: vendor,
+                                      context: context);
+                                }
+                              },
+                              icon: Obx(
+                                () => Icon(
+                                  cartController.meals.entries
+                                          .map((meal) => meal.key.nameMeal)
+                                          .toList()
+                                          .contains(nameMeal)
+                                      ? Icons.check_circle
+                                      : Icons.add_circle,
+                                  color: cartController.meals.entries
+                                          .map((meal) => meal.key.nameMeal)
+                                          .toList()
+                                          .contains(nameMeal)
+                                      ? AppColors.secondaryColor
+                                      : AppColors.primaryColor,
+                                  size: 40.r,
+                                ),
+                              )),
+                        ],
+                      ),
+                    ),
+                  ]),
             ),
           ),
           Positioned(
-              top: 0,
+              top: 0.h,
               child: Container(
                 width: 80.w,
                 height: 70.h,
@@ -161,6 +142,15 @@ class MealCard extends StatelessWidget {
                     image: DecorationImage(
                         image: NetworkImage(mealImage), fit: BoxFit.cover)),
               )),
+          Positioned(
+            top: 80.h,
+            child: Text(
+              nameMeal,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.bold),
+            ),
+          )
         ],
       ),
     );

@@ -24,9 +24,9 @@ class VendorCard extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(
-                child: SizedBox(
+                child: Container(
               width: Get.width,
-              height: 200.h,
+              height: 170.h,
               // decoration: BoxDecoration(color: Colors.red),
             )),
             Positioned(
@@ -34,8 +34,7 @@ class VendorCard extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Container(
-                  width: Get.width,
-                  height: 160.h,
+                  height: 140.h,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -62,7 +61,7 @@ class VendorCard extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 80.h,
+                                  width: 70.h,
                                   child: Column(
                                     children: [
                                       Row(
@@ -121,7 +120,7 @@ class VendorCard extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 80.h,
+                                  width: 70.h,
                                   child: Column(
                                     children: [
                                       Row(
@@ -132,7 +131,7 @@ class VendorCard extends StatelessWidget {
                                             '\$${vendor.delivery.toString()}',
                                             style: TextStyle(
                                                 color: AppColors.textColor,
-                                                fontSize: 12.sp),
+                                                fontSize: 10.sp),
                                           ),
                                           SizedBox(
                                             width: 5.w,
@@ -159,7 +158,7 @@ class VendorCard extends StatelessWidget {
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   color: AppColors.textColor,
-                                                  fontSize: 12.sp),
+                                                  fontSize: 10.sp),
                                             ),
                                           ),
                                           SizedBox(
@@ -197,7 +196,7 @@ class VendorCard extends StatelessWidget {
                 )),
             Positioned(
                 top: 0,
-                left: 160,
+                left: 160.w,
                 child: CircleAvatar(
                   radius: 40.r,
                   foregroundImage: NetworkImage(

@@ -63,25 +63,27 @@ class _MealDetailState extends State<MealDetail> {
               image: DecorationImage(
                   fit: BoxFit.cover, image: NetworkImage(widget.mealImage)),
             ),
-            child: Padding(
-              padding: REdgeInsets.only(top: 30, left: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.back(),
-                    child: CircleAvatar(
-                      radius: 20.r,
-                      backgroundColor: Colors.black.withOpacity(0.4),
-                      foregroundColor: Colors.white,
-                      child: Icon(
-                        Icons.arrow_back_ios_new,
-                        size: 20.r,
+            child: SafeArea(
+              child: Padding(
+                padding: REdgeInsets.only(left: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () => Get.back(),
+                      child: CircleAvatar(
+                        radius: 20.r,
+                        backgroundColor: Colors.black.withOpacity(0.4),
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.arrow_back_ios_new,
+                          size: 20.r,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -90,7 +92,7 @@ class _MealDetailState extends State<MealDetail> {
           bottom: 0,
           child: Container(
             width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.59,
+            height: MediaQuery.of(context).size.height * 0.6,
             decoration: BoxDecoration(
                 color: AppColors.secondaryBackgroundColor,
                 borderRadius: BorderRadius.only(
@@ -166,7 +168,7 @@ class _MealDetailState extends State<MealDetail> {
                             height: 15.h,
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
+                            width: 170.w,
                             height: 170.h,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15.r),

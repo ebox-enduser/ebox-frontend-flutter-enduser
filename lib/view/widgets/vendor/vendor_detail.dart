@@ -33,46 +33,48 @@ class VendorDetail extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: REdgeInsets.only(top: 30, left: 15, right: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () => Get.back(),
-                          child: CircleAvatar(
-                            radius: 20.r,
-                            backgroundColor: Colors.black.withOpacity(0.4),
-                            foregroundColor: Colors.white,
-                            child: Icon(
-                              Icons.arrow_back_ios_new,
-                              size: 20.r,
+              child: SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: REdgeInsets.only(left: 15, right: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () => Get.back(),
+                            child: CircleAvatar(
+                              radius: 20.r,
+                              backgroundColor: Colors.black.withOpacity(0.4),
+                              foregroundColor: Colors.white,
+                              child: Icon(
+                                Icons.arrow_back_ios_new,
+                                size: 20.r,
+                              ),
                             ),
                           ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(() => VendorInfoScreen(
-                                  vendor: vendor,
-                                ));
-                          },
-                          child: CircleAvatar(
-                            radius: 20.r,
-                            backgroundColor: AppColors.thirdlyColor,
-                            foregroundColor: Colors.white,
-                            child: Icon(
-                              Icons.person,
-                              size: 20.r,
+                          GestureDetector(
+                            onTap: () {
+                              Get.to(() => VendorInfoScreen(
+                                    vendor: vendor,
+                                  ));
+                            },
+                            child: CircleAvatar(
+                              radius: 20.r,
+                              backgroundColor: AppColors.thirdlyColor,
+                              foregroundColor: Colors.white,
+                              child: Icon(
+                                Icons.person,
+                                size: 20.r,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
@@ -196,17 +198,15 @@ class VendorDetail extends StatelessWidget {
                       ),
                     ),
                     const Divider(),
-                    Expanded(
-                      child: MealListVendor(vendor: vendor),
-                    ),
+                    MealListVendor(vendor: vendor),
                   ],
                 ),
               ),
             ),
           ),
           Positioned(
-              top: 115,
-              left: 30,
+              top: 115.h,
+              left: 30.w,
               child: CircleAvatar(
                 radius: 50.r,
                 foregroundImage: NetworkImage(vendor.imageVendor),

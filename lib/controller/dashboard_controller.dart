@@ -2,6 +2,7 @@ import 'package:ebox/api/meal_ordered_service.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/plan.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/banner_service.dart';
 import '../api/notification_service.dart';
@@ -60,10 +61,11 @@ class DashboardController extends GetxController {
     try {
       isMealOrderedLoading(true);
 
-      //call api
-      var result = await MealOrderedService()
-          .getMealOrdered(token: authController.token);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      var token = prefs.getString('token');
 
+      //call api
+      var result = await MealOrderedService().getMealOrdered(token: token!);
       if (result != null) {
         //assign api result
         mealOrderedList.assignAll(mealOrderedListFromJson(result.body));

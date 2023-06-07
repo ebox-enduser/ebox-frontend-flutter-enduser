@@ -1,5 +1,5 @@
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/view/drawer/profile/widgets/information_card.dart';
+import 'package:ebox/view/widgets/information_card.dart';
 import 'package:ebox/view/drawer/profile/update_profile_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';

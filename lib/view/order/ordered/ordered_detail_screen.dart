@@ -21,9 +21,18 @@ class OrderedDetailScreen extends StatelessWidget {
         extendBody: true,
         body: DetailScreen(
             screen: Padding(
-              padding: REdgeInsets.only(left: 15, right: 15, bottom: 15),
+              padding: REdgeInsets.only(left: 15, right: 15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    "Complete order".tr,
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
                   GestureDetector(
                     onTap: () {
                       Get.to(() => VendorDetail(
@@ -116,8 +125,8 @@ class OrderedDetailScreen extends StatelessWidget {
                             ),
                             const Divider(),
                             ListView.builder(
-                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: mealOrdered.nameMeal.length,
                                 itemBuilder: (context, index) {
                                   return Padding(

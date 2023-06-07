@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theme/app_colors.dart';
+import '../../core/theme/app_colors.dart';
 
 class InformationCard extends StatelessWidget {
   final String title;
@@ -13,11 +13,11 @@ class InformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: REdgeInsets.only(bottom: 15),
+      padding: REdgeInsets.only(bottom: 15, right: 15, left: 15),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(15.r),
         ),
         width: MediaQuery.of(context).size.height * 0.5,
         child: Padding(

@@ -51,7 +51,7 @@ class PlanDetailScreen extends StatelessWidget {
                     idMeal: plan.idMeal),
               ),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 0.h),
+                  crossAxisCount: 2, mainAxisSpacing: 20.h),
             ),
           ],
         ),

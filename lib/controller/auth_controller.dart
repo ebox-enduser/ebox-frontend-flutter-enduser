@@ -12,7 +12,6 @@ import 'controllers.dart';
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();
-  // ignore: prefer_typing_uninitialized_variables
   var token;
 
   @override

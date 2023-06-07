@@ -70,6 +70,7 @@ dependencies:
   awesome_dialog: ^3.1.0
   flutter_add_to_cart_button: ^1.1.0
   text_scroll: ^0.2.0
+  internet_connection_checker: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:

@@ -123,8 +123,17 @@ class TranslationsApp extends Translations {
           'Delivery time': 'Delivery time', 'Transaction': 'Transaction',
           'Order Number': 'Order Number', 'Payment Method': 'Payment Method',
           'Order Time': 'Order Time', 'Search vendors': 'Search vendors',
+          'Hello': 'Hello',
+          'You are not connect to the internet':
+              'You are not connect to the internet',
+          'Please connect your internet first':
+              'សូមភ្ជាប់អ៊ីនធឺណិតរបស់អ្នកជាមុនសិន',
         },
         'km_KH': {
+          'Please connect your internet first':
+              'Please connect your internet first',
+          'You are not connect to the internet': 'អ្នកមិនភ្ជាប់អ៊ីនធឺណិតទេ។',
+          'Hello': 'សួស្ដី',
           'Search vendors': 'ស្វែងរកអ្នកលក់',
           'Order Time': 'ពេលវេលាបញ្ជាទិញ',
           'Payment Method': 'វិធី​សា​ស្រ្ត​ទូទាត់',
@@ -195,7 +204,6 @@ class TranslationsApp extends Translations {
           'Shopping Cart': 'រទេះ​ដើរ​ទិញ​ឥវ៉ាន់',
           'No meal found yet!': 'រក​មិន​ឃើញ​អាហារ​នៅ​ឡើយ​ទេ!',
           'Proceed to checkout': 'បន្តទៅការទូទាត់',
-          'Not Yet': 'នៅឡើយ',
           'Total': 'សរុប',
           'Something wrong. Try again!': 'មាន​អ្វី​ខុស។ ព្យាយាម​ម្តង​ទៀត!',
           'Loading...': 'កំពុង​ដំណើរការ...',
