@@ -23,7 +23,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   bool _newPasswordVisible = false;
   bool _confirmPasswordVisible = false;
 
-  bool _passwordsMatch = false;
   Color backgroundColor = Colors.grey.shade500;
   Color foregroundColor = Colors.grey;
   @override
@@ -39,20 +38,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   Icon(
                     Icons.warning,
                     color: AppColors.thirdlyColor,
+                    size: 16.sp,
                   ),
                   Text(
                     'WARNING'.tr,
                     maxLines: 2,
                     style: TextStyle(
                         color: AppColors.thirdlyColor,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.sp),
                   ),
                 ],
               ),
               Text(
                 'After change your password it will move to login screen.'.tr,
                 maxLines: 2,
-                style: TextStyle(color: AppColors.thirdlyColor),
+                style:
+                    TextStyle(color: AppColors.thirdlyColor, fontSize: 14.sp),
               ),
               SizedBox(
                 height: 15.h,
@@ -75,6 +77,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
 
                   hintText: 'Enter your current password'.tr,
+                  hintStyle: TextStyle(fontSize: 14.sp),
                   // Here is key idea
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -85,7 +88,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       color: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
                         _currentPasswordVisible = !_currentPasswordVisible;
                       });
@@ -114,6 +116,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
 
                   hintText: 'Enter your new password'.tr,
+                  hintStyle: TextStyle(fontSize: 14.sp),
+
                   // Here is key idea
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -124,7 +128,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       color: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
                         _newPasswordVisible = !_newPasswordVisible;
                       });
@@ -141,11 +144,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 textInputAction: TextInputAction.done,
                 obscureText: !_confirmPasswordVisible,
                 validator: (String? value) {
+                  // ignore: unrelated_type_equality_checks
                   if (value == _newPasswordController) {
-                    _passwordsMatch = true;
                     return "";
                   }
-                  _passwordsMatch = false;
 
                   return "Passwords do not match".tr;
                 },
@@ -165,6 +167,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
 
                   hintText: 'Enter retype your password'.tr,
+                  hintStyle: TextStyle(fontSize: 14.sp),
+
                   // Here is key idea
                   suffixIcon: IconButton(
                     icon: Icon(
@@ -175,7 +179,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       color: Theme.of(context).primaryColor,
                     ),
                     onPressed: () {
-                      // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
                         _confirmPasswordVisible = !_confirmPasswordVisible;
                       });

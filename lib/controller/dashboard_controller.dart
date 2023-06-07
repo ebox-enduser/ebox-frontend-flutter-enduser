@@ -2,7 +2,6 @@ import 'package:ebox/api/meal_ordered_service.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/plan.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/banner_service.dart';
 import '../api/notification_service.dart';
@@ -39,6 +38,22 @@ class DashboardController extends GetxController {
     getNotification();
     getMealOrdered();
     super.onInit();
+  }
+
+  void getVendorByName({required String keyword}) async {
+    try {
+      isVendorLoading(true);
+
+      //call api
+      var result = await VendorService().getByName(keyword: keyword);
+
+      if (result != null) {
+        //assign api result
+        vendorList.assignAll(vendorListFromJson(result.body));
+      }
+    } finally {
+      isVendorLoading(false);
+    }
   }
 
   void getMealOrdered() async {

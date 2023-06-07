@@ -38,7 +38,7 @@ class NotificationCard extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     timeago.format(notifications.createdAt),
                     overflow: TextOverflow.ellipsis,
@@ -73,6 +73,5 @@ class NotificationCard extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

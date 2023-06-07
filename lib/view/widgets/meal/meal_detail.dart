@@ -1,5 +1,4 @@
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/model/cart_meal.dart';
 import 'package:ebox/view/widgets/meal/customize_ingredients_screen.dart';
 import 'package:flutter_add_to_cart_button/flutter_add_to_cart_button.dart';
@@ -11,8 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../model/vendor.dart';
-import '../../cart/cart_screen.dart';
-import 'package:badges/badges.dart' as badges;
 
 class MealDetail extends StatefulWidget {
   final Vendor vendor;
@@ -182,7 +179,7 @@ class _MealDetailState extends State<MealDetail> {
                                     height: 15.h,
                                   ),
                                   Expanded(
-                                    child: Container(
+                                    child: SizedBox(
                                         width: Get.width,
                                         height: 200.h,
                                         // decoration:
@@ -213,6 +210,7 @@ class _MealDetailState extends State<MealDetail> {
                           ),
                           GestureDetector(
                             onTap: () async {
+                              // ignore: deprecated_member_use
                               await launch(
                                 widget.youtubeURL,
                                 forceSafariVC: false,
@@ -225,7 +223,7 @@ class _MealDetailState extends State<MealDetail> {
                             child:
                                 Stack(alignment: Alignment.center, children: [
                               Positioned(
-                                  child: Container(
+                                  child: SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.4,
                                 height: 120.h,
                               )),
@@ -250,10 +248,11 @@ class _MealDetailState extends State<MealDetail> {
                                     borderRadius: BorderRadius.circular(15.r),
                                     color: Colors.black.withOpacity(0.2)),
                               )),
-                              const Positioned(
+                              Positioned(
                                 child: Icon(
                                   Icons.play_circle,
                                   color: Colors.red,
+                                  size: 30.r,
                                 ),
                               )
                             ]),
@@ -262,7 +261,7 @@ class _MealDetailState extends State<MealDetail> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   //add ingredient and add to cart
 
                   Row(
@@ -323,7 +322,7 @@ class _MealDetailState extends State<MealDetail> {
                                     color: Colors.white,
                                   ),
                                   text: Text(
-                                    'Add to cart',
+                                    'Add to cart'.tr,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: 12.sp, color: Colors.white),

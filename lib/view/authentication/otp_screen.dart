@@ -50,7 +50,7 @@ class OTPScreen extends StatelessWidget {
                         Text(
                           'Sign up'.tr,
                           style: TextStyle(
-                              fontSize: 21.sp, fontWeight: FontWeight.bold),
+                              fontSize: 20.sp, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
@@ -61,7 +61,7 @@ class OTPScreen extends StatelessWidget {
                       children: [
                         Text(
                           'We sent your code to: '.tr,
-                          style: TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                         ),
                         Text(emailController.text),
                       ],
@@ -82,10 +82,9 @@ class OTPScreen extends StatelessWidget {
                           shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15.r))),
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.only(
-                                      left: 80, right: 80, bottom: 15, top: 15)
-                                  .r),
+                          padding: MaterialStateProperty.all(REdgeInsets.only(
+                                  left: 80, right: 80, bottom: 15, top: 15)
+                              .r),
                           backgroundColor: MaterialStateProperty.all(
                               const Color(0xffFE7655)), //Background Color
                           elevation: MaterialStateProperty.all(
@@ -95,7 +94,9 @@ class OTPScreen extends StatelessWidget {
                         child: Text(
                           'NEXT'.tr,
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14.sp),
                         ),
                       ),
                     ),
@@ -107,8 +108,7 @@ class OTPScreen extends StatelessWidget {
                         Text(
                           'Resend code in '.tr,
                           style: TextStyle(
-                            color: Color(0xffFE7655),
-                          ),
+                              color: const Color(0xffFE7655), fontSize: 14.sp),
                         ),
                         CountdownTimer(
                           endTime: endTime,

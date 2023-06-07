@@ -5,8 +5,13 @@ import 'package:get/get.dart';
 import '../../../core/theme/app_colors.dart';
 
 class SearchBar extends StatelessWidget {
+  final String hintText;
+  final TextEditingController textEditingController;
+
   const SearchBar({
     Key? key,
+    required this.hintText,
+    required this.textEditingController,
   }) : super(key: key);
 
   @override
@@ -16,6 +21,7 @@ class SearchBar extends StatelessWidget {
       child: Material(
         borderRadius: BorderRadius.circular(15),
         child: TextField(
+          controller: textEditingController,
           cursorColor: AppColors.primaryColor,
           decoration: InputDecoration(
             prefixIconColor: AppColors.primaryColor,
@@ -26,7 +32,7 @@ class SearchBar extends StatelessWidget {
             ),
             filled: true,
             fillColor: Colors.white,
-            hintText: 'Search your vendor'.tr,
+            hintText: hintText.tr,
             hintStyle: TextStyle(
                 fontSize: 12.sp,
                 color: AppColors.textColor,

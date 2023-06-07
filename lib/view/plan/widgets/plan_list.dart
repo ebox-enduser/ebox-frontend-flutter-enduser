@@ -1,8 +1,6 @@
 import 'package:ebox/view/plan/widgets/plan_card.dart';
-import 'package:ebox/view/plan/widgets/plan_loading/plan_loading_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:shimmer/shimmer.dart';
 
 import '../../../model/plan.dart';
 

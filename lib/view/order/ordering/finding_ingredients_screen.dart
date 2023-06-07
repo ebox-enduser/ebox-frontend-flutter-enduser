@@ -2,22 +2,19 @@ import 'dart:async';
 
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/view/order/ordering/rider_delivering_screen.dart';
-import 'package:ebox/view/widgets/detail_screen.dart';
 
 import '../../../core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class FindingIngredientsScreen extends StatelessWidget {
   const FindingIngredientsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () => Get.off(() => RiderDelveringScreen()));
+    Timer(const Duration(seconds: 3),
+        () => Get.off(() => const RiderDeliveringScreen()));
     return Scaffold(
       extendBody: true,
       body: SafeArea(
@@ -84,7 +81,7 @@ class FindingIngredientsScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox()
+            const SizedBox()
           ],
         ),
       ),
@@ -109,7 +106,7 @@ class FindingIngredientsScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "ETC: 40 mins",
                     style: TextStyle(

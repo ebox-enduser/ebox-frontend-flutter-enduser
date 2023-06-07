@@ -12,6 +12,7 @@ import 'controllers.dart';
 
 class AuthController extends GetxController {
   Rxn<User> user = Rxn<User>();
+  // ignore: prefer_typing_uninitialized_variables
   var token;
 
   @override
@@ -32,7 +33,7 @@ class AuthController extends GetxController {
       if (userResult.statusCode == 200) {
         user.value = userFromJson(userResult.body);
       } else {
-        EasyLoading.showError('getProfile Failed. Try again!'.tr);
+        EasyLoading.showError('Something wrong. Try again!'.tr);
       }
     } catch (e) {
       debugPrint(e.toString());
@@ -106,7 +107,7 @@ class AuthController extends GetxController {
         if (userResult.statusCode == 200) {
           user.value = userFromJson(userResult.body);
           EasyLoading.showSuccess("Welcome to eBox!".tr);
-          Get.offAll(() => DashboardScreen());
+          Get.offAll(() => const DashboardScreen());
         } else {
           EasyLoading.showError('Something wrong. Try again!'.tr);
         }
@@ -158,7 +159,6 @@ class AuthController extends GetxController {
           EasyLoading.showSuccess("Update Profile Successfully!".tr);
           Get.offAll(() => const DashboardScreen());
         } else {
-          print(userResult.body);
           EasyLoading.showError('Something wrong1. Try again!'.tr);
         }
       } else {

@@ -24,8 +24,7 @@ class User {
       id: data['id'].toString(),
       fullName: data['fullName'] ?? 'You are not set your full name yet!',
       email: data['email'] ?? 'You are not set your email yet!',
-      phoneNumber: data['phoneNumber'].toString() ??
-          'You are not set your phone number yet!',
+      phoneNumber: data['phoneNumber'].toString(),
       imageURL: data['imageURL'] ??
           'https://www.tech101.in/wp-content/uploads/2018/07/blank-profile-picture.png',
       gender: data['gender'] ?? 'You are not set your gender yet!',

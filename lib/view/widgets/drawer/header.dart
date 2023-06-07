@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-
-import '../../dashboard_screen.dart';
 
 class CustomDrawerHeader extends StatelessWidget {
   final bool isCollapsed;

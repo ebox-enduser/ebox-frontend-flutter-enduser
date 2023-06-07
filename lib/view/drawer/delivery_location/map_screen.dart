@@ -2,10 +2,9 @@ import 'package:ebox/controller/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
+// ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart';
-import 'package:geolocator/geolocator.dart';
 
 import '../../../../core/theme/app_colors.dart';
 
@@ -13,6 +12,7 @@ class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MapScreenState createState() => _MapScreenState();
 }
 
@@ -42,22 +42,23 @@ class _MapScreenState extends State<MapScreen> {
                 TileLayer(
                   urlTemplate:
                       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: ['a', 'b', 'c'],
+                  subdomains: const ['a', 'b', 'c'],
                 ),
-                if (settingController.currentPosition!.value != null)
+                if (settingController.currentPosition?.value != null)
                   MarkerLayer(
                     markers: [
                       Marker(
-                        width: 80.0,
-                        height: 80.0,
+                        width: 80.0.w,
+                        height: 80.0.h,
                         point: LatLng(
                             settingController.currentPosition!.value!.latitude,
                             settingController
                                 .currentPosition!.value!.longitude),
                         builder: (ctx) {
-                          return const Icon(
+                          return Icon(
                             Icons.location_on,
                             color: AppColors.primaryColor,
+                            size: 30.r,
                           );
                         },
                       ),
@@ -68,30 +69,23 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          top: 30,
-          left: 15,
+          top: 30.h,
+          left: 15.w,
           child: GestureDetector(
-            onTap: () {
-              Get.back();
-              Get.snackbar('Cancel!'.tr, 'You are not pick your location yet',
-                  colorText: Colors.white,
-                  margin: REdgeInsets.all(15),
-                  backgroundColor: Colors.redAccent,
-                  snackPosition: SnackPosition.BOTTOM,
-                  duration: const Duration(seconds: 2));
-            },
+            onTap: () => Get.back(),
             child: CircleAvatar(
               radius: 20.r,
-              backgroundColor: AppColors.secondaryColor,
+              backgroundColor: Colors.black.withOpacity(0.4),
               foregroundColor: Colors.white,
-              child: const Icon(
+              child: Icon(
                 Icons.arrow_back_ios_new,
+                size: 20.r,
               ),
             ),
           ),
         ),
         Positioned(
-          bottom: 15,
+          bottom: 15.h,
           child: TextButton(
             onPressed: () {
               settingController.getCurrentLocation();
@@ -116,8 +110,8 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          bottom: 15,
-          right: 15,
+          bottom: 15.h,
+          right: 15.w,
           child: GestureDetector(
             onTap: () {
               settingController.getCurrentLocation();
@@ -130,7 +124,10 @@ class _MapScreenState extends State<MapScreen> {
                 radius: 30.r,
                 backgroundColor: AppColors.thirdlyColor,
                 foregroundColor: Colors.white,
-                child: Icon(Icons.location_searching)),
+                child: Icon(
+                  Icons.location_searching,
+                  size: 30.r,
+                )),
           ),
         ),
         Positioned(
@@ -138,8 +135,8 @@ class _MapScreenState extends State<MapScreen> {
           left: 15,
           child: Obx(
             () => Text(
-              settingController.currentAddress!.value ?? 'Address',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              settingController.currentAddress?.value ?? 'Address',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
             ),
           ),
         ),

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 List<AdBanner> adBannerListFromJson(String val) => List<AdBanner>.from(
     json.decode(val)['data'].map((banner) => AdBanner.fromJson(banner)));
 
@@ -10,7 +12,7 @@ class AdBanner {
   AdBanner({required this.id, required this.image});
 
   factory AdBanner.fromJson(Map<String, dynamic> data) => AdBanner(
-      id: data['id'] ?? 'Not Yet',
+      id: data['id'] ?? 'Not Yet'.tr,
       image: data['attributes']['image']['data']['attributes']['url'] ??
-          'Not Yet');
+          'Not Yet'.tr);
 }

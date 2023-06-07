@@ -13,8 +13,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/constants/local_constant.dart';
 import 'core/constants/translations_app.dart';
 import 'firebase_options.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
+// ignore: prefer_typing_uninitialized_variables
 var token;
 PushNotificationController pushNotificationService =
     PushNotificationController();
@@ -75,9 +75,9 @@ class _MyAppState extends State<MyApp> {
   void didChangeDependencies() {
     getLocale().then((locale) {
       setState(() {
-        print("Preference Revoked ${locale.languageCode}");
+        debugPrint("Preference Revoked ${locale.languageCode}");
         Get.updateLocale(locale);
-        print("GET LOCALE Revoked ${Get.locale!.languageCode}");
+        debugPrint("GET LOCALE Revoked ${Get.locale!.languageCode}");
       });
     });
     super.didChangeDependencies();

@@ -1,4 +1,3 @@
-import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -75,9 +74,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: TextStyle(
                             fontSize: 24.sp, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
-                        height: 0.h,
-                      ),
                       Text(
                         'WHAT WE EAT'.tr,
                         style: TextStyle(
@@ -123,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'Login'.tr,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 21.sp),
+                                    fontSize: 20.sp),
                               ),
                             ],
                           ),
@@ -221,7 +217,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               'LOGIN'.tr,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.sp),
                             ),
                           ),
                           SizedBox(
@@ -233,7 +230,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(
                                 "Don't have an account? ".tr,
                                 style: TextStyle(
-                                    fontSize: 13.sp, color: Colors.grey),
+                                    fontSize: 14.sp, color: Colors.grey),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -242,7 +239,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   'Sign Up'.tr,
                                   style: TextStyle(
-                                    fontSize: 13.sp,
+                                    fontSize: 14.sp,
                                     color: const Color(0xffFE7655),
                                   ),
                                 ),
@@ -254,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             'By creating account or log in you agree with our'
                                 .tr,
                             style:
-                                TextStyle(fontSize: 13.sp, color: Colors.grey),
+                                TextStyle(fontSize: 11.sp, color: Colors.grey),
                           ),
                           SizedBox(height: 5.h),
                           Row(
@@ -263,19 +260,19 @@ class _LoginScreenState extends State<LoginScreen> {
                               Text(
                                 'Term & Conditions'.tr,
                                 style: TextStyle(
-                                  fontSize: 13.sp,
+                                  fontSize: 11.sp,
                                   color: const Color(0xffFE7655),
                                 ),
                               ),
                               Text(
                                 ' and '.tr,
                                 style: TextStyle(
-                                    fontSize: 13.sp, color: Colors.grey),
+                                    fontSize: 11.sp, color: Colors.grey),
                               ),
                               Text(
                                 'Privacy Policy'.tr,
                                 style: TextStyle(
-                                  fontSize: 13.sp,
+                                  fontSize: 11.sp,
                                   color: const Color(0xffFE7655),
                                 ),
                               ),

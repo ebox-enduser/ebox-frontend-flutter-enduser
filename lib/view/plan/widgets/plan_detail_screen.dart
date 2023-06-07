@@ -2,13 +2,9 @@ import 'package:ebox/model/vendor.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
-import '../../../controller/controllers.dart';
 import '../../../model/plan.dart';
-import '../../home/widgets/meal_list_vendor.dart';
 import '../../widgets/meal/meal_card.dart';
-import '../../widgets/meal_loading/meal_loading_list.dart';
 
 class PlanDetailScreen extends StatelessWidget {
   final Plan plan;

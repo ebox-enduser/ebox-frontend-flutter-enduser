@@ -1,16 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/model/cart_meal.dart';
-import 'package:ebox/view/dashboard_screen.dart';
 import 'package:ebox/view/order/ordering/finding_ingredients_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:get/get.dart';
-import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../core/theme/app_colors.dart';
 
@@ -146,7 +142,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     children: [
                       Container(
                         width: 140.w,
-                        height: 140.h,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -164,7 +159,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 height: 15.h,
                               ),
                               Text(
-                                'Cash on delivery',
+                                'Cash on delivery'.tr,
                                 style: TextStyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
@@ -183,7 +178,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       ),
                       Container(
                         width: 140.w,
-                        height: 140.h,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -192,6 +186,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                height: 10.h,
+                              ),
                               Image.network(
                                 'https://i.pinimg.com/originals/e2/33/f5/e233f5b0c5a358449398f202b03f063a.jpg',
                                 fit: BoxFit.cover,
@@ -201,7 +198,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 height: 10.h,
                               ),
                               Text(
-                                'ABA Bank',
+                                'ABA Bank'.tr,
                                 style: TextStyle(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w500),
@@ -237,28 +234,28 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             // /// quantity meals
             // print(cartController.meals.values.toList());
 
-            print(settingController.userLocation.value?.address);
-            print(cartController.mealsWithQuantity);
-            print(_selectedPayment);
-            print([
-              cartController.vendor.value?.delivery,
-              cartController.totalPrice
-            ].reduce((value, element) => value + element).toString());
-            print(cartController.idMeals);
-            print(cartController.idVendor);
+            // print(settingController.userLocation.value?.address);
+            // print(cartController.mealsWithQuantity);
+            // print(_selectedPayment);
+            // print([
+            //   cartController.vendor.value?.delivery,
+            //   cartController.totalPrice
+            // ].reduce((value, element) => value + element).toString());
+            // print(cartController.idMeals);
+            // print(cartController.idVendor);
 
-            print(settingController.userLocation.value?.address.runtimeType);
-            print(cartController.mealsWithQuantity.runtimeType);
-            print(_selectedPayment.runtimeType);
-            print([
-              cartController.vendor.value?.delivery,
-              cartController.totalPrice
-            ]
-                .reduce((value, element) => value + element)
-                .toString()
-                .runtimeType);
-            print(cartController.idMeals.runtimeType);
-            print(cartController.idVendor.runtimeType);
+            // print(settingController.userLocation.value?.address.runtimeType);
+            // print(cartController.mealsWithQuantity.runtimeType);
+            // print(_selectedPayment.runtimeType);
+            // print([
+            //   cartController.vendor.value?.delivery,
+            //   cartController.totalPrice
+            // ]
+            //     .reduce((value, element) => value + element)
+            //     .toString()
+            //     .runtimeType);
+            // print(cartController.idMeals.runtimeType);
+            // print(cartController.idVendor.runtimeType);
 
             dashboardController.createMealOrder(
               address:
@@ -272,16 +269,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               meals: cartController.idMeals,
               vendor: cartController.idVendor,
             );
-            // AwesomeDialog(
-            //   context: context,
-            //   dialogType: DialogType.success,
-            //   animType: AnimType.bottomSlide,
-            //   title: 'Order Success!',
-            //   dismissOnTouchOutside: false,
-            //   btnOkOnPress: () {
-            //     Get.offAll(() => FindingIngredientsScreen());
-            //   },
-            // ).show();
+            AwesomeDialog(
+              context: context,
+              dialogType: DialogType.success,
+              animType: AnimType.bottomSlide,
+              title: 'Order Success!',
+              dismissOnTouchOutside: false,
+              btnOkOnPress: () {
+                Get.offAll(() => const FindingIngredientsScreen());
+              },
+            ).show();
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,

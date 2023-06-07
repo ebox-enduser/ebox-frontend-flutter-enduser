@@ -1,4 +1,3 @@
-import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/view/drawer/profile/widgets/information_card.dart';
 import 'package:ebox/view/drawer/profile/update_profile_screen.dart';
@@ -6,10 +5,7 @@ import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:intl/intl.dart';
 
-import '../../../controller/setting_controller.dart';
 import '../../../core/theme/app_colors.dart';
 import 'change_password_screen.dart';
 
@@ -29,11 +25,13 @@ class ProfileScreen extends StatelessWidget {
           ),
           Padding(
             padding: REdgeInsets.all(15),
-            child: Divider(),
+            child: const Divider(),
           ),
-          InformationCard(
-            title: 'Full Name'.tr,
-            Data: authController.user.value?.fullName ?? 'Not Yet',
+          Obx(
+            () => InformationCard(
+              title: 'Full Name'.tr,
+              Data: authController.user.value?.fullName ?? 'Not Yet',
+            ),
           ),
           Obx(
             () {
@@ -50,23 +48,29 @@ class ProfileScreen extends StatelessWidget {
               }
             },
           ),
-          InformationCard(
-            title: 'Email'.tr,
-            Data: authController.user.value?.email ?? 'Not Yet',
+          Obx(
+            () => InformationCard(
+              title: 'Email'.tr,
+              Data: authController.user.value?.email ?? 'Not Yet',
+            ),
           ),
-          InformationCard(
-            title: 'Birthday'.tr,
-            Data: authController.user.value?.birthDay ?? 'Not Yet',
+          Obx(
+            () => InformationCard(
+              title: 'Birthday'.tr,
+              Data: authController.user.value?.birthDay ?? 'Not Yet',
+            ),
           ),
-          InformationCard(
-            title: 'Gender'.tr,
-            Data: authController.user.value!.gender,
+          Obx(
+            () => InformationCard(
+              title: 'Gender'.tr,
+              Data: authController.user.value?.gender ?? 'Not Yet',
+            ),
           ),
           Padding(
             padding: REdgeInsets.all(15.0),
             child: TextButton(
               onPressed: () {
-                Get.to(() => ChangePasswordScreen());
+                Get.to(() => const ChangePasswordScreen());
               },
               style: TextButton.styleFrom(
                 foregroundColor: Colors.white,
@@ -89,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
-            Get.to(() => UpdateInformation());
+            Get.to(() => const UpdateInformation());
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,

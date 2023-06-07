@@ -1,13 +1,10 @@
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/model/vendor.dart';
 import 'package:ebox/view/widgets/meal/meal_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
-import '../../../controller/cart_controller.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../model/cart_meal.dart';
 
@@ -81,7 +78,7 @@ class CartMealCard extends StatelessWidget {
                             fontSize: 12.sp,
                             color: Colors.red),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       SizedBox(
                         width: 160.w,
                         child: Text(

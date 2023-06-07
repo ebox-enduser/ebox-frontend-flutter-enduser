@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:ebox/controller/controllers.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/constants/const.dart';
 

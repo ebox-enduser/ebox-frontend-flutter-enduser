@@ -1,3 +1,23 @@
 {
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "cSpell.words": [
+    "bestinbox",
+    "datetime",
+    "easyloading",
+    "ebox",
+    "geolocator",
+    "Getx",
+    "horiz",
+    "latlong",
+    "navigationbar",
+    "pinput",
+    "Placemark",
+    "placemarks",
+    "prefs",
+    "screenutil",
+    "signup",
+    "timeago",
+    "timelapse",
+    "unfocus"
+  ]
 }

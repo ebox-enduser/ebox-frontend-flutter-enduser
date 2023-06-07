@@ -1,16 +1,14 @@
-import 'package:ebox/controller/auth_controller.dart';
 import '../../../core/theme/app_colors.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../core/constants/local_constant.dart';
 import '../widgets/logo_text.dart';
 
 class ChangeLanguageScreen extends StatefulWidget {
-  ChangeLanguageScreen({super.key});
+  const ChangeLanguageScreen({super.key});
 
   @override
   State<ChangeLanguageScreen> createState() => _ChangeLanguageScreenState();
@@ -69,7 +67,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                             height: 5.h,
                           ),
                           Radio(
-                              value: Locale('en', 'US'),
+                              value: const Locale('en', 'US'),
                               activeColor: AppColors.primaryColor,
                               groupValue: _selectedLanguage,
                               onChanged: (value) {
@@ -104,7 +102,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                             style: TextStyle(fontSize: 12.sp),
                           ),
                           Radio(
-                              value: Locale('km', 'KH'),
+                              value: const Locale('km', 'KH'),
                               activeColor: AppColors.primaryColor,
                               groupValue: _selectedLanguage,
                               onChanged: (value) {

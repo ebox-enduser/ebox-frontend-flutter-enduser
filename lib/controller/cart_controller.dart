@@ -1,12 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:confirm_dialog/confirm_dialog.dart';
-import 'package:ebox/api/meal_ordered_service.dart';
-import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/vendor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/theme/app_colors.dart';
 import '../model/cart_meal.dart';

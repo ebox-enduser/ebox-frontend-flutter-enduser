@@ -1,6 +1,5 @@
 import 'package:ebox/core/theme/app_colors.dart';
 import 'package:ebox/view/drawer/contact_us_screen.dart';
-import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:ebox/view/drawer/about_ebox_screen.dart';
 import 'package:ebox/view/drawer/change_language_screen.dart';
 import 'package:ebox/view/drawer/profile/profile_screen.dart';
@@ -51,7 +50,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 icon: Icons.person,
                 title: 'Profile'.tr,
                 infoCount: 0,
-                widget: ProfileScreen(),
+                widget: const ProfileScreen(),
               ),
               CustomListTile(
                 isCollapsed: _isCollapsed,
@@ -65,7 +64,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 icon: Icons.notifications,
                 title: 'Notification'.tr,
                 infoCount: 0,
-                widget: NotificationScreen(),
+                widget: const NotificationScreen(),
               ),
               const Divider(color: Colors.grey),
               const Spacer(),
@@ -74,21 +73,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 icon: Icons.language,
                 title: 'Change Language'.tr,
                 infoCount: 0,
-                widget: ChangeLanguageScreen(),
+                widget: const ChangeLanguageScreen(),
               ),
               CustomListTile(
                 isCollapsed: _isCollapsed,
                 icon: Icons.phone,
                 title: 'Contact Us'.tr,
                 infoCount: 0,
-                widget: ContactUsScreen(),
+                widget: const ContactUsScreen(),
               ),
               CustomListTile(
                 isCollapsed: _isCollapsed,
                 icon: Icons.info,
                 title: 'About eBox'.tr,
                 infoCount: 0,
-                widget: AboutEbox(),
+                widget: const AboutEbox(),
               ),
               SizedBox(height: 10.h),
               BottomUserInfo(isCollapsed: _isCollapsed),

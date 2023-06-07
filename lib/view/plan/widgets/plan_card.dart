@@ -1,4 +1,3 @@
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/plan/widgets/plan_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,8 +40,8 @@ class PlanCard extends StatelessWidget {
             ),
           )),
           Positioned(
-            top: 15,
-            left: 15,
+            top: 15.h,
+            left: 15.w,
             child: Text(
               plan.name.tr,
               style: TextStyle(

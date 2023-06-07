@@ -1,4 +1,3 @@
-import 'package:ebox/view/drawer/about_ebox_screen.dart';
 import 'package:ebox/view/drawer/contact_us_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +42,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                   SizedBox(
                     width: 240.w,
-                    child: Text(title,
+                    child: Text(title.tr,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -51,7 +50,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => ContactUsScreen());
+                      Get.to(() => const ContactUsScreen());
                     },
                     child: CircleAvatar(
                       radius: 20.r,

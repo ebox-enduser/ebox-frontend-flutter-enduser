@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 List<Vendor> vendorListFromJson(String val) => List<Vendor>.from(
     json.decode(val)['data'].map((val) => Vendor.fromJson(val)));
 
@@ -47,13 +49,13 @@ class Vendor {
   });
 
   factory Vendor.fromJson(Map<dynamic, dynamic> data) => Vendor(
-        idVendor: data['id'] ?? 'Not Yet',
+        idVendor: data['id'] ?? 'Not Yet'.tr,
         nameMeal: List<String>.from(data['attributes']['meals']['data']
-            .map((data) => data['attributes']['title'] ?? 'Not Yet')),
+            .map((data) => data['attributes']['title'] ?? 'Not Yet'.tr)),
         idMeal: List<int>.from(data['attributes']['meals']['data']
-            .map((data) => data['id'] ?? 'Not Yet')),
+            .map((data) => data['id'] ?? 'Not Yet'.tr)),
         foodType: List<String>.from(data['attributes']['meals']['data']
-            .map((data) => data['attributes']['foodType'] ?? 'Not Yet')),
+            .map((data) => data['attributes']['foodType'] ?? 'Not Yet'.tr)),
         price: List<int>.from(data['attributes']['meals']['data']
             .map((data) => data['attributes']['price'] ?? 0)),
         fat: List<int>.from(data['attributes']['meals']['data']
@@ -61,23 +63,23 @@ class Vendor {
         imageMeal: List<String>.from(data['attributes']['meals']['data'].map(
             (data) =>
                 data['attributes']['image']['data']['attributes']['url'] ??
-                'Not Yet')),
-        location: data['attributes']['location'] ?? 'Not Yet',
-        businessTime: data['attributes']['businessTime'] ?? 'Not Yet',
-        nameVendor: data['attributes']['name'] ?? 'Not Yet',
-        phoneNumber: data['attributes']['phoneNumber'].toString() ?? 'Not Yet',
+                'Not Yet'.tr)),
+        location: data['attributes']['location'] ?? 'Not Yet'.tr,
+        businessTime: data['attributes']['businessTime'] ?? 'Not Yet'.tr,
+        nameVendor: data['attributes']['name'] ?? 'Not Yet'.tr,
+        phoneNumber: data['attributes']['phoneNumber'].toString(),
         imageVendor: data['attributes']['image']['data']['attributes']['url'] ??
-            'Not Yet',
+            'Not Yet'.tr,
         delivery: data['attributes']['delivery'] ?? 0,
-        distance: data['attributes']['distance'].toString() ?? 'Not Yet',
-        duration: data['attributes']['duration'].toString() ?? 'Not Yet',
-        ordered: data['attributes']['ordered'].toString() ?? 'Not Yet',
+        distance: data['attributes']['distance'].toString(),
+        duration: data['attributes']['duration'].toString(),
+        ordered: data['attributes']['ordered'].toString(),
         imageVendorBackground: data['attributes']['vendorImageBackground']
                 ['data']['attributes']['url'] ??
-            'Not Yet',
+            'Not Yet'.tr,
         ingredients: List<String>.from(data['attributes']['meals']['data']
-            .map((data) => data['attributes']['ingredients'] ?? 'Not Yet')),
+            .map((data) => data['attributes']['ingredients'] ?? 'Not Yet'.tr)),
         youtubeURL: List<String>.from(data['attributes']['meals']['data']
-            .map((data) => data['attributes']['youtubeURL'] ?? 'Not Yet')),
+            .map((data) => data['attributes']['youtubeURL'] ?? 'Not Yet'.tr)),
       );
 }

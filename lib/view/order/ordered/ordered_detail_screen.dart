@@ -1,4 +1,3 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/meal_ordered.dart';
 import 'package:ebox/model/vendor.dart';
@@ -108,14 +107,14 @@ class OrderedDetailScreen extends StatelessWidget {
                                   width: 5.w,
                                 ),
                                 Text(
-                                  'Meals Box',
+                                  'Meals'.tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
                                 )
                               ],
                             ),
-                            Divider(),
+                            const Divider(),
                             ListView.builder(
                                 physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
@@ -152,15 +151,20 @@ class OrderedDetailScreen extends StatelessWidget {
                                                   fontSize: 12.sp,
                                                   fontWeight: FontWeight.w500),
                                             ),
-                                            Text(
-                                              mealOrdered.ingredients[index],
-                                              style: TextStyle(
-                                                  fontSize: 10.sp,
-                                                  color: AppColors.textColor),
+                                            SizedBox(
+                                              width: 200.w,
+                                              child: Text(
+                                                mealOrdered.ingredients[index],
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                    fontSize: 10.sp,
+                                                    color: AppColors.textColor),
+                                              ),
                                             ),
                                           ],
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         Text(
                                           '\$${mealOrdered.price[index]}',
                                           style: TextStyle(
@@ -175,13 +179,13 @@ class OrderedDetailScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  'Delivery fee',
+                                  'Delivery fee'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   '\$${mealOrdered.delivery}',
                                   style: TextStyle(
@@ -192,7 +196,7 @@ class OrderedDetailScreen extends StatelessWidget {
                             ),
                             Padding(
                               padding: REdgeInsets.only(top: 10, bottom: 10),
-                              child: Divider(),
+                              child: const Divider(),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -201,13 +205,13 @@ class OrderedDetailScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     Text(
-                                      'Total ',
+                                      'Total'.tr,
                                       style: TextStyle(
                                           fontSize: 14.sp,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     Text(
-                                      '\$${mealOrdered.totalPrice}',
+                                      ' \$${mealOrdered.totalPrice}',
                                       style: TextStyle(
                                           fontSize: 14.sp,
                                           color: Colors.red,
@@ -215,12 +219,24 @@ class OrderedDetailScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Text(
-                                  'Exchange rate 1\$ = 4100 riel',
-                                  style: TextStyle(
-                                    fontSize: 10.sp,
-                                    color: AppColors.textColor,
-                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'Exchange rate'.tr,
+                                      style: TextStyle(
+                                        fontSize: 10.sp,
+                                        color: AppColors.textColor,
+                                      ),
+                                    ),
+                                    Text(
+                                      ' 1\$ = 4100 riel',
+                                      style: TextStyle(
+                                        fontSize: 10.sp,
+                                        color: AppColors.textColor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -252,31 +268,31 @@ class OrderedDetailScreen extends StatelessWidget {
                                   width: 5.w,
                                 ),
                                 Text(
-                                  'Delivery information',
+                                  'Delivery information'.tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
                                 )
                               ],
                             ),
-                            Divider(),
+                            const Divider(),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Delivery address',
+                                  'Delivery address'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
-                                  width: 200.w,
+                                  width: 180.w,
                                   child: Text(
                                     settingController
                                             .userLocation.value?.address ??
-                                        'Not Yet',
+                                        'Not Yet'.tr,
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontSize: 12.sp,
@@ -292,13 +308,13 @@ class OrderedDetailScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Delivery time',
+                                  'Delivery time'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
@@ -339,25 +355,25 @@ class OrderedDetailScreen extends StatelessWidget {
                                   width: 5.w,
                                 ),
                                 Text(
-                                  'Transaction',
+                                  'Transaction'.tr,
                                   style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500),
                                 )
                               ],
                             ),
-                            Divider(),
+                            const Divider(),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Order Number',
+                                  'Order Number'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
@@ -377,13 +393,13 @@ class OrderedDetailScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Payment Method',
+                                  'Payment Method'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(
@@ -403,13 +419,13 @@ class OrderedDetailScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Order Time',
+                                  'Order Time'.tr,
                                   style: TextStyle(
                                     fontSize: 12.sp,
                                     color: AppColors.textColor,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SizedBox(
                                   width: 200.w,
                                   child: Text(

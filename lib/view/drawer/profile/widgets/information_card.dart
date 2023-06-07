@@ -1,14 +1,13 @@
-import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/view/drawer/profile/update_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/theme/app_colors.dart';
 
 class InformationCard extends StatelessWidget {
   final String title;
+  // ignore: non_constant_identifier_names
   final String Data;
+  // ignore: non_constant_identifier_names
   const InformationCard({super.key, required this.title, required this.Data});
 
   @override

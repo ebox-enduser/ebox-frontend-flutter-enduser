@@ -1,23 +1,20 @@
 import 'dart:async';
 
 import 'package:ebox/view/order/ordering/complete_ordering_screen.dart';
-import 'package:ebox/view/widgets/detail_screen.dart';
 
 import '../../../controller/controllers.dart';
 import '../../../core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-class RiderDelveringScreen extends StatelessWidget {
-  const RiderDelveringScreen({super.key});
+class RiderDeliveringScreen extends StatelessWidget {
+  const RiderDeliveringScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 3), () => Get.off(() => CompleteOrderingScreen()));
+    Timer(const Duration(seconds: 3),
+        () => Get.off(() => const CompleteOrderingScreen()));
     return Scaffold(
       extendBody: true,
       body: SafeArea(
@@ -88,7 +85,7 @@ class RiderDelveringScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox()
+            const SizedBox()
           ],
         ),
       ),
@@ -113,7 +110,7 @@ class RiderDelveringScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "ETC: 40 mins",
                     style: TextStyle(

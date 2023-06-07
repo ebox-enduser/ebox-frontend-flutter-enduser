@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../../../core/constants/const.dart';
 
 class BannerCard extends StatelessWidget {
   final String imageUrl;
@@ -11,21 +10,21 @@ class BannerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: EdgeInsets.all(10.r),
       child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: BorderRadius.all(Radius.circular(10.r)),
         child: CachedNetworkImage(
-          imageUrl: '$imageUrl',
+          imageUrl: imageUrl,
           progressIndicatorBuilder: (context, url, downloadProgress) =>
               Shimmer.fromColors(
             highlightColor: Colors.white,
             baseColor: Colors.grey.shade300,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                   color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: BorderRadius.all(Radius.circular(10.r))),
               child: ClipRRect(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius: BorderRadius.all(Radius.circular(10.r)),
                 child: AspectRatio(
                   aspectRatio: 16 / 9,
                   child: Container(

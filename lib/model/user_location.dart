@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 UserLocation userLocationFromJson(String str) =>
     UserLocation.fromJson(json.decode(str));
 
@@ -20,9 +22,9 @@ class UserLocation {
 
   factory UserLocation.fromJson(Map<String, dynamic> data) => UserLocation(
         id: data['id'].toString(),
-        name: data['name'] ?? 'Not Yet',
-        description: data['description'] ?? 'Not Yet',
-        position: data['position'] ?? 'Not Yet',
-        address: data['address'] ?? 'Not Yet',
+        name: data['name'] ?? 'Not Yet'.tr,
+        description: data['description'] ?? 'Not Yet'.tr,
+        position: data['position'] ?? 'Not Yet'.tr,
+        address: data['address'] ?? 'Not Yet'.tr,
       );
 }

@@ -1,12 +1,7 @@
-import 'package:ebox/core/constants/const.dart';
-import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
-
-import '../../../core/theme/app_colors.dart';
-import '../../../../model/vendor.dart';
 
 class VendorLoadingCard extends StatelessWidget {
   const VendorLoadingCard({
@@ -24,7 +19,7 @@ class VendorLoadingCard extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(
-                child: Container(
+                child: SizedBox(
               width: Get.width,
               height: 200.h,
               // decoration: BoxDecoration(color: Colors.red),

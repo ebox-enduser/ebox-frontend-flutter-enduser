@@ -28,7 +28,7 @@ class _MainScreenState extends State<DashboardScreen> {
   List listScreen = [
     const PlanScreen(),
     const HomeScreen(),
-    OrderedScreen(),
+    const OrderedScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -59,8 +59,8 @@ class _MainScreenState extends State<DashboardScreen> {
       extendBodyBehindAppBar: true,
       backgroundColor: AppColors.secondaryBackgroundColor,
       appBar: AppBar(
-        title: Obx(
-          () => SizedBox(
+        title: Obx(() {
+          return SizedBox(
             height: 15.h,
             child: TextScroll(
               '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
@@ -70,8 +70,8 @@ class _MainScreenState extends State<DashboardScreen> {
               textAlign: TextAlign.left,
               selectable: true,
             ),
-          ),
-        ),
+          );
+        }),
         leading: Builder(
           builder: (BuildContext context) {
             return GestureDetector(
@@ -93,7 +93,7 @@ class _MainScreenState extends State<DashboardScreen> {
             padding: REdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => ProfileScreen());
+                Get.to(() => const ProfileScreen());
               },
               child: Obx(
                 () => CircleAvatar(
@@ -165,7 +165,7 @@ class _MainScreenState extends State<DashboardScreen> {
         if (cartController.meals.isEmpty) {
           return FloatingActionButton(
             onPressed: () {
-              Get.to(() => CartScreen());
+              Get.to(() => const CartScreen());
             },
             foregroundColor: Colors.white,
             backgroundColor: AppColors.secondaryColor,
@@ -181,7 +181,7 @@ class _MainScreenState extends State<DashboardScreen> {
             ),
             child: FloatingActionButton(
               onPressed: () {
-                Get.to(() => CartScreen());
+                Get.to(() => const CartScreen());
               },
               foregroundColor: Colors.white,
               backgroundColor: AppColors.secondaryColor,

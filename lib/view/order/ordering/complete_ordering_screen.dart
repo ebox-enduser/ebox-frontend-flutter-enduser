@@ -1,14 +1,10 @@
 import 'package:ebox/view/dashboard_screen.dart';
-import 'package:ebox/view/widgets/detail_screen.dart';
 
 import '../../../controller/controllers.dart';
 import '../../../core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CompleteOrderingScreen extends StatelessWidget {
   const CompleteOrderingScreen({super.key});
@@ -89,7 +85,7 @@ class CompleteOrderingScreen extends StatelessWidget {
                 )
               ],
             ),
-            SizedBox()
+            const SizedBox()
           ],
         ),
       ),
@@ -97,7 +93,7 @@ class CompleteOrderingScreen extends StatelessWidget {
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
-            Get.offAll(() => DashboardScreen());
+            Get.offAll(() => const DashboardScreen());
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,

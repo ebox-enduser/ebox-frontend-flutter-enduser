@@ -1,12 +1,11 @@
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../cart/checkout_screen.dart';
 
+// ignore: must_be_immutable
 class CustomizeIngredientsScreen extends StatelessWidget {
   final String mealImage;
   final String title;

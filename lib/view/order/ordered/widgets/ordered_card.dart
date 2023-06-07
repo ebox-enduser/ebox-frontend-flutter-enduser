@@ -1,10 +1,5 @@
-import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/meal_ordered.dart';
-import 'package:ebox/model/vendor.dart';
 import 'package:ebox/view/order/ordered/ordered_detail_screen.dart';
-import 'package:ebox/view/order/ordering/complete_ordering_screen.dart';
-import 'package:ebox/view/order/ordering/rider_delivering_screen.dart';
-import 'package:ebox/view/order/ordering/finding_ingredients_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -27,7 +22,7 @@ class OrderedCard extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Positioned(
-            child: Container(
+            child: SizedBox(
           width: Get.width,
           height: 150.h,
           // decoration: BoxDecoration(color: Colors.red),
@@ -70,7 +65,7 @@ class OrderedCard extends StatelessWidget {
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Text(
                                     timeago.format(mealOrdered.createdAt),
                                     overflow: TextOverflow.ellipsis,

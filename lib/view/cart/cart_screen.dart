@@ -1,5 +1,4 @@
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/model/vendor.dart';
 import 'package:ebox/view/cart/checkout_screen.dart';
 import 'package:ebox/view/cart/widgets/cart_meal_card.dart';
 import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
@@ -83,7 +82,7 @@ class CartScreen extends StatelessWidget {
                                         fontSize: 14.sp,
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                   Icon(
                                     Icons.arrow_forward_ios,
                                     size: 18.r,
@@ -212,7 +211,7 @@ class CartScreen extends StatelessWidget {
               padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
               child: TextButton(
                 onPressed: () {
-                  Get.to(() => CheckoutScreen());
+                  Get.to(() => const CheckoutScreen());
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,

@@ -12,6 +12,6 @@ class AppColors {
   static const Color textColor = Color(0xff6b7280);
   static const Color lightBlue = Color(0xFFe3ecfa);
   static const Color black = Color(0xff000000);
-  static const Color barColor = Color(0xF5F5F5);
+  static const Color barColor = Color(0xF5F5F5F5);
   static const Color backgroundComponent = Color(0xffF8F8F8);
 }

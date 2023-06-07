@@ -59,8 +59,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       });
                     },
                     decoration: InputDecoration(
-                      hintText:
-                          settingController.userLocation.value?.name ?? 'Name',
+                      hintText: settingController.userLocation.value?.name ??
+                          'Name'.tr,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -83,7 +83,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     decoration: InputDecoration(
                       hintText:
                           settingController.userLocation.value?.description ??
-                              'Description',
+                              'Description'.tr,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0.r),
                       ),
@@ -97,13 +97,16 @@ class _LocationScreenState extends State<LocationScreen> {
                   child: Row(
                     children: [
                       GestureDetector(
-                        onTap: () => Get.to(() => MapScreen()),
+                        onTap: () => Get.to(() => const MapScreen()),
                         child: Center(
                           child: CircleAvatar(
                               radius: 30.r,
                               backgroundColor: AppColors.primaryColor,
                               foregroundColor: Colors.white,
-                              child: Icon(Icons.location_on)),
+                              child: Icon(
+                                Icons.location_on,
+                                size: 30.r,
+                              )),
                         ),
                       ),
                       SizedBox(

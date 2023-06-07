@@ -92,10 +92,10 @@ class CustomListTile extends StatelessWidget {
                           child: Center(
                             child: Text(
                               infoCount.toString(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12.sp),
                             ),
                           ),
                         ),

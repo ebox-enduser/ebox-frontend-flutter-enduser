@@ -1,7 +1,6 @@
 import 'package:ebox/view/plan/widgets/plan_list.dart';
 import 'package:ebox/view/plan/widgets/plan_loading/plan_loading_list.dart';
 
-import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -46,7 +45,7 @@ class PlanScreen extends StatelessWidget {
                     plans: dashboardController.planList,
                   );
                 } else {
-                  return PlanLoadingList();
+                  return const PlanLoadingList();
                 }
               }),
             ],

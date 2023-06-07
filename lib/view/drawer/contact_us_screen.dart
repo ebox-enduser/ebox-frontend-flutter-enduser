@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../core/theme/app_colors.dart';
 import '../widgets/detail_screen.dart';
 import '../widgets/logo_text.dart';
-import 'about_ebox_screen.dart';
 
 class ContactUsScreen extends StatelessWidget {
   const ContactUsScreen({super.key});
@@ -19,7 +16,7 @@ class ContactUsScreen extends StatelessWidget {
             padding: REdgeInsets.all(15),
             child: Column(
               children: [
-                LogoText(),
+                const LogoText(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

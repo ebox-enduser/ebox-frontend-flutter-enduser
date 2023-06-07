@@ -1,15 +1,11 @@
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/home/widgets/meal_list_vendor.dart';
 import 'package:ebox/view/widgets/vendor/vendor_info_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/controllers.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../model/vendor.dart';
-import '../../cart/cart_screen.dart';
 
 class VendorDetail extends StatelessWidget {
   const VendorDetail({super.key, required this.vendor});
@@ -189,7 +185,7 @@ class VendorDetail extends StatelessWidget {
                                 width: 5.w,
                               ),
                               Text(
-                                '${vendor.ordered}',
+                                vendor.ordered,
                                 style: TextStyle(
                                     color: AppColors.textColor,
                                     fontSize: 10.sp),
@@ -199,7 +195,7 @@ class VendorDetail extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(),
+                    const Divider(),
                     Expanded(
                       child: MealListVendor(vendor: vendor),
                     ),

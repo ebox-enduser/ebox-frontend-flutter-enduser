@@ -1,6 +1,4 @@
-import 'package:ebox/controller/cart_controller.dart';
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/model/vendor.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -86,14 +84,14 @@ class MealCard extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 11.sp, fontWeight: FontWeight.bold),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
                         padding: REdgeInsets.only(bottom: 5, left: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '\$${price}',
+                              '\$$price',
                               style: TextStyle(
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,

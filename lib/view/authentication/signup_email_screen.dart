@@ -1,4 +1,3 @@
-import 'package:ebox/controller/auth_controller.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +40,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
               children: [
                 Text(
                   'Create your own email and password'.tr,
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey, fontSize: 14.sp),
                 ),
                 SizedBox(
                   height: 30.h,
@@ -126,7 +125,6 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
-            elevation: 5,
             backgroundColor: AppColors.primaryColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
             shape: RoundedRectangleBorder(

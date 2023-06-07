@@ -1,20 +1,14 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:ebox/api/user_location_service.dart';
-import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/user_location.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:latlong2/latlong.dart';
-
-import '../model/user.dart';
 
 class SettingController extends GetxController {
   File? profile;
@@ -39,6 +33,7 @@ class SettingController extends GetxController {
         status: 'Loading...'.tr,
         dismissOnTap: false,
       );
+      // ignore: prefer_typing_uninitialized_variables
       var token;
 
       //after the login REST api call && response code ==200
@@ -73,6 +68,7 @@ class SettingController extends GetxController {
         status: 'Loading...'.tr,
         dismissOnTap: false,
       );
+      // ignore: prefer_typing_uninitialized_variables
       var token;
 
       //after the login REST api call && response code ==200
@@ -103,7 +99,7 @@ class SettingController extends GetxController {
       getAddressFromLatLng();
       update();
     }).catchError((e) {
-      print(e);
+      debugPrint(e);
     });
   }
 
@@ -120,7 +116,7 @@ class SettingController extends GetxController {
       currentAddress!.value =
           "${place.street}, ${place.subLocality}, ${place.locality}, ${place.country}";
     } catch (e) {
-      print(e);
+      debugPrint(e as String?);
     }
   }
 
@@ -178,16 +174,18 @@ class SettingController extends GetxController {
     await ref.putFile(file);
 
     ref.getDownloadURL().then((imageURL) async {
-      debugPrint('value: ${imageURL}');
+      debugPrint('value: $imageURL');
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('imageURL', imageURL);
     });
 
+    // ignore: unnecessary_null_comparison
     if (pickImage == null) {
       return;
     }
     profile = File(pickImage.path);
     update();
+    // ignore: unnecessary_null_comparison
     pickImage == null;
     EasyLoading.dismiss();
   }

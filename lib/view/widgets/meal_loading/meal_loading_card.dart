@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../core/theme/app_colors.dart';
 
 class MealLoadingCard extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MealLoadingCard({Key? key});
 
   @override

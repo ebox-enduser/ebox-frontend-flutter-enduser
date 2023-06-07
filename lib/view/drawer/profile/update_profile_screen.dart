@@ -48,13 +48,12 @@ class _UpdateInformationState extends State<UpdateInformation> {
         return Theme(
           data: Theme.of(context).copyWith(
             colorScheme: const ColorScheme.light(
-              primary: AppColors.primaryColor, // <-- SEE HERE
-              //onPrimary: Colors.redAccent, // <-- SEE HERE
-              onSurface: AppColors.primaryColor, // <-- SEE HERE
+              primary: AppColors.primaryColor,
+              onSurface: AppColors.primaryColor,
             ),
             textButtonTheme: TextButtonThemeData(
               style: TextButton.styleFrom(
-                foregroundColor: AppColors.primaryColor, // button text color
+                foregroundColor: AppColors.primaryColor,
               ),
             ),
           ),
@@ -69,7 +68,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
     if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
-        print(_selectedDate);
+        debugPrint(_selectedDate as String?);
       });
     }
   }
@@ -203,7 +202,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
                 ),
                 Padding(
                   padding: REdgeInsets.all(15),
-                  child: Divider(),
+                  child: const Divider(),
                 ),
                 Text(
                   'Full Name'.tr,
@@ -263,7 +262,10 @@ class _UpdateInformationState extends State<UpdateInformation> {
                               radius: 30.r,
                               backgroundColor: AppColors.primaryColor,
                               foregroundColor: Colors.white,
-                              child: Icon(Icons.edit)),
+                              child: Icon(
+                                Icons.edit,
+                                size: 25.r,
+                              )),
                         ),
                       ),
                       SizedBox(
@@ -423,7 +425,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
           onPressed: () async {
             if (_passwordController.text.isEmpty) {
               Get.snackbar('Something wrong!'.tr,
-                  'You need to enter your password to change your profile',
+                  'You need to enter your password to change your profile'.tr,
                   colorText: Colors.white,
                   margin: REdgeInsets.all(15),
                   backgroundColor: Colors.redAccent,

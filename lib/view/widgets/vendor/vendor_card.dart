@@ -1,12 +1,9 @@
-import 'package:ebox/core/constants/const.dart';
 import 'package:ebox/view/widgets/vendor/vendor_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/controllers.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../model/cart_meal.dart';
 import '../../../model/vendor.dart';
 
 class VendorCard extends StatelessWidget {
@@ -27,7 +24,7 @@ class VendorCard extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Positioned(
-                child: Container(
+                child: SizedBox(
               width: Get.width,
               height: 200.h,
               // decoration: BoxDecoration(color: Colors.red),
@@ -157,7 +154,7 @@ class VendorCard extends StatelessWidget {
                                           SizedBox(
                                             width: 45.w,
                                             child: Text(
-                                              '${vendor.ordered}',
+                                              vendor.ordered,
                                               textAlign: TextAlign.end,
                                               overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
@@ -183,6 +180,7 @@ class VendorCard extends StatelessWidget {
                           ],
                         ),
                       ),
+                      // ignore: prefer_const_constructors
                       Spacer(),
                       Container(
                         width: 140.w,
