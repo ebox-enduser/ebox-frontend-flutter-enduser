@@ -2,14 +2,14 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/meal_ordered.dart';
 import 'package:ebox/model/vendor.dart';
+import 'package:ebox/view/dashboard_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../widgets/vendor/vendor_detail.dart';
-import '../ordering/finding_ingredients_screen.dart';
+import '../widgets/vendor/vendor_detail.dart';
 
 class OrderedDetailScreen extends StatelessWidget {
   final MealOrdered mealOrdered;
@@ -473,6 +473,8 @@ class OrderedDetailScreen extends StatelessWidget {
                 meals: mealOrdered.idMeal,
                 vendor: mealOrdered.idVendor,
               );
+              cartController.vendor.value = null;
+              cartController.meals.value = null;
               AwesomeDialog(
                 context: context,
                 dialogType: DialogType.success,
@@ -480,7 +482,7 @@ class OrderedDetailScreen extends StatelessWidget {
                 title: 'Order Success!',
                 dismissOnTouchOutside: false,
                 btnOkOnPress: () {
-                  Get.offAll(() => const FindingIngredientsScreen());
+                  Get.offAll(() => const DashboardScreen());
                 },
               ).show();
             },

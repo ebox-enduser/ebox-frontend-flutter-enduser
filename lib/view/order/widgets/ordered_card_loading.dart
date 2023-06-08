@@ -1,5 +1,3 @@
-import 'package:ebox/model/meal_ordered.dart';
-import 'package:ebox/view/order/ordered/ordered_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

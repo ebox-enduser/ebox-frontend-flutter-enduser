@@ -223,7 +223,7 @@ class AuthController extends GetxController {
     prefs.remove('token');
     prefs.remove('imageURL');
     cartController.vendor.value = null;
-    cartController.meals.value = null;
+    cartController.meals.clear();
     settingController.userLocation.value = null;
     settingController.currentAddress = null;
     settingController.currentPosition = null;

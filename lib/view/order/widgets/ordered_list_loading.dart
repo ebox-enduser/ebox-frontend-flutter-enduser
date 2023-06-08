@@ -1,9 +1,7 @@
-import 'package:ebox/model/meal_ordered.dart';
-import 'package:ebox/view/order/ordered/widgets/ordered_card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'ordered_card.dart';
+import 'ordered_card_loading.dart';
 
 class OrderedListLoading extends StatelessWidget {
   const OrderedListLoading({super.key});

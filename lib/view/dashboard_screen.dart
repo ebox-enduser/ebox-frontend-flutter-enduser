@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/offline_screen.dart';
 import 'package:ebox/view/cart/cart_screen.dart';
-import 'package:ebox/view/order/ordered/ordered_screen.dart';
 
 import 'package:ebox/view/plan/plan_screen.dart';
 import 'package:ebox/view/drawer/profile/profile_screen.dart';
@@ -17,6 +16,7 @@ import 'package:ebox/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:text_scroll/text_scroll.dart';
+import 'order/ordered_screen.dart';
 import 'widgets/drawer/custom_drawer.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -172,7 +172,8 @@ class _MainScreenState extends State<DashboardScreen> {
           if (cartController.meals.isEmpty) {
             return FloatingActionButton(
               onPressed: () {
-                Get.to(() => const CartScreen(),transition: Transition.downToUp);
+                Get.to(() => const CartScreen(),
+                    transition: Transition.downToUp);
               },
               elevation: 0,
               foregroundColor: Colors.white,

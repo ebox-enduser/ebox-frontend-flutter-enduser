@@ -1,11 +1,14 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ebox/model/meal_ordered.dart';
-import 'package:ebox/view/order/ordered/ordered_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../../../../core/theme/app_colors.dart';
+import '../../../controller/controllers.dart';
+import '../../dashboard_screen.dart';
+import '../ordered_detail_screen.dart';
 
 class OrderedCard extends StatelessWidget {
   final MealOrdered mealOrdered;
@@ -157,7 +160,29 @@ class OrderedCard extends StatelessWidget {
           right: 40,
           bottom: 10,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              dashboardController.createMealOrder(
+                address:
+                    settingController.userLocation.value?.address ?? 'Not Yet',
+                name: mealOrdered.name,
+                paymentMethod: mealOrdered.paymentMethod,
+                totalPrice: mealOrdered.totalPrice,
+                meals: mealOrdered.idMeal,
+                vendor: mealOrdered.idVendor,
+              );
+              cartController.vendor.value = null;
+              cartController.meals.clear();
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.success,
+                animType: AnimType.bottomSlide,
+                title: 'Order Success!',
+                dismissOnTouchOutside: false,
+                btnOkOnPress: () {
+                  Get.offAll(() => const DashboardScreen());
+                },
+              ).show();
+            },
             style: TextButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
               foregroundColor: Colors.white,

@@ -1,8 +1,5 @@
-import 'dart:async';
-
-import 'package:ebox/view/order/ordered/widgets/ordered_list.dart';
-import 'package:ebox/view/order/ordered/widgets/ordered_list_loading.dart';
-
+import 'package:ebox/view/order/widgets/ordered_list.dart';
+import 'package:ebox/view/order/widgets/ordered_list_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

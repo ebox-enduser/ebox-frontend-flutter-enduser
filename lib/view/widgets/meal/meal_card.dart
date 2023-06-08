@@ -75,100 +75,72 @@ class _MealCardState extends State<MealCard> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: REdgeInsets.only(
-                          bottom: 15.h, left: 15.w, right: 15.w),
-                      child: Obx(() {
-                        if (cartController.meals.entries
-                            .map((meal) => meal.key.nameMeal)
-                            .toList()
-                            .contains(widget.nameMeal)) {
-                          return SizedBox(
-                            width: 130.w,
-                            height: 40.h,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      cartController.removeMeal(
-                                          meal: cartController.meals.keys
-                                              .toList()[widget.index]);
-                                    },
-                                    icon: Icon(
-                                      Icons.remove_circle_outline,
-                                      color: Colors.redAccent,
-                                      size: 30.r,
-                                    )),
-                                Text(
-                                    cartController.meals.values
-                                        .toList()[widget.index]
-                                        .toString(),
-                                    style: TextStyle(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w500)),
-                                IconButton(
-                                    onPressed: () {
-                                      cartController.addMeal(
-                                          meal: cartController.meals.keys
-                                              .toList()[widget.index]);
-                                    },
-                                    icon: Icon(
-                                      Icons.add_circle,
-                                      color: AppColors.secondaryColor,
-                                      size: 30.r,
-                                    )),
-                              ],
+                    Obx(() {
+                      if (cartController.meals.entries
+                          .map((meal) => meal.key.nameMeal)
+                          .toList()
+                          .contains(widget.nameMeal)) {
+                        return SizedBox(
+                          width: 160.w,
+                          height: 40.h,
+                          child: Center(
+                            child: SizedBox(
+                              width: 160.w,
+                              height: 40.h,
+                              child: Icon(
+                                Icons.check_circle,
+                                color: AppColors.secondaryColor,
+                                size: 40.r,
+                              ),
                             ),
-                          );
-                        } else {
-                          return Center(
-                            child: GestureDetector(
-                              onTap: () {
-                                cartController.addMealByVendor(
-                                    meal: CartMeal(
-                                        nameMeal: widget.nameMeal,
-                                        imageMeal: widget.mealImage,
-                                        price: widget.price,
-                                        ingredient: widget.ingredient,
-                                        idMeal: widget.idMeal,
-                                        idVendor: widget.idVendor),
-                                    vendors: widget.vendor,
-                                    context: context);
-                              },
-                              child: Container(
-                                  width: 130.w,
-                                  height: 40.h,
-                                  decoration: BoxDecoration(
-                                      color: AppColors.primaryColor,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(15.r))),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/cart.png',
-                                        color: Colors.white,
-                                        scale: 30.r,
-                                      ),
-                                      SizedBox(
-                                        width: 10.w,
-                                      ),
-                                      Text(
-                                        'Add to cart'.tr,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                          );
-                        }
-                      }),
-                    ),
+                          ),
+                        );
+                      } else {
+                        return Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              cartController.addMealByVendor(
+                                  meal: CartMeal(
+                                      nameMeal: widget.nameMeal,
+                                      imageMeal: widget.mealImage,
+                                      price: widget.price,
+                                      ingredient: widget.ingredient,
+                                      idMeal: widget.idMeal,
+                                      idVendor: widget.idVendor),
+                                  vendors: widget.vendor,
+                                  context: context);
+                            },
+                            child: Container(
+                                width: 160.w,
+                                height: 40.h,
+                                decoration: BoxDecoration(
+                                    color: AppColors.primaryColor,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15.r))),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/cart.png',
+                                      color: Colors.white,
+                                      scale: 30.r,
+                                    ),
+                                    SizedBox(
+                                      width: 10.w,
+                                    ),
+                                    Text(
+                                      'Add to cart'.tr,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                        );
+                      }
+                    }),
                   ]),
             ),
           ),

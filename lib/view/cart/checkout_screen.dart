@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:ebox/controller/controllers.dart';
-import 'package:ebox/view/order/ordering/finding_ingredients_screen.dart';
+import 'package:ebox/view/dashboard_screen.dart';
 import 'package:ebox/view/widgets/detail_screen.dart';
 import 'package:get/get.dart';
 
@@ -269,6 +269,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               meals: cartController.idMeals,
               vendor: cartController.idVendor,
             );
+            cartController.vendor.value = null;
+            cartController.meals.clear();
             AwesomeDialog(
               context: context,
               dialogType: DialogType.success,
@@ -276,8 +278,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               title: 'Order Success!',
               dismissOnTouchOutside: false,
               btnOkOnPress: () {
-                Get.offAll(() => const FindingIngredientsScreen(),
-                    transition: Transition.fadeIn);
+                Get.offAll(() => const DashboardScreen());
               },
             ).show();
           },

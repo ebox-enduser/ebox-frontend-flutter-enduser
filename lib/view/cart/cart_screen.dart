@@ -99,6 +99,8 @@ class CartScreen extends StatelessWidget {
                           } else {
                             return ListView.builder(
                                 shrinkWrap: true,
+                                padding:
+                                    REdgeInsets.only(top: 15.h, bottom: 15.h),
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount:
                                     cartController.meals.keys.toList().length,
