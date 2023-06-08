@@ -1,4 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
+import 'package:ebox/offline_screen.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../../../core/theme/app_colors.dart';
 import 'package:ebox/controller/push_notification_controller.dart';
 import 'package:ebox/view/Authentication/login_screen.dart';
@@ -51,11 +53,12 @@ void main() async {
 
   configLoading();
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  bool hasInternet = false;
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -69,6 +72,13 @@ class _MyAppState extends State<MyApp> {
             {AwesomeNotifications().requestPermissionToSendNotifications()}
         });
     super.initState();
+    InternetConnectionChecker().onStatusChange.listen((event) {
+      final hasInternet = event == InternetConnectionStatus.connected;
+
+      setState(() {
+        widget.hasInternet = hasInternet;
+      });
+    });
   }
 
   @override
@@ -96,7 +106,11 @@ class _MyAppState extends State<MyApp> {
             fallbackLocale: const Locale('en', 'US'),
             builder: EasyLoading.init(),
             title: 'eBox',
-            home: token == null ? const LoginScreen() : const DashboardScreen(),
+            home: widget.hasInternet == true
+                ? token == null
+                    ? const LoginScreen()
+                    : const DashboardScreen()
+                : const OfflineScreen(),
             theme: ThemeData(
               // fontFamily: 'Visby',
               primarySwatch: Colors.orange,

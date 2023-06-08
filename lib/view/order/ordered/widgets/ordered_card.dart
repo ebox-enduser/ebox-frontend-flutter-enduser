@@ -31,10 +31,12 @@ class OrderedCard extends StatelessWidget {
           right: 0,
           child: GestureDetector(
             onTap: () {
-              Get.to(() => OrderedDetailScreen(
-                    index: index,
-                    mealOrdered: mealOrdered,
-                  ));
+              Get.to(
+                  () => OrderedDetailScreen(
+                        index: index,
+                        mealOrdered: mealOrdered,
+                      ),
+                  transition: Transition.fadeIn);
             },
             child: Padding(
               padding: REdgeInsets.all(15),

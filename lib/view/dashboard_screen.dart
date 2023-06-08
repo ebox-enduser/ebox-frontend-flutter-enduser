@@ -29,7 +29,6 @@ class DashboardScreen extends StatefulWidget {
 
 class _MainScreenState extends State<DashboardScreen> {
   int _selectedIndex = 1;
-  bool hasInternet = false;
 
   List listScreen = [
     const PlanScreen(),
@@ -47,14 +46,6 @@ class _MainScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     initialization();
-
-    InternetConnectionChecker().onStatusChange.listen((event) {
-      final hasInternet = event == InternetConnectionStatus.connected;
-
-      setState(() {
-        this.hasInternet = hasInternet;
-      });
-    });
   }
 
   void initialization() async {
@@ -72,74 +63,56 @@ class _MainScreenState extends State<DashboardScreen> {
         extendBody: true,
         extendBodyBehindAppBar: true,
         backgroundColor: AppColors.secondaryBackgroundColor,
-        appBar: hasInternet
-            ? AppBar(
-                title: SizedBox(
-                  height: 15.h,
-                  child: Obx(
-                    () => TextScroll(
-                      '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
-                      velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
-                      mode: TextScrollMode.endless,
-                      style: TextStyle(
-                          color: AppColors.textColor, fontSize: 10.sp),
-                      textAlign: TextAlign.left,
-                      selectable: true,
-                    ),
-                  ),
+        appBar: AppBar(
+          title: SizedBox(
+            height: 15.h,
+            child: Obx(
+              () => TextScroll(
+                '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
+                velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+                mode: TextScrollMode.endless,
+                style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
+                textAlign: TextAlign.left,
+                selectable: true,
+              ),
+            ),
+          ),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: Image.asset(
+                  'assets/images/drawer.png',
+                  scale: 15.r,
+                  color: AppColors.primaryColor,
                 ),
-                leading: Builder(
-                  builder: (BuildContext context) {
-                    return GestureDetector(
-                      onTap: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                      child: Image.asset(
-                        'assets/images/drawer.png',
-                        scale: 15.r,
-                        color: AppColors.primaryColor,
-                      ),
-                    );
-                  },
-                ),
-                elevation: 0,
-                backgroundColor: AppColors.backgroundColor,
-                actions: [
-                  Padding(
-                    padding: REdgeInsets.only(right: 15),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(() => const ProfileScreen());
-                      },
-                      child: Obx(
-                        () => CircleAvatar(
-                            radius: 20.r,
-                            backgroundImage: NetworkImage(authController
-                                    .user.value?.imageURL ??
-                                'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/blank-profile-picture-973460_960_720.webp?alt=media&token=a5a714ac-2722-4380-a939-f347fb7acb87&_gl=1*1g2b3vl*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NTUyMzk0MC4xLjEuMTY4NTUyNDEzNS4wLjAuMA..')),
-                      ),
-                    ),
-                  )
-                ],
-              )
-            : AppBar(
-                elevation: 0,
-                backgroundColor: AppColors.backgroundColor,
-                title: Text(
-                  'Please connect your internet first'.tr,
-                  style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
-                ),
-                centerTitle: true,
-                leading: Icon(
-                  Icons.error,
-                  color: Colors.redAccent,
-                  size: 30.r,
+              );
+            },
+          ),
+          elevation: 0,
+          backgroundColor: AppColors.backgroundColor,
+          actions: [
+            Padding(
+              padding: REdgeInsets.only(right: 15),
+              child: GestureDetector(
+                onTap: () {
+                  Get.to(() => const ProfileScreen());
+                },
+                child: Obx(
+                  () => CircleAvatar(
+                      radius: 20.r,
+                      backgroundImage: NetworkImage(authController
+                              .user.value?.imageURL ??
+                          'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/blank-profile-picture-973460_960_720.webp?alt=media&token=a5a714ac-2722-4380-a939-f347fb7acb87&_gl=1*1g2b3vl*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NTUyMzk0MC4xLjEuMTY4NTUyNDEzNS4wLjAuMA..')),
                 ),
               ),
+            )
+          ],
+        ),
         drawer: const CustomDrawer(),
-        body: hasInternet
-            ? listScreen.elementAt(_selectedIndex)
-            : const OfflineScreen(),
+        body: listScreen.elementAt(_selectedIndex),
         bottomNavigationBar: SafeArea(
           child: SnakeNavigationBar.color(
             height: 60.h,
@@ -195,37 +168,38 @@ class _MainScreenState extends State<DashboardScreen> {
             ],
           ),
         ),
-        floatingActionButton: hasInternet
-            ? Obx(() {
-                if (cartController.meals.isEmpty) {
-                  return FloatingActionButton(
-                    onPressed: () {
-                      Get.to(() => const CartScreen());
-                    },
-                    foregroundColor: Colors.white,
-                    backgroundColor: AppColors.secondaryColor,
-                    child: Image.asset('assets/images/cart.png',
-                        scale: 20.r, color: Colors.white),
-                  );
-                } else {
-                  return badges.Badge(
-                    position: badges.BadgePosition.topEnd(top: -5, end: -5),
-                    badgeContent: Text(
-                      cartController.totalQuantity.toString(),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    child: FloatingActionButton(
-                      onPressed: () {
-                        Get.to(() => const CartScreen());
-                      },
-                      foregroundColor: Colors.white,
-                      backgroundColor: AppColors.secondaryColor,
-                      child: Image.asset('assets/images/cart.png',
-                          scale: 20.r, color: Colors.white),
-                    ),
-                  );
-                }
-              })
-            : null);
+        floatingActionButton: Obx(() {
+          if (cartController.meals.isEmpty) {
+            return FloatingActionButton(
+              onPressed: () {
+                Get.to(() => const CartScreen(),transition: Transition.downToUp);
+              },
+              elevation: 0,
+              foregroundColor: Colors.white,
+              backgroundColor: AppColors.secondaryColor,
+              child: Image.asset('assets/images/cart.png',
+                  scale: 20.r, color: Colors.white),
+            );
+          } else {
+            return badges.Badge(
+              position: badges.BadgePosition.topEnd(top: -5, end: -5),
+              badgeContent: Text(
+                cartController.totalQuantity.toString(),
+                style: const TextStyle(color: Colors.white),
+              ),
+              child: FloatingActionButton(
+                onPressed: () {
+                  Get.to(() => const CartScreen(),
+                      transition: Transition.downToUp);
+                },
+                elevation: 0,
+                foregroundColor: Colors.white,
+                backgroundColor: AppColors.secondaryColor,
+                child: Image.asset('assets/images/cart.png',
+                    scale: 20.r, color: Colors.white),
+              ),
+            );
+          }
+        }));
   }
 }

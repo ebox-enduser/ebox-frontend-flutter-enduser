@@ -25,9 +25,9 @@ class DetailScreen extends StatelessWidget {
           children: [
             Padding(
               padding:
-                  REdgeInsets.only(left: 15, right: 15, top: 45, bottom: 15),
+                  REdgeInsets.only(left: 15, right: 15, top: 30, bottom: 15),
               child: SizedBox(
-                height: 30.h,
+                height: 40.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -53,7 +53,8 @@ class DetailScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const ContactUsScreen());
+                        Get.to(() => const ContactUsScreen(),
+                            transition: Transition.rightToLeftWithFade);
                       },
                       child: CircleAvatar(
                         radius: 20.r,

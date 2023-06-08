@@ -100,7 +100,7 @@ class FindingIngredientsScreen extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Total: \$10",
+                    "Total: \$${cartController.totalPrice}",
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
@@ -120,7 +120,7 @@ class FindingIngredientsScreen extends StatelessWidget {
             Padding(
               padding: REdgeInsets.only(top: 15, left: 15, right: 15),
               child: Text(
-                "Samlar Kako x3, Nom Banh Jok x1",
+                cartController.mealsWithQuantity,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: TextStyle(fontSize: 12.sp, color: Colors.white),

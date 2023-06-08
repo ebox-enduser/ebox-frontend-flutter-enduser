@@ -24,35 +24,36 @@ class CartScreen extends StatelessWidget {
               child: Column(children: [
                 Obx(() {
                   if (cartController.meals.isEmpty) {
-                    return Column(
-                      children: [
-                        SizedBox(
-                          height: 60.h,
-                        ),
-                        Image.asset(
-                          'assets/images/no_order.png',
-                          width: 300.w,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          'No meal found yet!'.tr,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.sp,
-                              color: AppColors.textColor),
-                        )
-                      ],
+                    return Center(
+                      child: Column(
+                        children: [
+                          Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/no_meal_found.png?alt=media&token=7d700fb4-056a-4f0b-9ebc-020ce15a23ad&_gl=1*1cdtq9d*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NjIwMDY4OC40LjEuMTY4NjIwMTEyMy4wLjAuMA..',
+                            scale: 5.r,
+                          ),
+                          Padding(
+                            padding: REdgeInsets.all(15),
+                            child: Text(
+                              'No meals found!',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.sp,
+                                  color: AppColors.textColor),
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   } else {
                     return Column(
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => VendorDetail(
-                                  vendor: cartController.vendor.value!,
-                                ));
+                            Get.to(
+                                () => VendorDetail(
+                                      vendor: cartController.vendor.value!,
+                                    ),
+                                transition: Transition.rightToLeftWithFade);
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 1,
@@ -211,7 +212,8 @@ class CartScreen extends StatelessWidget {
               padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
               child: TextButton(
                 onPressed: () {
-                  Get.to(() => const CheckoutScreen());
+                  Get.to(() => const CheckoutScreen(),
+                      transition: Transition.rightToLeftWithFade);
                 },
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,

@@ -1,7 +1,6 @@
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/cart_meal.dart';
 import 'package:ebox/view/widgets/meal/customize_ingredients_screen.dart';
-import 'package:flutter_add_to_cart_button/flutter_add_to_cart_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -41,8 +40,6 @@ class MealDetail extends StatefulWidget {
 }
 
 class _MealDetailState extends State<MealDetail> {
-  AddToCartButtonStateId stateId = AddToCartButtonStateId.idle;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,7 +89,7 @@ class _MealDetailState extends State<MealDetail> {
           bottom: 0,
           child: Container(
             width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.55,
             decoration: BoxDecoration(
                 color: AppColors.secondaryBackgroundColor,
                 borderRadius: BorderRadius.only(
@@ -271,11 +268,13 @@ class _MealDetailState extends State<MealDetail> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Get.to(() => CustomizeIngredientsScreen(
-                                  mealImage: widget.mealImage,
-                                  title: widget.nameMeal,
-                                  ingredient: widget.ingredient,
-                                ));
+                            Get.to(
+                                () => CustomizeIngredientsScreen(
+                                      mealImage: widget.mealImage,
+                                      title: widget.nameMeal,
+                                      ingredient: widget.ingredient,
+                                    ),
+                                transition: Transition.downToUp);
                           },
                           child: Container(
                             width: 160.w,
@@ -316,67 +315,47 @@ class _MealDetailState extends State<MealDetail> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.r)),
                               child: Center(
-                                child: AddToCartButton(
-                                  trolley: Image.asset(
-                                    'assets/images/cart.png',
-                                    width: 20,
-                                    height: 18,
-                                    color: Colors.white,
-                                  ),
-                                  text: Text(
-                                    'Add to cart'.tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 12.sp, color: Colors.white),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.fade,
-                                  ),
-                                  check: SizedBox(
-                                    width: 40.w,
-                                    height: 40.h,
-                                    child: Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                      size: 20.r,
-                                    ),
-                                  ),
-                                  borderRadius: BorderRadius.circular(15.r),
-                                  backgroundColor: AppColors.primaryColor,
-                                  onPressed: (id) {
-                                    if (cartController.meals.entries
-                                        .map((meal) => meal.key.nameMeal)
-                                        .toList()
-                                        .contains(widget.nameMeal)) {
-                                      setState(() {
-                                        stateId = AddToCartButtonStateId.done;
-                                      });
-                                    } else {
-                                      //handle logic when pressed on idle state button.
-                                      setState(() {
-                                        stateId =
-                                            AddToCartButtonStateId.loading;
-                                        Future.delayed(
-                                            const Duration(seconds: 2), () {
-                                          setState(() {
-                                            cartController.addMealByVendor(
-                                                meal: CartMeal(
-                                                    nameMeal: widget.nameMeal,
-                                                    imageMeal: widget.mealImage,
-                                                    price: widget.price,
-                                                    ingredient:
-                                                        widget.ingredient,
-                                                    idMeal: widget.idMeal,
-                                                    idVendor: widget.idVendor),
-                                                vendors: widget.vendor,
-                                                context: context);
-                                            stateId =
-                                                AddToCartButtonStateId.done;
-                                          });
-                                        });
-                                      });
-                                    }
+                                child: GestureDetector(
+                                  onTap: () {
+                                    cartController.addMealByVendor(
+                                        meal: CartMeal(
+                                            nameMeal: widget.nameMeal,
+                                            imageMeal: widget.mealImage,
+                                            price: widget.price,
+                                            ingredient: widget.ingredient,
+                                            idMeal: widget.idMeal,
+                                            idVendor: widget.idVendor),
+                                        vendors: widget.vendor,
+                                        context: context);
                                   },
-                                  stateId: stateId,
+                                  child: Container(
+                                      width: 160.w,
+                                      height: 40.h,
+                                      decoration: BoxDecoration(
+                                          color: AppColors.primaryColor,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15.r))),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/cart.png',
+                                            color: Colors.white,
+                                            scale: 30.r,
+                                          ),
+                                          SizedBox(
+                                            width: 10.w,
+                                          ),
+                                          Text(
+                                            'Add to cart',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      )),
                                 ),
                               ),
                             );

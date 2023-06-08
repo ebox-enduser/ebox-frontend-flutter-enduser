@@ -16,9 +16,11 @@ class PlanCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => PlanDetailScreen(
-              plan: plan,
-            ));
+        Get.to(
+            () => PlanDetailScreen(
+                  plan: plan,
+                ),
+            transition: Transition.fadeIn);
       },
       child: Stack(
         alignment: Alignment.center,

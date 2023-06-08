@@ -93,11 +93,13 @@ class CompleteOrderingScreen extends StatelessWidget {
         padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
         child: TextButton(
           onPressed: () {
+            cartController.vendor.value = null;
+            cartController.meals.clear();
             Get.offAll(() => const DashboardScreen());
           },
           style: TextButton.styleFrom(
             foregroundColor: Colors.white,
-            elevation: 5,
+            elevation: 0,
             backgroundColor: AppColors.primaryColor,
             padding: REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
             shape: RoundedRectangleBorder(

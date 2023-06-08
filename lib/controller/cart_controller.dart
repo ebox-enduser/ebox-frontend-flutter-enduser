@@ -73,7 +73,7 @@ class CartController extends GetxController {
     }
   }
 
-  void removeMeal(CartMeal meal) {
+  void removeMeal({required CartMeal meal}) {
     if (_meals.containsKey(meal) && _meals[meal] == 1) {
       _meals.removeWhere((key, value) => key == meal);
       Get.snackbar('Meal Removed'.tr,

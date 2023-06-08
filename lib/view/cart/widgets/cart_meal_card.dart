@@ -113,7 +113,7 @@ class CartMealCard extends StatelessWidget {
             Text(quantity.toString()),
             IconButton(
                 onPressed: () {
-                  cartController.removeMeal(cartMeal);
+                  cartController.removeMeal(meal: cartMeal);
                 },
                 icon: Icon(
                   Icons.remove_circle,

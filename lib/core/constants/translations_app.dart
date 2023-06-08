@@ -127,11 +127,22 @@ class TranslationsApp extends Translations {
           'You are not connect to the internet':
               'You are not connect to the internet',
           'Please connect your internet first':
-              'សូមភ្ជាប់អ៊ីនធឺណិតរបស់អ្នកជាមុនសិន',
+              'Please connect your internet first',
+          'No vendors found!': 'No vendors found!',
+          'Meals not found!': 'Meals not found!',
+          'No orders found!': 'No orders found!',
+          'You are not connect to the internet!':
+              'You are not connect to the internet!',
+          'Completed order': 'Completed order',
         },
         'km_KH': {
+          'Completed order': 'ការបញ្ជាទិញបានបញ្ចប់',
+          'You are not connect to the internet!': 'អ្នកមិនភ្ជាប់អ៊ីនធឺណិតទេ!',
+          'No orders found!': 'រកមិនឃើញការបញ្ជាទិញទេ!',
+          'Meals not found!': 'រកមិនឃើញអាហារទេ!',
+          'No vendors found!': 'រកមិនឃើញអ្នកលក់ទេ!',
           'Please connect your internet first':
-              'Please connect your internet first',
+              'សូមភ្ជាប់អ៊ីនធឺណិតរបស់អ្នកជាមុនសិន',
           'You are not connect to the internet': 'អ្នកមិនភ្ជាប់អ៊ីនធឺណិតទេ។',
           'Hello': 'សួស្ដី',
           'Search vendors': 'ស្វែងរកអ្នកលក់',

@@ -10,102 +10,69 @@ class MealLoadingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Positioned(
+    return Shimmer.fromColors(
+      highlightColor: Colors.white,
+      baseColor: Colors.grey.shade300,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Positioned(
+            bottom: 0.h,
             child: Container(
-          height: 150.h,
-          // decoration: BoxDecoration(color: Colors.blue),
-        )),
-        Positioned(
-          bottom: 0,
-          child: Container(
-            width: 120.w,
-            height: 120.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.w),
-              color: AppColors.backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3.r),
-                  spreadRadius: 2.r,
-                  blurRadius: 10.r,
-                  offset: Offset(0.r, 3.r),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.08),
-              child: Column(children: [
-                Text(
-                  'Loading',
-                  style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                Row(
+              width: 140.w,
+              height: 130.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.w),
+                color: Colors.white,
+              ),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SizedBox(
-                      width: 10.w,
+                    Padding(
+                      padding: REdgeInsets.only(
+                          bottom: 15.h, left: 15.w, right: 15.w),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '\$2',
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.sp),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.add_circle,
+                              color: AppColors.primaryColor,
+                              size: 30.r,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Icon(
-                      Icons.location_on_rounded,
-                      size: 16.w,
-                      color: AppColors.textColor,
-                    ),
-                    SizedBox(
-                      width: 3.w,
-                    ),
-                    Text(
-                      'Loading',
-                      style: TextStyle(fontSize: 10.sp),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 3.h,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                    Icon(
-                      Icons.star,
-                      size: 16.sp,
-                      color: Colors.yellow.shade600,
-                    ),
-                    SizedBox(
-                      width: 3.w,
-                    ),
-                    Text(
-                      'Loading',
-                      style: TextStyle(fontSize: 10.sp),
-                    )
-                  ],
-                ),
-              ]),
+                  ]),
             ),
           ),
-        ),
-        Positioned(
-            child: Shimmer.fromColors(
-          highlightColor: Colors.white,
-          baseColor: Colors.grey.shade300,
-          child: Container(
-            width: 80.w,
-            height: 70.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15.w),
-              color: Colors.white,
+          Positioned(
+              top: 0.h,
+              child: Container(
+                width: 80.w,
+                height: 70.h,
+              )),
+          Positioned(
+            top: 80.h,
+            child: Text(
+              'nameMeal',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.bold),
             ),
-          ),
-        )),
-      ],
+          )
+        ],
+      ),
     );
   }
 }

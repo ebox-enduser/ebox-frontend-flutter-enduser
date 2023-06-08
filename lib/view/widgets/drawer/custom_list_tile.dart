@@ -25,7 +25,7 @@ class CustomListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => widget);
+        Get.to(() => widget, transition: Transition.leftToRightWithFade);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),

@@ -276,7 +276,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               title: 'Order Success!',
               dismissOnTouchOutside: false,
               btnOkOnPress: () {
-                Get.offAll(() => const FindingIngredientsScreen());
+                Get.offAll(() => const FindingIngredientsScreen(),
+                    transition: Transition.fadeIn);
               },
             ).show();
           },

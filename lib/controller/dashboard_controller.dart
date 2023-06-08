@@ -1,6 +1,7 @@
 import 'package:ebox/api/meal_ordered_service.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/plan.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,6 +31,9 @@ class DashboardController extends GetxController {
   RxBool isMealOrderedLoading = false.obs;
   RxBool isFavoriteVendorsLoading = false.obs;
   RxBool isFavoriteVendorLoading = false.obs;
+
+  TextEditingController searchVendorsController = TextEditingController();
+  RxString searchVal = ''.obs;
 
   @override
   void onInit() async {

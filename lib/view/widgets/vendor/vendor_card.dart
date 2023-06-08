@@ -14,9 +14,11 @@ class VendorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => VendorDetail(
-              vendor: vendor,
-            ));
+        Get.to(
+            () => VendorDetail(
+                  vendor: vendor,
+                ),
+            transition: Transition.fadeIn);
       },
       child: Padding(
         padding: REdgeInsets.only(left: 15, right: 15, top: 10),

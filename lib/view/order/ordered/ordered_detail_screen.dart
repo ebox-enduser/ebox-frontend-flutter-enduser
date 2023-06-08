@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/model/meal_ordered.dart';
 import 'package:ebox/model/vendor.dart';
@@ -8,6 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../widgets/vendor/vendor_detail.dart';
+import '../ordering/finding_ingredients_screen.dart';
 
 class OrderedDetailScreen extends StatelessWidget {
   final MealOrdered mealOrdered;
@@ -26,7 +28,7 @@ class OrderedDetailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Complete order".tr,
+                    "Completed order".tr,
                     style:
                         TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                   ),
@@ -35,29 +37,31 @@ class OrderedDetailScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => VendorDetail(
-                            vendor: Vendor(
-                                idVendor: mealOrdered.idVendor,
-                                imageVendor: mealOrdered.imageVendor,
-                                imageVendorBackground:
-                                    mealOrdered.imageVendorBackground,
-                                nameMeal: mealOrdered.nameMealVendor,
-                                imageMeal: mealOrdered.imageMealVendor,
-                                foodType: mealOrdered.foodTypeVendor,
-                                price: mealOrdered.priceVendor,
-                                fat: mealOrdered.fatVendor,
-                                location: mealOrdered.location,
-                                nameVendor: mealOrdered.nameVendor,
-                                phoneNumber: mealOrdered.phoneNumber,
-                                businessTime: mealOrdered.businessTime,
-                                duration: mealOrdered.duration,
-                                delivery: mealOrdered.delivery,
-                                distance: mealOrdered.distance,
-                                youtubeURL: mealOrdered.youtubeURLVendor,
-                                ingredients: mealOrdered.ingredientsVendor,
-                                ordered: mealOrdered.ordered,
-                                idMeal: mealOrdered.idMealVendor),
-                          ));
+                      Get.to(
+                          () => VendorDetail(
+                                vendor: Vendor(
+                                    idVendor: mealOrdered.idVendor,
+                                    imageVendor: mealOrdered.imageVendor,
+                                    imageVendorBackground:
+                                        mealOrdered.imageVendorBackground,
+                                    nameMeal: mealOrdered.nameMealVendor,
+                                    imageMeal: mealOrdered.imageMealVendor,
+                                    foodType: mealOrdered.foodTypeVendor,
+                                    price: mealOrdered.priceVendor,
+                                    fat: mealOrdered.fatVendor,
+                                    location: mealOrdered.location,
+                                    nameVendor: mealOrdered.nameVendor,
+                                    phoneNumber: mealOrdered.phoneNumber,
+                                    businessTime: mealOrdered.businessTime,
+                                    duration: mealOrdered.duration,
+                                    delivery: mealOrdered.delivery,
+                                    distance: mealOrdered.distance,
+                                    youtubeURL: mealOrdered.youtubeURLVendor,
+                                    ingredients: mealOrdered.ingredientsVendor,
+                                    ordered: mealOrdered.ordered,
+                                    idMeal: mealOrdered.idMealVendor),
+                              ),
+                          transition: Transition.rightToLeftWithFade);
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width * 1,
@@ -459,7 +463,27 @@ class OrderedDetailScreen extends StatelessWidget {
         bottomNavigationBar: Padding(
           padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              dashboardController.createMealOrder(
+                address:
+                    settingController.userLocation.value?.address ?? 'Not Yet',
+                name: mealOrdered.name,
+                paymentMethod: mealOrdered.paymentMethod,
+                totalPrice: mealOrdered.totalPrice,
+                meals: mealOrdered.idMeal,
+                vendor: mealOrdered.idVendor,
+              );
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.success,
+                animType: AnimType.bottomSlide,
+                title: 'Order Success!',
+                dismissOnTouchOutside: false,
+                btnOkOnPress: () {
+                  Get.offAll(() => const FindingIngredientsScreen());
+                },
+              ).show();
+            },
             style: TextButton.styleFrom(
               foregroundColor: Colors.white,
               backgroundColor: AppColors.primaryColor,
