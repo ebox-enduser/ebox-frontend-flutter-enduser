@@ -50,8 +50,8 @@ class _CarouselSliderViewState extends State<CarouselSliderView> {
               int index = widget.bannerList.indexOf(e);
               return Container(
                 width: 6.w,
-                height: 6.h,
-                margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 2.h),
+                height: 6.w,
+                margin: EdgeInsets.symmetric(vertical: 10.w, horizontal: 2.w),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: _currentIndex == index

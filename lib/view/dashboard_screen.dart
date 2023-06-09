@@ -64,11 +64,12 @@ class _MainScreenState extends State<DashboardScreen> {
         extendBodyBehindAppBar: true,
         backgroundColor: AppColors.secondaryBackgroundColor,
         appBar: AppBar(
+          toolbarHeight: 50.w,
           title: SizedBox(
-            height: 15.h,
+            height: 15.w,
             child: Obx(
               () => TextScroll(
-                '              Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}',
+                'Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}                ',
                 velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
                 mode: TextScrollMode.endless,
                 style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
@@ -85,7 +86,7 @@ class _MainScreenState extends State<DashboardScreen> {
                 },
                 child: Image.asset(
                   'assets/images/drawer.png',
-                  scale: 15.r,
+                  scale: 15,
                   color: AppColors.primaryColor,
                 ),
               );
@@ -95,7 +96,7 @@ class _MainScreenState extends State<DashboardScreen> {
           backgroundColor: AppColors.backgroundColor,
           actions: [
             Padding(
-              padding: REdgeInsets.only(right: 15),
+              padding: REdgeInsets.only(right: 15.r),
               child: GestureDetector(
                 onTap: () {
                   Get.to(() => const ProfileScreen());
@@ -121,9 +122,9 @@ class _MainScreenState extends State<DashboardScreen> {
             snakeViewColor: AppColors.secondaryColor,
             selectedItemColor: Colors.white,
             snakeShape: SnakeShape.circle,
-            padding: REdgeInsets.only(left: 45, right: 45, bottom: 15),
+            padding: REdgeInsets.only(left: 45.r, right: 45.r, bottom: 15.r),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.r)),
+                borderRadius: BorderRadius.circular(20.w)),
             showSelectedLabels: false,
             showUnselectedLabels: false,
             currentIndex: _selectedIndex,
@@ -132,36 +133,36 @@ class _MainScreenState extends State<DashboardScreen> {
               BottomNavigationBarItem(
                   activeIcon: Image.asset(
                     'assets/images/plan.png',
-                    scale: 20.r,
+                    scale: 20,
                     color: Colors.white,
                   ),
                   icon: Image.asset(
                     'assets/images/plan.png',
-                    scale: 25.r,
+                    scale: 25,
                     color: AppColors.black.withOpacity(0.4),
                   ),
                   label: ''),
               BottomNavigationBarItem(
                   activeIcon: Image.asset(
                     'assets/images/home.png',
-                    scale: 20.r,
+                    scale: 20,
                     color: Colors.white,
                   ),
                   icon: Image.asset(
                     'assets/images/home.png',
-                    scale: 25.r,
+                    scale: 25,
                     color: AppColors.black.withOpacity(0.4),
                   ),
                   label: ''),
               BottomNavigationBarItem(
                   activeIcon: Image.asset(
                     'assets/images/receipt.png',
-                    scale: 15.r,
+                    scale: 15,
                     color: Colors.white,
                   ),
                   icon: Image.asset(
                     'assets/images/receipt.png',
-                    scale: 20.r,
+                    scale: 20,
                     color: AppColors.black.withOpacity(0.4),
                   ),
                   label: ''),
@@ -179,7 +180,7 @@ class _MainScreenState extends State<DashboardScreen> {
               foregroundColor: Colors.white,
               backgroundColor: AppColors.secondaryColor,
               child: Image.asset('assets/images/cart.png',
-                  scale: 20.r, color: Colors.white),
+                  scale: 20, color: Colors.white),
             );
           } else {
             return badges.Badge(
@@ -197,7 +198,7 @@ class _MainScreenState extends State<DashboardScreen> {
                 foregroundColor: Colors.white,
                 backgroundColor: AppColors.secondaryColor,
                 child: Image.asset('assets/images/cart.png',
-                    scale: 20.r, color: Colors.white),
+                    scale: 20, color: Colors.white),
               ),
             );
           }

@@ -90,9 +90,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 //info
                 Padding(
-                  padding: REdgeInsets.only(left: 15, top: 10, bottom: 15),
+                  padding:
+                      REdgeInsets.only(left: 15.r, top: 10.r, bottom: 15.r),
                   child: CustomDropdownButton2(
                     buttonWidth: MediaQuery.of(context).size.width * 0.9,
+                    buttonHeight: 40.h,
                     hint: 'Delivery Times'.tr,
                     dropdownItems: deliveryTimes,
                     value: selectedValueDelivery,
@@ -156,7 +158,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 color: AppColors.primaryColor,
                               ),
                               SizedBox(
-                                height: 15.h,
+                                height: 15.w,
                               ),
                               Text(
                                 'Cash on delivery'.tr,
@@ -165,7 +167,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                height: 5.h,
+                                height: 5.w,
                               ),
                               Radio(
                                   value: 'Cash',
@@ -187,7 +189,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: 10.h,
+                                height: 10.w,
                               ),
                               Image.network(
                                 'https://i.pinimg.com/originals/e2/33/f5/e233f5b0c5a358449398f202b03f063a.jpg',
@@ -195,7 +197,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 width: 60.w,
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 10.w,
                               ),
                               Text(
                                 'ABA Bank'.tr,
@@ -204,7 +206,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                     fontWeight: FontWeight.w500),
                               ),
                               SizedBox(
-                                height: 5.h,
+                                height: 5.w,
                               ),
                               Radio(
                                   value: 'ABA',

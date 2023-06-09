@@ -43,7 +43,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   style: TextStyle(color: Colors.grey, fontSize: 14.sp),
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 30.w,
                 ),
                 TextField(
                   controller: fullNameController,
@@ -56,7 +56,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 15.w,
                 ),
                 TextField(
                   controller: phoneNumberController,
@@ -69,7 +69,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 15.w,
                 ),
                 TextField(
                   controller: emailController,
@@ -82,7 +82,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 15.w,
                 ),
                 TextField(
                   keyboardType: TextInputType.text,

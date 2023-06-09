@@ -29,7 +29,7 @@ class CartScreen extends StatelessWidget {
                         children: [
                           Image.network(
                             'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/no_meal_found.png?alt=media&token=7d700fb4-056a-4f0b-9ebc-020ce15a23ad&_gl=1*1cdtq9d*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NjIwMDY4OC40LjEuMTY4NjIwMTEyMy4wLjAuMA..',
-                            scale: 5.r,
+                            scale: 5,
                           ),
                           Padding(
                             padding: REdgeInsets.all(15),
@@ -57,7 +57,7 @@ class CartScreen extends StatelessWidget {
                           },
                           child: Container(
                             width: MediaQuery.of(context).size.width * 1,
-                            height: 60.h,
+                            height: 60.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
@@ -100,7 +100,7 @@ class CartScreen extends StatelessWidget {
                             return ListView.builder(
                                 shrinkWrap: true,
                                 padding:
-                                    REdgeInsets.only(top: 15.h, bottom: 15.h),
+                                    REdgeInsets.only(top: 15.w, bottom: 15.w),
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount:
                                     cartController.meals.keys.toList().length,
@@ -118,7 +118,7 @@ class CartScreen extends StatelessWidget {
                           children: [
                             Container(
                               width: 80.w,
-                              height: 80.h,
+                              height: 80.w,
                               decoration: BoxDecoration(
                                   color: AppColors.primaryColor,
                                   borderRadius: BorderRadius.all(

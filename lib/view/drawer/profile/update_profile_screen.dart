@@ -115,7 +115,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
                                       Positioned(
                                         child: Container(
                                           width: 120.w,
-                                          height: 120.h,
+                                          height: 120.w,
                                           decoration: BoxDecoration(
                                             color:
                                                 Colors.black.withOpacity(0.4),
@@ -131,7 +131,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
                                                 size: 30.r,
                                               ),
                                               SizedBox(
-                                                height: 20.h,
+                                                height: 20.w,
                                               ),
                                               Text(
                                                 'Edit'.tr,
@@ -162,7 +162,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
                                       Positioned(
                                         child: Container(
                                           width: 120.w,
-                                          height: 120.h,
+                                          height: 120.w,
                                           decoration: BoxDecoration(
                                             color:
                                                 Colors.black.withOpacity(0.4),
@@ -178,7 +178,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
                                                 size: 30.r,
                                               ),
                                               SizedBox(
-                                                height: 20.h,
+                                                height: 20.w,
                                               ),
                                               Text(
                                                 'Edit'.tr,

@@ -31,7 +31,7 @@ class VendorDetail extends StatelessWidget {
                 top: 0,
                 child: Container(
                   width: Get.width,
-                  height: 300.h,
+                  height: 300.w,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(vendor.imageVendorBackground),
@@ -98,12 +98,13 @@ class VendorDetail extends StatelessWidget {
                           topLeft: Radius.circular(15.r),
                           topRight: Radius.circular(15.r))),
                   child: Padding(
-                    padding: REdgeInsets.only(left: 15, right: 15, top: 15),
+                    padding:
+                        REdgeInsets.only(left: 15.r, right: 15.r, top: 15.r),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: REdgeInsets.only(left: 120, bottom: 30),
+                          padding: REdgeInsets.only(left: 120, bottom: 30.r),
                           child: Text(
                             vendor.nameVendor,
                             overflow: TextOverflow.ellipsis,
@@ -219,7 +220,7 @@ class VendorDetail extends StatelessWidget {
                                   children: [
                                     Image.asset(
                                       'assets/images/meal_not_found.png',
-                                      scale: 7.r,
+                                      scale: 7,
                                     ),
                                     Padding(
                                       padding: REdgeInsets.all(15),

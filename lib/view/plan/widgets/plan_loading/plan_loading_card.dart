@@ -10,7 +10,7 @@ class PlanLoadingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.4,
-      height: 140.h,
+      height: 140.w,
       decoration: BoxDecoration(
         color: Colors.amber,
         borderRadius: BorderRadius.all(Radius.circular(15.r)),

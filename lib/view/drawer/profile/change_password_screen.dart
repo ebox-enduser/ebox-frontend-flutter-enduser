@@ -57,7 +57,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     TextStyle(color: AppColors.thirdlyColor, fontSize: 14.sp),
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               TextFormField(
                 controller: _currentPasswordController,
@@ -96,7 +96,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               TextFormField(
                 controller: _newPasswordController,
@@ -136,7 +136,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               TextFormField(
                 controller: _confirmPasswordController,

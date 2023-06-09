@@ -27,12 +27,12 @@ class CarouselLoading extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 8.w),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 8.h,
+                height: 8.w,
                 width: 8.w,
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.grey),
@@ -60,7 +60,7 @@ class CarouselLoading extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               Container(
-                height: 8.h,
+                height: 8.w,
                 width: 8.w,
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Colors.grey),

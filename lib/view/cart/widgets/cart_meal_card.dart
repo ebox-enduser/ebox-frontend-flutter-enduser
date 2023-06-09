@@ -45,7 +45,7 @@ class CartMealCard extends StatelessWidget {
             children: [
               Container(
                 width: 80.w,
-                height: 80.h,
+                height: 80.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.w),
                     image: DecorationImage(
@@ -56,7 +56,7 @@ class CartMealCard extends StatelessWidget {
                 width: 10.w,
               ),
               SizedBox(
-                height: 80.h,
+                height: 80.w,
                 child: Padding(
                   padding: REdgeInsets.only(top: 5, bottom: 5),
                   child: Column(
@@ -69,7 +69,7 @@ class CartMealCard extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 12.sp),
                       ),
                       SizedBox(
-                        height: 5.h,
+                        height: 5.w,
                       ),
                       Text(
                         '\$${cartMeal.price}',

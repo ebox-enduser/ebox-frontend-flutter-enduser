@@ -17,7 +17,7 @@ class NotificationCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(15.r),
         ),
-        width: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.of(context).size.width * 0.5,
         child: Padding(
           padding: REdgeInsets.all(15.0),
           child: Column(
@@ -54,7 +54,7 @@ class NotificationCard extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               Text(
                 notifications.description,

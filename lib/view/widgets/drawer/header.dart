@@ -13,7 +13,7 @@ class CustomDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 500),
-      height: 60.h,
+      height: 60.w,
       width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

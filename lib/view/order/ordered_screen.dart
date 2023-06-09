@@ -50,7 +50,7 @@ class _OrderedScreenState extends State<OrderedScreen> {
                     children: [
                       Image.asset(
                         'assets/images/receipt.png',
-                        scale: 20.r,
+                        scale: 20,
                       ),
                       SizedBox(
                         width: 5.w,
@@ -78,7 +78,7 @@ class _OrderedScreenState extends State<OrderedScreen> {
                           children: [
                             Image.network(
                               'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/no_order_found.png?alt=media&token=a2a5d11d-fee7-4166-8e13-b9f85579db0e&_gl=1*7pg5dw*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NjIwMDY4OC40LjEuMTY4NjIwMTIxOC4wLjAuMA..',
-                              scale: 5.r,
+                              scale: 5,
                             ),
                             Padding(
                               padding: REdgeInsets.all(15),

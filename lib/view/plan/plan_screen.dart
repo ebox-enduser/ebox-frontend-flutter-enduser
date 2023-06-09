@@ -37,7 +37,7 @@ class PlanScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               Obx(() {
                 if (dashboardController.planList.isNotEmpty) {

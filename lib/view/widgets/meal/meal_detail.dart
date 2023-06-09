@@ -113,7 +113,7 @@ class _MealDetailState extends State<MealDetail> {
                                 fontWeight: FontWeight.bold, fontSize: 16.sp),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 5.w,
                           ),
                           Row(
                             children: [
@@ -175,12 +175,12 @@ class _MealDetailState extends State<MealDetail> {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 15.h,
+                                    height: 15.w,
                                   ),
                                   Expanded(
                                     child: SizedBox(
                                         width: Get.width,
-                                        height: 200.h,
+                                        height: 200.w,
                                         // decoration:
                                         //     BoxDecoration(color: Colors.red),
                                         child: Text(
@@ -278,7 +278,7 @@ class _MealDetailState extends State<MealDetail> {
                           },
                           child: Container(
                             width: 160.w,
-                            height: 40.h,
+                            height: 40.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(15.w)),
@@ -300,7 +300,7 @@ class _MealDetailState extends State<MealDetail> {
                             return Center(
                               child: SizedBox(
                                 width: 160.w,
-                                height: 40.h,
+                                height: 40.w,
                                 child: Icon(
                                   Icons.check_circle,
                                   color: AppColors.secondaryColor,
@@ -311,7 +311,7 @@ class _MealDetailState extends State<MealDetail> {
                           } else {
                             return Container(
                               width: 160.w,
-                              height: 40.h,
+                              height: 40.w,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.r)),
                               child: Center(
@@ -330,7 +330,7 @@ class _MealDetailState extends State<MealDetail> {
                                   },
                                   child: Container(
                                       width: 160.w,
-                                      height: 40.h,
+                                      height: 40.w,
                                       decoration: BoxDecoration(
                                           color: AppColors.primaryColor,
                                           borderRadius: BorderRadius.all(
@@ -342,7 +342,7 @@ class _MealDetailState extends State<MealDetail> {
                                           Image.asset(
                                             'assets/images/cart.png',
                                             color: Colors.white,
-                                            scale: 30.r,
+                                            scale: 30,
                                           ),
                                           SizedBox(
                                             width: 10.w,

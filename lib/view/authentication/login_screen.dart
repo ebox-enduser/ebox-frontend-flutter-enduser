@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        height: 40.h,
+                        height: 40.w,
                       ),
                       Text(
                         'WE ARE'.tr,
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 24.sp, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: 15.h,
+                        height: 15.w,
                       ),
                       Text(
                         'Delicious, nutritious,'.tr,
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontSize: 14.sp, fontWeight: FontWeight.w300),
                       ),
                       SizedBox(
-                        height: 5.h,
+                        height: 5.w,
                       ),
                       Text(
                         'sustained, and budget-friendly'.tr,
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const Spacer(),
                 Container(
-                  height: 400.h,
+                  height: 400.w,
                   width: MediaQuery.of(context).size.width * 1,
                   decoration: BoxDecoration(
                     color: AppColors.secondaryBackgroundColor,
@@ -124,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 15.w,
                           ),
                           TextFormField(
                             controller: emailController,
@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 15.w,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.text,
@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 )),
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 15.w,
                           ),
                           TextButton(
                             onPressed: () {
@@ -208,8 +208,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                       top: 15)),
                               backgroundColor: MaterialStateProperty.all(
                                   const Color(0xffFE7655)), //Background Color
-                              elevation: MaterialStateProperty.all(
-                                  5.r), //Defines Elevation
                               shadowColor:
                                   MaterialStateProperty.all(Colors.black),
                             ),
@@ -222,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 15.w,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -246,14 +244,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 5.h),
+                          SizedBox(height: 5.w),
                           Text(
                             'By creating account or log in you agree with our'
                                 .tr,
                             style:
                                 TextStyle(fontSize: 11.sp, color: Colors.grey),
                           ),
-                          SizedBox(height: 5.h),
+                          SizedBox(height: 5.w),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

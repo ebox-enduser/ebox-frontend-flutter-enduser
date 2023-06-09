@@ -35,7 +35,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 30.w,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +55,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 30.w,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

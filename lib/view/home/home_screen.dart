@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            height: 10.h,
+                            height: 10.w,
                           ),
                           Text('Hello'.tr,
                               style: TextStyle(
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Image.network(
                               'https://firebasestorage.googleapis.com/v0/b/ebox-42cef.appspot.com/o/no_vendor_found.png?alt=media&token=08f8c51e-a085-4dc7-b4d6-cc42f5996154&_gl=1*rnn9f6*_ga*MTQ2ODY5MTg1NC4xNjg1NTIzOTQx*_ga_CW55HF8NVT*MTY4NjIwMDY4OC40LjEuMTY4NjIwMDk2OS4wLjAuMA..',
-                              scale: 7.r,
+                              scale: 7,
                             ),
                             Padding(
                               padding: REdgeInsets.all(15),

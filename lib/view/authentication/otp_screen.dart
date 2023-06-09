@@ -55,7 +55,7 @@ class OTPScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 30.w,
                     ),
                     Row(
                       children: [
@@ -67,11 +67,11 @@ class OTPScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 30.w,
                     ),
                     const Center(child: Pinput()),
                     SizedBox(
-                      height: 30.h,
+                      height: 30.w,
                     ),
                     Center(
                       child: TextButton(
@@ -87,8 +87,7 @@ class OTPScreen extends StatelessWidget {
                               .r),
                           backgroundColor: MaterialStateProperty.all(
                               const Color(0xffFE7655)), //Background Color
-                          elevation: MaterialStateProperty.all(
-                              5.r), //Defines Elevation
+
                           shadowColor: MaterialStateProperty.all(Colors.black),
                         ),
                         child: Text(
@@ -101,7 +100,7 @@ class OTPScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 30.h,
+                      height: 30.w,
                     ),
                     Row(
                       children: [

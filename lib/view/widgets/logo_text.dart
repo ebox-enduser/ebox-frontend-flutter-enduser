@@ -13,14 +13,14 @@ class LogoText extends StatelessWidget {
           width: 80.w,
         ),
         SizedBox(
-          height: 15.h,
+          height: 15.w,
         ),
         Text(
           'eBox',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.sp),
         ),
         SizedBox(
-          height: 60.h,
+          height: 60.w,
         ),
       ],
     );

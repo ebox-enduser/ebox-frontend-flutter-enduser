@@ -89,7 +89,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 infoCount: 0,
                 widget: const AboutEbox(),
               ),
-              SizedBox(height: 10.h),
+              SizedBox(height: 10.w),
               BottomUserInfo(isCollapsed: _isCollapsed),
               const Divider(color: Colors.grey),
               Align(

@@ -30,7 +30,7 @@ class CustomListTile extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 500),
         width: isCollapsed ? 300.w : 80.w,
-        height: 40.h,
+        height: 40.w,
         child: Row(
           children: [
             Expanded(
@@ -46,9 +46,9 @@ class CustomListTile extends StatelessWidget {
                     if (infoCount > 0)
                       Positioned(
                         right: -5.w,
-                        top: -5.h,
+                        top: -5.w,
                         child: Container(
-                          height: 10.h,
+                          height: 10.w,
                           width: 10.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.r),
@@ -84,7 +84,7 @@ class CustomListTile extends StatelessWidget {
                         child: Container(
                           margin: REdgeInsets.only(left: 10),
                           width: 20.w,
-                          height: 20.h,
+                          height: 20.w,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.r),
                             color: AppColors.thirdlyColor,

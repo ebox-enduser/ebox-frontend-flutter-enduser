@@ -13,13 +13,13 @@ class InformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: REdgeInsets.only(bottom: 15, right: 15, left: 15),
+      padding: REdgeInsets.only(bottom: 15.r, right: 15.r, left: 15.r),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(15.w),
         ),
-        width: MediaQuery.of(context).size.height * 0.5,
+        width: MediaQuery.of(context).size.width * 1,
         child: Padding(
           padding: REdgeInsets.all(15),
           child: Column(

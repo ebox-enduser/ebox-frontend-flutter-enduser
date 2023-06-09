@@ -14,7 +14,7 @@ class MealLoadingList extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (context, index) => const MealLoadingCard(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisSpacing: 20.h),
+          crossAxisCount: 2, mainAxisSpacing: 20.w),
     );
   }
 }

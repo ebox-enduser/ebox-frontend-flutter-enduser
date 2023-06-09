@@ -22,7 +22,7 @@ class OrderedCardLoading extends StatelessWidget {
           Positioned(
               child: SizedBox(
             width: Get.width,
-            height: 150.h,
+            height: 150.w,
             // decoration: BoxDecoration(color: Colors.red),
           )),
           Positioned(
@@ -37,7 +37,7 @@ class OrderedCardLoading extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.r),
                     ),
                     width: 300.w,
-                    height: 140.h,
+                    height: 140.w,
                     child: Padding(
                       padding: REdgeInsets.only(
                           left: 45, right: 15, top: 15, bottom: 15),
@@ -75,7 +75,7 @@ class OrderedCardLoading extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: 5.h,
+                                height: 5.w,
                               ),
                               SizedBox(
                                 width: 100.w,
@@ -88,7 +88,7 @@ class OrderedCardLoading extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: 10.h,
+                                height: 10.w,
                               ),
                               SizedBox(
                                 width: 200.w,

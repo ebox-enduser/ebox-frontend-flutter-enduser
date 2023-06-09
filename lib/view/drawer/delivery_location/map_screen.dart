@@ -49,7 +49,7 @@ class _MapScreenState extends State<MapScreen> {
                     markers: [
                       Marker(
                         width: 80.0.w,
-                        height: 80.0.h,
+                        height: 80.0.w,
                         point: LatLng(
                             settingController.currentPosition!.value!.latitude,
                             settingController
@@ -69,7 +69,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          top: 30.h,
+          top: 30.w,
           left: 15.w,
           child: GestureDetector(
             onTap: () => Get.back(),
@@ -85,14 +85,13 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          bottom: 15.h,
+          bottom: 15.w,
           child: TextButton(
             onPressed: () {
               settingController.getCurrentLocation();
               Get.back();
             },
             style: TextButton.styleFrom(
-              elevation: 5,
               foregroundColor: Colors.white,
               backgroundColor: AppColors.primaryColor,
               padding:
@@ -110,7 +109,7 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          bottom: 15.h,
+          bottom: 15.w,
           right: 15.w,
           child: GestureDetector(
             onTap: () {
@@ -131,8 +130,8 @@ class _MapScreenState extends State<MapScreen> {
           ),
         ),
         Positioned(
-          top: 80,
-          left: 15,
+          top: 80.w,
+          left: 15.w,
           child: Obx(
             () => Text(
               settingController.currentAddress?.value ?? 'Address',

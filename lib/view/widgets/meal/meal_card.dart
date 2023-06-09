@@ -63,10 +63,10 @@ class _MealCardState extends State<MealCard> {
         alignment: Alignment.center,
         children: [
           Positioned(
-            bottom: 0.h,
+            bottom: 0,
             child: Container(
               width: 160.w,
-              height: 130.h,
+              height: 150.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15.w),
                 color: Colors.white,
@@ -82,11 +82,11 @@ class _MealCardState extends State<MealCard> {
                           .contains(widget.nameMeal)) {
                         return SizedBox(
                           width: 160.w,
-                          height: 40.h,
+                          height: 40.w,
                           child: Center(
                             child: SizedBox(
                               width: 160.w,
-                              height: 40.h,
+                              height: 40.w,
                               child: Icon(
                                 Icons.check_circle,
                                 color: AppColors.secondaryColor,
@@ -112,18 +112,18 @@ class _MealCardState extends State<MealCard> {
                             },
                             child: Container(
                                 width: 160.w,
-                                height: 40.h,
+                                height: 40.w,
                                 decoration: BoxDecoration(
                                     color: AppColors.primaryColor,
                                     borderRadius: BorderRadius.all(
-                                        Radius.circular(15.r))),
+                                        Radius.circular(15.w))),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
                                       'assets/images/cart.png',
                                       color: Colors.white,
-                                      scale: 30.r,
+                                      scale: 30,
                                     ),
                                     SizedBox(
                                       width: 10.w,
@@ -145,11 +145,11 @@ class _MealCardState extends State<MealCard> {
             ),
           ),
           Positioned(
-              top: 0.h,
+              top: 0.w,
               left: 20.w,
               child: Container(
                 width: 80.w,
-                height: 70.h,
+                height: 70.w,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.w),
                     image: DecorationImage(
@@ -157,7 +157,7 @@ class _MealCardState extends State<MealCard> {
                         fit: BoxFit.cover)),
               )),
           Positioned(
-            top: 80.h,
+            top: 80.w,
             child: SizedBox(
               width: 130.w,
               child: Text(
@@ -169,7 +169,7 @@ class _MealCardState extends State<MealCard> {
             ),
           ),
           Positioned(
-            top: 50.h,
+            top: 40.w,
             right: 30.w,
             child: Text(
               '\$${widget.price}',

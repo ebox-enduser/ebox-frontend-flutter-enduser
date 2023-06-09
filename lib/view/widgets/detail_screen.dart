@@ -21,53 +21,54 @@ class DetailScreen extends StatelessWidget {
           ),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding:
-                  REdgeInsets.only(left: 15, right: 15, top: 30, bottom: 15),
-              child: SizedBox(
-                height: 40.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.back(),
-                      child: CircleAvatar(
-                        radius: 20.r,
-                        backgroundColor: Colors.black.withOpacity(0.4),
-                        foregroundColor: Colors.white,
-                        child: Icon(
-                          Icons.arrow_back_ios_new,
-                          size: 20.r,
-                        ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Container(
+              width: 0.9.sw,
+              height: 40.h,
+              // decoration: BoxDecoration(color: Colors.red),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: CircleAvatar(
+                      radius: 20.r,
+                      backgroundColor: Colors.black.withOpacity(0.4),
+                      foregroundColor: Colors.white,
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        size: 20.r,
                       ),
                     ),
-                    SizedBox(
-                      width: 240.w,
-                      child: Text(title.tr,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 20.sp, fontWeight: FontWeight.bold)),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(() => const ContactUsScreen(),
-                            transition: Transition.rightToLeftWithFade);
-                      },
-                      child: CircleAvatar(
-                        radius: 20.r,
-                        backgroundColor: AppColors.thirdlyColor,
-                        foregroundColor: Colors.white,
-                        child: Icon(
-                          Icons.help_outline,
-                          size: 20.r,
-                        ),
+                  ),
+                  SizedBox(
+                    width: 240.w,
+                    child: Text(title.tr,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 20.sp, fontWeight: FontWeight.bold)),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ContactUsScreen(),
+                          transition: Transition.rightToLeftWithFade);
+                    },
+                    child: CircleAvatar(
+                      radius: 20.r,
+                      backgroundColor: AppColors.thirdlyColor,
+                      foregroundColor: Colors.white,
+                      child: Icon(
+                        Icons.help_outline,
+                        size: 20.r,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const Spacer(),
@@ -83,12 +84,12 @@ class DetailScreen extends StatelessWidget {
                 Positioned(
                   child: Container(
                     width: Get.width,
-                    height: Get.height - 92.h,
+                    height: 0.88.sh,
                     decoration: BoxDecoration(
                         color: AppColors.secondaryBackgroundColor,
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.r),
-                            topRight: Radius.circular(15.r))),
+                            topLeft: Radius.circular(15.w),
+                            topRight: Radius.circular(15.w))),
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: SafeArea(

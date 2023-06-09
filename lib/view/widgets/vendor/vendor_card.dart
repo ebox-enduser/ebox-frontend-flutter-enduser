@@ -28,7 +28,7 @@ class VendorCard extends StatelessWidget {
             Positioned(
                 child: Container(
               width: Get.width,
-              height: 170.h,
+              height: 170.w,
               // decoration: BoxDecoration(color: Colors.red),
             )),
             Positioned(
@@ -36,7 +36,7 @@ class VendorCard extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child: Container(
-                  height: 140.h,
+                  height: 140.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -63,7 +63,7 @@ class VendorCard extends StatelessWidget {
                             Row(
                               children: [
                                 SizedBox(
-                                  width: 70.h,
+                                  width: 70.w,
                                   child: Column(
                                     children: [
                                       Row(
@@ -91,7 +91,7 @@ class VendorCard extends StatelessWidget {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 15.h,
+                                        height: 15.w,
                                       ),
                                       Row(
                                         children: [
@@ -122,7 +122,7 @@ class VendorCard extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: 70.h,
+                                  width: 70.w,
                                   child: Column(
                                     children: [
                                       Row(
@@ -146,7 +146,7 @@ class VendorCard extends StatelessWidget {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: 15.h,
+                                        height: 15.w,
                                       ),
                                       Row(
                                         mainAxisAlignment:

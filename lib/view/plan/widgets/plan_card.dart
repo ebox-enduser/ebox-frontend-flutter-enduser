@@ -42,7 +42,7 @@ class PlanCard extends StatelessWidget {
             ),
           )),
           Positioned(
-            top: 15.h,
+            top: 15.w,
             left: 15.w,
             child: Text(
               plan.name.tr,

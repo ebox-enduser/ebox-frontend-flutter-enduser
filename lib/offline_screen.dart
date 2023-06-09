@@ -27,7 +27,7 @@ class _OfflineScreenState extends State<OfflineScreen> {
               style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
             ),
             SizedBox(
-              height: 30.h,
+              height: 30.w,
             ),
           ],
         ),

@@ -27,7 +27,7 @@ class OrderedCard extends StatelessWidget {
         Positioned(
             child: SizedBox(
           width: Get.width,
-          height: 150.h,
+          height: 150.w,
           // decoration: BoxDecoration(color: Colors.red),
         )),
         Positioned(
@@ -42,17 +42,17 @@ class OrderedCard extends StatelessWidget {
                   transition: Transition.fadeIn);
             },
             child: Padding(
-              padding: REdgeInsets.all(15),
+              padding: REdgeInsets.all(15.r),
               child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.r),
+                    borderRadius: BorderRadius.circular(20.w),
                   ),
                   width: 300.w,
-                  height: 140.h,
+                  height: 140.w,
                   child: Padding(
                     padding: REdgeInsets.only(
-                        left: 45, right: 15, top: 15, bottom: 15),
+                        left: 45.r, right: 5.r, top: 15.r, bottom: 15.r),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -87,7 +87,7 @@ class OrderedCard extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 5.h,
+                              height: 5.w,
                             ),
                             SizedBox(
                               width: 100.w,
@@ -100,7 +100,7 @@ class OrderedCard extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: 10.w,
                             ),
                             SizedBox(
                               width: 200.w,
@@ -152,13 +152,13 @@ class OrderedCard extends StatelessWidget {
                     ));
               },
               child: CircleAvatar(
-                radius: 40.r,
+                radius: 40.w,
                 foregroundImage: NetworkImage(mealOrdered.imageVendor),
               ),
             )),
         Positioned(
-          right: 40,
-          bottom: 10,
+          right: 30.w,
+          bottom: 20.w,
           child: TextButton(
             onPressed: () {
               dashboardController.createMealOrder(
@@ -184,10 +184,12 @@ class OrderedCard extends StatelessWidget {
               ).show();
             },
             style: TextButton.styleFrom(
+              fixedSize: Size(90.w, 30.w),
+              textStyle: TextStyle(fontSize: 14.sp),
               backgroundColor: AppColors.primaryColor,
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r)),
+                  borderRadius: BorderRadius.circular(10.w)),
             ),
             child: Text(
               'Order Again'.tr,

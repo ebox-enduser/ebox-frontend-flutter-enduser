@@ -18,7 +18,7 @@ class BottomUserInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      height: isCollapsed ? 70.h : 90.h,
+      height: isCollapsed ? 70.w : 90.w,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.primaryColor,
@@ -33,7 +33,7 @@ class BottomUserInfo extends StatelessWidget {
                     child: Container(
                       margin: REdgeInsets.symmetric(horizontal: 10),
                       width: 40.w,
-                      height: 40.h,
+                      height: 40.w,
                       decoration: BoxDecoration(
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(20.r),
@@ -118,7 +118,7 @@ class BottomUserInfo extends StatelessWidget {
                   child: Container(
                     margin: REdgeInsets.only(top: 10),
                     width: 40.w,
-                    height: 40.h,
+                    height: 40.w,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20.r),

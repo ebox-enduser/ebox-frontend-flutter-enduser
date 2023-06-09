@@ -17,10 +17,10 @@ class MealLoadingCard extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Positioned(
-            bottom: 0.h,
+            bottom: 0.w,
             child: Container(
               width: 140.w,
-              height: 130.h,
+              height: 130.w,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.w),
                 color: Colors.white,
@@ -31,7 +31,7 @@ class MealLoadingCard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: REdgeInsets.only(
-                          bottom: 15.h, left: 15.w, right: 15.w),
+                          bottom: 15.w, left: 15.w, right: 15.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -57,13 +57,13 @@ class MealLoadingCard extends StatelessWidget {
             ),
           ),
           Positioned(
-              top: 0.h,
+              top: 0.w,
               child: Container(
                 width: 80.w,
-                height: 70.h,
+                height: 70.w,
               )),
           Positioned(
-            top: 80.h,
+            top: 80.w,
             child: Text(
               'nameMeal',
               overflow: TextOverflow.ellipsis,

@@ -23,7 +23,7 @@ class OrderedDetailScreen extends StatelessWidget {
         extendBody: true,
         body: DetailScreen(
             screen: Padding(
-              padding: REdgeInsets.only(left: 15, right: 15),
+              padding: REdgeInsets.only(left: 15.r, right: 15.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -98,13 +98,13 @@ class OrderedDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: REdgeInsets.only(top: 10, bottom: 10),
+                    padding: REdgeInsets.only(top: 10.r, bottom: 10.r),
                     child: Container(
                       width: Get.width * 1,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(15.r))),
+                              BorderRadius.all(Radius.circular(15.w))),
                       child: Padding(
                         padding: REdgeInsets.all(15.0),
                         child: Column(
@@ -114,7 +114,7 @@ class OrderedDetailScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   'assets/images/meal.png',
-                                  scale: 30.r,
+                                  scale: 30,
                                 ),
                                 SizedBox(
                                   width: 5.w,
@@ -134,15 +134,15 @@ class OrderedDetailScreen extends StatelessWidget {
                                 itemCount: mealOrdered.nameMeal.length,
                                 itemBuilder: (context, index) {
                                   return Padding(
-                                    padding: REdgeInsets.only(bottom: 10),
+                                    padding: REdgeInsets.only(bottom: 10.r),
                                     child: Row(
                                       children: [
                                         Container(
                                           width: 60.w,
-                                          height: 60.h,
+                                          height: 60.w,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(10.r)),
+                                                  Radius.circular(10.w)),
                                               image: DecorationImage(
                                                   image: NetworkImage(
                                                       mealOrdered
@@ -208,7 +208,8 @@ class OrderedDetailScreen extends StatelessWidget {
                               ],
                             ),
                             Padding(
-                              padding: REdgeInsets.only(top: 10, bottom: 10),
+                              padding:
+                                  REdgeInsets.only(top: 10.r, bottom: 10.r),
                               child: const Divider(),
                             ),
                             Column(
@@ -259,15 +260,15 @@ class OrderedDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: REdgeInsets.only(top: 10, bottom: 10),
+                    padding: REdgeInsets.only(bottom: 10.r),
                     child: Container(
                       width: Get.width * 1,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(15.r))),
+                              BorderRadius.all(Radius.circular(15.w))),
                       child: Padding(
-                        padding: REdgeInsets.all(15.0),
+                        padding: REdgeInsets.all(15.0.r),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -315,7 +316,7 @@ class OrderedDetailScreen extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: 10.w,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -346,15 +347,15 @@ class OrderedDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: REdgeInsets.only(top: 10, bottom: 10),
+                    padding: REdgeInsets.only(bottom: 10.r),
                     child: Container(
                       width: Get.width * 1,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                              BorderRadius.all(Radius.circular(15.r))),
+                              BorderRadius.all(Radius.circular(15.w))),
                       child: Padding(
-                        padding: REdgeInsets.all(15.0),
+                        padding: REdgeInsets.all(15.0.r),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -400,7 +401,7 @@ class OrderedDetailScreen extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: 10.w,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -426,7 +427,7 @@ class OrderedDetailScreen extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              height: 10.h,
+                              height: 10.w,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -492,7 +493,7 @@ class OrderedDetailScreen extends StatelessWidget {
               padding:
                   REdgeInsets.only(top: 20, bottom: 20, left: 40, right: 40),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25.r)),
+                  borderRadius: BorderRadius.circular(25.w)),
             ),
             child: Text(
               'Order Again'.tr,

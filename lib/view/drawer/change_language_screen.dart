@@ -35,14 +35,14 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp),
               ),
               SizedBox(
-                height: 30.h,
+                height: 30.w,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: 160.w,
-                    height: 160.h,
+                    height: 160.w,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -57,14 +57,14 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                             width: 80.w,
                           ),
                           SizedBox(
-                            height: 15.h,
+                            height: 15.w,
                           ),
                           Text(
                             'English - USA',
                             style: TextStyle(fontSize: 12.sp),
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 5.w,
                           ),
                           Radio(
                               value: const Locale('en', 'US'),
@@ -80,7 +80,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                   ),
                   Container(
                     width: 160.w,
-                    height: 160.h,
+                    height: 160.w,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(15.r)),
@@ -95,7 +95,7 @@ class _ChangeLanguageScreenState extends State<ChangeLanguageScreen> {
                             width: 80.w,
                           ),
                           SizedBox(
-                            height: 5.h,
+                            height: 5.w,
                           ),
                           Text(
                             'ខ្មែរ',

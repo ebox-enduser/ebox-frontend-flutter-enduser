@@ -21,7 +21,7 @@ class VendorLoadingCard extends StatelessWidget {
             Positioned(
                 child: SizedBox(
               width: Get.width,
-              height: 200.h,
+              height: 200.w,
               // decoration: BoxDecoration(color: Colors.red),
             )),
             Positioned(
@@ -30,7 +30,7 @@ class VendorLoadingCard extends StatelessWidget {
                 right: 0,
                 child: Container(
                   width: Get.width,
-                  height: 160.h,
+                  height: 160.w,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(Radius.circular(15.r)),

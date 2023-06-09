@@ -29,7 +29,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    height: 60.h,
+                    height: 60.w,
                     width: 60.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
@@ -53,7 +53,7 @@ class CustomizeIngredientsScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 15.h,
+                height: 15.w,
               ),
               TextField(
                 controller: ingredientsController,
