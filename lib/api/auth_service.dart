@@ -18,6 +18,7 @@ class AuthService {
       headers: {"Content-Type": "application/json"},
       body: jsonEncode(body),
     );
+    print(response.statusCode);
     return response;
   }
 

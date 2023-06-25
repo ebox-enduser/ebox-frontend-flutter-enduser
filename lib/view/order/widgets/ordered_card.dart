@@ -172,16 +172,6 @@ class OrderedCard extends StatelessWidget {
               );
               cartController.vendor.value = null;
               cartController.meals.clear();
-              AwesomeDialog(
-                context: context,
-                dialogType: DialogType.success,
-                animType: AnimType.bottomSlide,
-                title: 'Order Success!',
-                dismissOnTouchOutside: false,
-                btnOkOnPress: () {
-                  Get.offAll(() => const DashboardScreen());
-                },
-              ).show();
             },
             style: TextButton.styleFrom(
               fixedSize: Size(90.w, 30.w),

@@ -32,6 +32,7 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      resizeToAvoidBottomInset: false,
       body: DetailScreen(
           screen: Padding(
             padding: REdgeInsets.only(left: 15, right: 15),

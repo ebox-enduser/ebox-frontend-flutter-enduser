@@ -1,9 +1,14 @@
 import 'dart:convert';
 
 // ignore: depend_on_referenced_packages
+import 'package:ebox/controller/controllers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import '../core/constants/const.dart';
+import '../core/theme/app_colors.dart';
 
 class MealOrderedService {
   var client = http.Client();
@@ -47,6 +52,24 @@ class MealOrderedService {
       },
       body: jsonEncode(body),
     );
+    if (response.statusCode == 200) {
+      Get.snackbar('Order successful'.tr, 'You have order ${name} again',
+          colorText: Colors.white,
+          margin: REdgeInsets.all(15),
+          backgroundColor: AppColors.secondaryColor,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 2));
+      dashboardController.getMealOrdered();
+    } else {
+      Get.snackbar('Order ${name} is not working right now'.tr,
+          'You have to order again',
+          colorText: Colors.white,
+          margin: REdgeInsets.all(15),
+          backgroundColor: Colors.redAccent,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: const Duration(seconds: 2));
+    }
+
     return response;
   }
 }

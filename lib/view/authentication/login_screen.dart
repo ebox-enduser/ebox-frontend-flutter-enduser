@@ -238,6 +238,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   'Sign Up'.tr,
                                   style: TextStyle(
                                     fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
                                     color: const Color(0xffFE7655),
                                   ),
                                 ),

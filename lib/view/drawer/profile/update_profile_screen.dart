@@ -68,7 +68,6 @@ class _UpdateInformationState extends State<UpdateInformation> {
     if (picked != null && picked != _selectedDate) {
       setState(() {
         _selectedDate = picked;
-        debugPrint(_selectedDate as String?);
       });
     }
   }
@@ -77,6 +76,7 @@ class _UpdateInformationState extends State<UpdateInformation> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
+      resizeToAvoidBottomInset: false,
       body: DetailScreen(
           screen: Padding(
             padding: REdgeInsets.only(left: 15, right: 15, bottom: 15),

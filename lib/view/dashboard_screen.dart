@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:ebox/controller/controllers.dart';
 import 'package:ebox/offline_screen.dart';
 import 'package:ebox/view/cart/cart_screen.dart';
+import 'package:ebox/view/drawer/delivery_location/location_screen.dart';
 
 import 'package:ebox/view/plan/plan_screen.dart';
 import 'package:ebox/view/drawer/profile/profile_screen.dart';
@@ -65,16 +66,21 @@ class _MainScreenState extends State<DashboardScreen> {
         backgroundColor: AppColors.secondaryBackgroundColor,
         appBar: AppBar(
           toolbarHeight: 50.w,
-          title: SizedBox(
-            height: 15.w,
-            child: Obx(
-              () => TextScroll(
-                'Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}                ',
-                velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
-                mode: TextScrollMode.endless,
-                style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
-                textAlign: TextAlign.left,
-                selectable: true,
+          title: GestureDetector(
+            onTap: () {
+              Get.to(() => LocationScreen());
+            },
+            child: SizedBox(
+              height: 15.w,
+              child: Obx(
+                () => TextScroll(
+                  'Address: ${settingController.userLocation.value?.address ?? 'Please set your location address first'.tr}                ',
+                  velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+                  mode: TextScrollMode.endless,
+                  style: TextStyle(color: AppColors.textColor, fontSize: 10.sp),
+                  textAlign: TextAlign.left,
+                  selectable: true,
+                ),
               ),
             ),
           ),
