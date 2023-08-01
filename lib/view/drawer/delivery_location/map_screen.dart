@@ -2,6 +2,7 @@ import 'package:ebox/controller/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 // ignore: depend_on_referenced_packages
 import 'package:latlong2/latlong.dart';
@@ -24,10 +25,13 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
     settingController.permissionLocation();
     settingController.getUserLocation();
+    settingController.getCurrentLocation();
   }
 
   @override
   Widget build(BuildContext context) {
+    LatLng selectedLocation = LatLng(11.5564, 104.9282);
+
     return Scaffold(
       body: Stack(alignment: Alignment.center, children: [
         Positioned(
@@ -45,24 +49,27 @@ class _MapScreenState extends State<MapScreen> {
                   subdomains: const ['a', 'b', 'c'],
                 ),
                 if (settingController.currentPosition?.value != null)
-                  MarkerLayer(
-                    markers: [
-                      Marker(
-                        width: 80.0.w,
-                        height: 80.0.w,
-                        point: LatLng(
-                            settingController.currentPosition!.value!.latitude,
-                            settingController
-                                .currentPosition!.value!.longitude),
-                        builder: (ctx) {
-                          return Icon(
-                            Icons.location_on,
-                            color: AppColors.primaryColor,
-                            size: 30.r,
-                          );
-                        },
-                      ),
-                    ],
+                  Obx(
+                    () => MarkerLayer(
+                      markers: [
+                        Marker(
+                          width: 80.0.w,
+                          height: 80.0.w,
+                          point: LatLng(
+                              settingController
+                                  .currentPosition!.value!.latitude,
+                              settingController
+                                  .currentPosition!.value!.longitude),
+                          builder: (ctx) {
+                            return Icon(
+                              Icons.location_on,
+                              color: AppColors.primaryColor,
+                              size: 30.r,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
                   ),
               ],
             ),
@@ -114,10 +121,21 @@ class _MapScreenState extends State<MapScreen> {
           child: GestureDetector(
             onTap: () {
               settingController.getCurrentLocation();
-              mapController.move(
-                  LatLng(settingController.currentPosition!.value!.latitude,
-                      settingController.currentPosition!.value!.longitude),
-                  13);
+              if (settingController.currentPosition?.value?.latitude == null &&
+                  settingController.currentPosition?.value?.longitude == null) {
+                Get.snackbar('Current location is not working right now'.tr,
+                    'You have to press that button again',
+                    colorText: Colors.white,
+                    margin: REdgeInsets.all(15),
+                    backgroundColor: Colors.redAccent,
+                    snackPosition: SnackPosition.BOTTOM,
+                    duration: const Duration(seconds: 2));
+              } else {
+                mapController.move(
+                    LatLng(settingController.currentPosition!.value!.latitude,
+                        settingController.currentPosition!.value!.longitude),
+                    13);
+              }
             },
             child: CircleAvatar(
                 radius: 30.r,

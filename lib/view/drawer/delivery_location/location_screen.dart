@@ -121,9 +121,11 @@ class _LocationScreenState extends State<LocationScreen> {
                           textInputAction: TextInputAction.next,
                           obscureText: false,
                           decoration: InputDecoration(
-                            label: Text(
-                                settingController.userLocation.value?.address ??
-                                    'Location'),
+                            label: Obx(
+                              () => Text(settingController
+                                      .userLocation.value?.address ??
+                                  'Location'),
+                            ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0.r),
                             ),

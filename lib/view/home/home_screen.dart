@@ -94,7 +94,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           dashboardController.getVendorByName(keyword: value);
                         },
                         onChanged: (value) {
-                          dashboardController.searchVal.value = value;
+                          if (value.isEmpty) {
+                            dashboardController.getVendors();
+                          } else {
+                            dashboardController.searchVal.value = value;
+                          }
                         },
                         cursorColor: AppColors.primaryColor,
                         decoration: InputDecoration(

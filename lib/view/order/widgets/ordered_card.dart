@@ -186,7 +186,7 @@ class OrderedCard extends StatelessWidget {
               style: TextStyle(fontSize: 12.sp),
             ),
           ),
-        )
+        ),
       ],
     );
   }

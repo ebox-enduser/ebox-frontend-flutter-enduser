@@ -8,6 +8,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:latlng/latlng.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingController extends GetxController {
